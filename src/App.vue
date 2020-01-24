@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import './global.scss'
+import './assets/scss/global.scss'
 export default {
   name: 'App',
 

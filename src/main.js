@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import './global.scss'
-
+import './assets/scss/global.scss'
 
 /* DEPENDENCY IMPORTS */
 import BootstrapVue, { IconsPlugin } from 'bootstrap-vue'
