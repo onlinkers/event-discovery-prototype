@@ -17,7 +17,7 @@ import vuetify from './plugins/vuetify';
 import VueMq from 'vue-mq'
 
 Vue.use(VueMq, {
-  breakpoints: { // default breakpoints - customize this
+  breakpoints: {
     mobile: 600,
     desktop: Infinity,
   },

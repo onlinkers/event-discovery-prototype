@@ -5,8 +5,12 @@
     @mapLoad="loadMap"
   />
   <ExploreBar
-    :class="{modalOpened: modalOpen}"
+    :class="{modalOpened: modalOpened}"
   />
+  <SearchBar
+    :class="{modalOpened: modalOpened}"
+  />
+  
 </div>
 </template>
 
@@ -14,6 +18,7 @@
 /* MAIN COMPONENTS */
 import Map from '@/components/map/Mapbox'
 import ExploreBar from '@/components/exploreBar'
+import SearchBar from '@/components/searchBar'
 
 /* EVENT DATA */
 import events from '@/assets/js/eventData.js'
@@ -24,7 +29,8 @@ export default {
   name: 'Discover',
   components: {
     Map,
-    ExploreBar
+    ExploreBar,
+    SearchBar
   },
   data() {
     return {
