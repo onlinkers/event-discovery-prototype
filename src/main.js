@@ -18,11 +18,9 @@ import VueMq from 'vue-mq'
 
 Vue.use(VueMq, {
   breakpoints: { // default breakpoints - customize this
-    sm: 450,
-    md: 1250,
-    lg: Infinity,
+    mobile: 600,
+    desktop: Infinity,
   },
-  defaultBreakpoint: 'sm' // customize this for SSR
 })
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
