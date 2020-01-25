@@ -10,18 +10,18 @@
     <div class="explore-bar-icons">
       <mq-layout mq="mobile">
         <div class="left-icons icon-wrapper">
-          <v-btn color="primary" fab text class="nav-icon">
+          <v-btn color="primary" fab small text class="nav-icon">
             <font-awesome-icon icon="home" class="fa-2x"></font-awesome-icon>
           </v-btn>
-          <v-btn color="primary" fab text class="nav-icon">
+          <v-btn color="primary" fab small text class="nav-icon">
             <font-awesome-icon icon="globe-africa" class="fa-2x"></font-awesome-icon>
           </v-btn>
         </div>
         <div class="right-icons icon-wrapper">
-          <v-btn color="primary" fab text class="nav-icon">
+          <v-btn color="primary" fab small text class="nav-icon">
             <font-awesome-icon icon="inbox" class="fa-2x"></font-awesome-icon>
           </v-btn>
-          <v-btn color="primary" fab text class="nav-icon">
+          <v-btn color="primary" fab small text class="nav-icon">
             <font-awesome-icon icon="user-circle" class="fa-2x"></font-awesome-icon>
           </v-btn>
         </div>
@@ -70,7 +70,7 @@
       }
       &:hover {
         g circle {
-          fill-opacity: 1;
+          fill-opacity: 0.85;
         }
       }
     }
@@ -94,7 +94,7 @@
       transform: translateY(-50%);
     }
     .nav-icon {
-      margin: 0 1.1em;
+      margin: 0 1.5em;
     }
   }
 }
