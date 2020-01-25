@@ -38,7 +38,7 @@
     </div>
   </div>
   <div class="next-icon">
-    <v-btn color="primary" fab medium>
+    <v-btn color="primary" fab medium to="/discover">
       <font-awesome-icon icon="chevron-right" class="chevron-icon fa-3x"></font-awesome-icon>
     </v-btn>
     <!-- <v-btn
