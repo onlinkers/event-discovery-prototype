@@ -12,11 +12,8 @@
     <MglMarker  v-for = "(m, index) in events"
                 :key = "`marker-${index}`"
                 :coordinates  = "m.priv.coordinates">
-      <MglPopup>
-        <VCard>
-          <div>{{ m.pub.name }}</div>
-        </VCard>
-      </MglPopup>
+      <img :src="require(`../../assets/media/sample-pin-${index}.png`)" slot="marker">
+      <MglPopup><div>{{ m.pub.name }}</div></MglPopup>
     </MglMarker>
   </MglMap>
 
