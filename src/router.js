@@ -5,6 +5,9 @@ import Welcome from './views/Welcome'
 import SignUp from './views/SignUp'
 import Discover from './views/Discover'
 
+/* FOR TESTING */
+import createEventModal from './components/createEventModal'
+
 Vue.use(Router)
 
 const router = new Router({
@@ -25,7 +28,12 @@ const router = new Router({
       path: '/discover',
       name: 'discover',
       component: Discover
-    }
+    },
+    {
+      path: '/createEventModal',
+      name: 'create-event',
+      component: createEventModal
+    },
   ]
 })
 

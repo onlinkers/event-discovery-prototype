@@ -26,6 +26,9 @@ export default {
   top: 10%;
   left: 50%;
   transform: translateX(-50%);
+  @media screen and (min-width: 700px){
+    top: 13%;
+  }
   .search-bar {
     background: white;
     border-radius: 10px;
@@ -40,9 +43,11 @@ export default {
     transition: width 0.5s;
     @media screen and (max-width: 850px) {
       font-size: 16px;
+      width: 70vw;
     }
     @media screen and (max-width: 650px) {
       font-size: 14px;
+      width: 70vw;
     }
     input {
       background: white;

@@ -5,6 +5,7 @@
     @mapLoad="loadMap"
   />
   <ExploreBar
+    currPageProp="Discover"
     :class="{modalOpened: modalOpened}"
   />
   <SearchBar
@@ -19,6 +20,7 @@
 import Map from '@/components/map/Mapbox'
 import ExploreBar from '@/components/exploreBar'
 import SearchBar from '@/components/searchBar'
+// import createEventModal from '@/components/createEventModal'
 
 /* EVENT DATA */
 import events from '@/assets/js/eventData.js'
@@ -30,7 +32,8 @@ export default {
   components: {
     Map,
     ExploreBar,
-    SearchBar
+    SearchBar,
+    // createEventModal
   },
   data() {
     return {
@@ -40,7 +43,12 @@ export default {
       mapLoaded: false,
       modalOpened: false,
       modalFocus: 0,
+      
+      createEventModalVisible: false,
     }
+  },
+  created: {
+
   },
   mounted() {
     window.addEventListener('resize', () => {
@@ -58,11 +66,19 @@ export default {
     openCard(id) {
       this.triggerModal();
       this.modalFocus = id;
+    },
+    showEventCreationModal() {
+      this.createEventModalVisible = true;
+    },
+    closeEventCreationModal() {
+      this.createEventModalVisible = false;
     }
   }
 };
 </script>
 <style lang="scss">
+@import '@/assets/scss/variables.scss';
+
 .background-blur {
   background: #fff;
   opacity: 0.5;

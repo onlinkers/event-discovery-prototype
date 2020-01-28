@@ -15,6 +15,7 @@
             class="sign-in-input"
             clearable
             :rules="[rules.required, rules.email]"
+            v-model="inputEmail"
           ></v-text-field>
         </v-form>
       </div>
@@ -28,6 +29,7 @@
             class="sign-in-input"
             clearable
             :rules="[rules.required]"
+            v-model="inputPassword"
           ></v-text-field>
         </v-form>
       </div>
@@ -42,7 +44,7 @@
     </div>
     <div class="nav-btns">
       <div class="sign-in-btn">
-        <v-btn color="primary" block elevation="13">Sign In</v-btn>
+        <v-btn color="primary" block elevation="5">Sign In</v-btn>
       </div>
       <div class="create-acc-btn">
         <v-btn color="accent" text block to="/signup">Create Account</v-btn>
@@ -54,6 +56,8 @@
 export default {
   data() {
     return {
+      inputEmail: '',
+      inputPassword: '',
       rules: {
         required: value => !!value || 'Required.',
         counter: value => value.length <= 20 || 'Max 20 characters',
@@ -165,5 +169,8 @@ export default {
   .create-acc-btn {
     margin: 2vh 0;
   }
+}
+.sign-in-input.v-text-field>.v-input__control>.v-input__slot:before {
+    border-style: none;
 }
 </style>

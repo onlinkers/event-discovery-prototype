@@ -1,11 +1,15 @@
 /* OVERWRITES */
 
-// @import 'node_modules\vuetify\src\styles\tools\_elevation.sass';
 @import '~vuetify/src/styles/tools/_elevation.sass';
 
 $shadow-key-umbra: rgba(#1a237e, 0.2);
 $shadow-key-penumbra: rgba(#1a237e, 0.14);
 $shadow-key-ambient: rgba(#1a237e, 0.12);
+
+/* COLORS */
+$primary: #2351F4;
+$secondary: #939DBE;
+
 
 /* COMPONENT SPECIFIC */
 
