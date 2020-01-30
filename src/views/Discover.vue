@@ -10,8 +10,7 @@
   />
   <SearchBar
     :class="{modalOpened: modalOpened}"
-  />
-  
+  />  
 </div>
 </template>
 
@@ -20,7 +19,6 @@
 import Map from '@/components/map/Mapbox'
 import ExploreBar from '@/components/exploreBar'
 import SearchBar from '@/components/searchBar'
-// import createEventModal from '@/components/createEventModal'
 
 /* EVENT DATA */
 import events from '@/assets/js/eventData.js'
@@ -33,7 +31,6 @@ export default {
     Map,
     ExploreBar,
     SearchBar,
-    // createEventModal
   },
   data() {
     return {
@@ -43,8 +40,6 @@ export default {
       mapLoaded: false,
       modalOpened: false,
       modalFocus: 0,
-      
-      createEventModalVisible: false,
     }
   },
   created: {
@@ -67,12 +62,6 @@ export default {
       this.triggerModal();
       this.modalFocus = id;
     },
-    showEventCreationModal() {
-      this.createEventModalVisible = true;
-    },
-    closeEventCreationModal() {
-      this.createEventModalVisible = false;
-    }
   }
 };
 </script>

@@ -166,6 +166,11 @@ export default {
   left: 50%;
   bottom: 10%;
   width: 60%;
+  display: flex;
+  flex-direction: column;
+  .sign-in-btn {
+    width: 100%;
+  }
   .create-acc-btn {
     margin: 2vh 0;
   }

@@ -1,6 +1,7 @@
 <template>
   <div class="explore-bar-wrapper">
     <mq-layout mq="desktop">
+      <CreateEventModal v-show="isEventCreateModalVisible" @close="triggerEventCreateModal()"/>
       <div class="navbar">
         <router-link class="logo" to="/">
           <h1>LINK-LINK</h1>
@@ -15,10 +16,12 @@
           <router-link to="#" class="page-link">
             <h3 :class="{'active-page': activePage === 'Moments'}">Moments</h3>
           </router-link>
-          <router-link to="/createEventModal" class="page-link">
+          <router-link to="#" class="page-link" @click.native="triggerEventCreateModal()">
             <h3 :class="{'active-page': activePage === 'Create'}">Create</h3>
           </router-link>
-          
+          <!-- <v-btn color="secondary" text @click="triggerEventCreateModal()" class="temp-create-btn">
+            <v-icon>mdi-plus</v-icon>
+          </v-btn> -->
         </div>
         <v-btn color="primary" fab small text class="profile-icon">
           <font-awesome-icon icon="user-circle" class="fa-2x"></font-awesome-icon>
@@ -56,28 +59,50 @@
 </template>
 
 <script>
-  import Eclipse from '@/assets/icons/mobile-explore-bar/explore-eclipse'
+import { EventBus } from '@/event-bus.js'
+import Eclipse from '@/assets/icons/mobile-explore-bar/explore-eclipse'
+import CreateEventModal from '@/components/createEventModal'
 
-  export default {
-    props: {
-      currPageProp: {
-        type: String
-      }
-    },
-    data() {
-      return {
-        activePage: this.currPageProp
-      }
-    },
-    components: {
-      Eclipse
-    },
-    created: {
+export default {
+  props: {
+    currPageProp: {
+      type: String
     }
+  },
+  data() {
+    return {
+      activePage: this.currPageProp,
+      isEventCreateModalVisible: false,
+    }
+  },
+  components: {
+    Eclipse,
+    CreateEventModal,
+  },
+  created: {
+    eventCreateListen() {
+      EventBus.$on('eventModalActivated', () => {
+        this.triggerEventCreateModal();
+      })
+    },
+    eventDismissListen() {
+      EventBus.$on('close', () => {
+        console.log('close modal');
+        this.isEventCreateModalVisible = false;
+      })
+    }
+  },
+  methods : {
+    triggerEventCreateModal() {
+      this.isEventCreateModalVisible = !this.isEventCreateModalVisible;
+    },
   }
+}
 </script>
+
 <style lang="scss">
 @import '@/assets/scss/variables.scss';
+
 .active-page {
     color: $primary !important;
 }
