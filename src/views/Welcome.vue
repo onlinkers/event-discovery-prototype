@@ -74,12 +74,18 @@ export default {
 }
 </script>
 <style lang="scss">
-@media only screen and (min-width: 700px){
+@media only screen and (min-width: 800px){
   .welcome-container {
-    width: 500px;
+    // position: absolute;
+    // left: 50%;
+    // transform: translateX(-50%);
+    // width: 500px;
     display: block;
-    // height: 100vh;
+    height: 100vh;
     margin: 0 auto;
+    .welcome-text {
+      margin-top: 20%;
+    }
     .sign-in {
       .sign-in-box {
         .sign-in-form {
@@ -91,15 +97,16 @@ export default {
       }
     }
     .nav-btns {
-      width: 30%;
+      width: 40%;
     }
   }
 }
 .welcome-container {
+  width: 500px;
   height: 100vh;
 }
 .welcome-text {
-  margin-top: 40%;
+  margin-top: 20%;
   font-family: 'Josefin Sans', sans-serif;
   .location-icon {
     margin: 0 0 5% 10%;
