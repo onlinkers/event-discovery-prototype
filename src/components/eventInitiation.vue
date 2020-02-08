@@ -12,7 +12,7 @@
             <img src="@/assets/icons/event-initiation/initiation-icon.png" alt="">
         </div>
         <div  class="title">
-            <h1> Event Initation </h1>
+            <h1 font-family="Josefin Sans"> Event Initation </h1>
         </div>
       <div class="input-box">
         <div class="input-wrapper">
@@ -128,7 +128,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Josefin Sans";
 }
 .modal-backdrop {
   position: fixed;
@@ -151,6 +151,7 @@ export default {
 }
 .title{
     align-content:left;
+    font-family: "Josefin Sans";
 }
 
 .nav-icon {
@@ -174,6 +175,7 @@ export default {
     }
   }
 
+
   .input-form {
     position: absolute;
     left: 50%;
@@ -182,7 +184,7 @@ export default {
   }
   .event-info-input {
     width: 100%;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Josefin Sans";
     font-size: 1.1em;
     outline: none;
     color: #939DBE;
@@ -215,7 +217,7 @@ text-align: left;
 }
 .v-text-field__slot>label {
   font-size: 18px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Josefin Sans";
 }
 .nav-btns {
   text-align: center;

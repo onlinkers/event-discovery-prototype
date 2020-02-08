@@ -9,6 +9,7 @@ import Discover from './views/Discover'
 import createEventModal from './components/createEventModal'
 import eventInitiation from './components/eventInitiation'
 
+
 Vue.use(Router)
 
 const router = new Router({
