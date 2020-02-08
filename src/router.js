@@ -7,6 +7,7 @@ import Discover from './views/Discover'
 
 /* FOR TESTING */
 import createEventModal from './components/createEventModal'
+import eventInitiation from './components/eventInitiation'
 
 Vue.use(Router)
 
@@ -33,6 +34,11 @@ const router = new Router({
       path: '/createEventModal',
       name: 'create-event',
       component: createEventModal
+    },
+    {
+      path: '/eventInitiation',
+      name: 'event-initiation',
+      component: eventInitiation
     },
   ]
 })
