@@ -200,9 +200,11 @@ export default {
       width: 35%;
       height: 100%;
     }
+
     .left-icons {
       left: 2%;
     }
+    
     .right-icons {
       right: 2%;
     }
