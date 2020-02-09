@@ -9,7 +9,7 @@
 
     <div class="modal-container">
         <div class="ini-icon">
-            <img src="@/assets/icons/event-initiation/initiation-icon.png" alt="">
+            <img src="@/assets/icons/event-initiation/initiation-icon.svg" alt="">
         </div>
         <div  class="title">
             <h1 font-family="Josefin Sans"> Event Initation </h1>
