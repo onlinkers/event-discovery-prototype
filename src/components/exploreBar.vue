@@ -1,5 +1,7 @@
 <template>
   <div class="explore-bar-wrapper">
+
+    <!-- DESKTOP VIEW -->
     <mq-layout mq="desktop">
       <CreateEventModal v-show="isEventCreateModalVisible" @close="triggerEventCreateModal()"/>
       <div class="navbar">
@@ -28,30 +30,31 @@
         </v-btn>
       </div>
     </mq-layout>
+
+    <!-- MOBILE VIEW -->
     <mq-layout mq="mobile">
       <div class="explore-window__button">
-        <!-- <mq-layout mq="desktop">
-          <h3 id="explore-text">EXPLORE</h3>
-        </mq-layout> -->
         <Eclipse />
       </div>
+
       <!-- these icons only show up on mobile -->
       <div class="explore-bar-icons">
         <div class="left-icons icon-wrapper">
-          <v-btn color="primary" fab small text class="nav-icon">
-            <font-awesome-icon icon="home" class="fa-2x"></font-awesome-icon>
-          </v-btn>
-          <v-btn color="primary" fab small text class="nav-icon">
-            <font-awesome-icon icon="globe-africa" class="fa-2x"></font-awesome-icon>
-          </v-btn>
+          <router-link to="/">
+            <img src="../assets/icons/mobile-explore-bar/home-outline.png" alt="">
+          </router-link>
+          <router-link to="/">
+            <img src="../assets/icons/mobile-explore-bar/earth-outline.png" alt="">
+          </router-link>
         </div>
         <div class="right-icons icon-wrapper">
-          <v-btn color="primary" fab small text class="nav-icon">
-            <font-awesome-icon icon="inbox" class="fa-2x"></font-awesome-icon>
-          </v-btn>
-          <v-btn color="primary" fab small text class="nav-icon">
-            <font-awesome-icon icon="user-circle" class="fa-2x"></font-awesome-icon>
-          </v-btn>
+          <router-link to="/">
+            <img src="../assets/icons/mobile-explore-bar/bulb-outline.png" alt="">
+          </router-link>
+          <router-link to="/">
+            <img src="../assets/icons/mobile-explore-bar/person-circle-outline.png" alt="">
+          </router-link>
+          
         </div>
       </div>
     </mq-layout>
@@ -118,7 +121,7 @@ export default {
 }
 .explore-bar-wrapper {
   position: fixed;
-  font-size: 14px;
+  font-size: 1em;
   bottom: 0;
   width: 100%;
   .navbar {
@@ -189,22 +192,19 @@ export default {
     height: 8vh;
     background: white;
     .icon-wrapper {
-      display: inline-block;
+      display: flex;
       position: absolute;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      width: 35%;
+      height: 100%;
     }
     .left-icons {
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-
+      left: 2%;
     }
     .right-icons {
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-    .nav-icon {
-      margin: 0 1.5em;
+      right: 2%;
     }
   }
 }
