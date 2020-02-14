@@ -13,5 +13,5 @@ assignees: ''
 > Explain purpose here
 
 ### Design Requirements
-[  ] Wireframe
-[  ] High Fidelity Design
+- [  ] Wireframe
+- [  ] High Fidelity Design
