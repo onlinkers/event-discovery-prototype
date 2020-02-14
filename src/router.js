@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import Welcome from './views/Welcome'
 import SignUp from './views/SignUp'
 import Discover from './views/Discover'
+import EventPage from './views/EventPage'
 
 /* FOR TESTING */
 import createEventModal from './components/createEventModal'
@@ -34,6 +35,11 @@ const router = new Router({
       name: 'create-event',
       component: createEventModal
     },
+    {
+      path: '/eventpage',
+      name: 'event-page',
+      component: EventPage
+    }
   ]
 })
 
