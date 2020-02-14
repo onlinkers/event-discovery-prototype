@@ -17,3 +17,5 @@ assignees: ''
 
 ### Component purpose
 > Explain purpose here
+
+#### Additional Notes

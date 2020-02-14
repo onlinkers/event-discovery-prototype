@@ -1,8 +1,8 @@
 ---
 name: New Design
-about: Wireframe and/or high fidelity design Required
+about: Wireframe and/or high fidelity design required
 title: "[Design]"
-labels: ''
+labels: design
 assignees: ''
 
 ---
@@ -13,5 +13,7 @@ assignees: ''
 > Explain purpose here
 
 ### Design Requirements
-- [  ] Wireframe
-- [  ] High Fidelity Design
+- [ ] Wireframe
+- [ ] High Fidelity Design
+
+#### Additional Notes
