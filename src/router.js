@@ -8,6 +8,8 @@ import EventPage from './views/EventPage'
 
 /* FOR TESTING */
 import createEventModal from './components/createEventModal'
+import eventInitiation from './components/eventInitiation'
+
 
 Vue.use(Router)
 
@@ -39,7 +41,12 @@ const router = new Router({
       path: '/eventpage',
       name: 'event-page',
       component: EventPage
-    }
+    },
+    {
+      path: '/eventInitiation',
+      name: 'event-initiation',
+      component: eventInitiation
+    },
   ]
 })
 
