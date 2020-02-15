@@ -42,6 +42,7 @@ const router = new Router({
       name: 'event-page',
       component: EventPage
     },
+    {
       path: '/eventInitiation',
       name: 'event-initiation',
       component: eventInitiation
