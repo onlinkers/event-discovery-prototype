@@ -1,10 +1,11 @@
 /* OVERWRITES */
 
-// @import '~vuetify/src/styles/tools/_elevation.sass';
-
-// $shadow-key-umbra: rgba(#1a237e, 0.2);
-// $shadow-key-penumbra: rgba(#1a237e, 0.14);
-// $shadow-key-ambient: rgba(#1a237e, 0.12);
+/* IMPORTS */
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700|Source+Serif+Pro:400,600,700&display=swap');
 
 /* COLORS */
 $primary: #2351F4;
@@ -14,6 +15,24 @@ $primary-alt: #4868F8;
 $success: #10DC60;
 $background: #F5F6FA;
 
+/* FONTS */
+
+$title-lg: 'Source Serif Pro', serif;
+/* guidelines
+*/
+$title-md: 'Source Sans Pro', serif;
+/* guidelines
+*/
+$title-alt: 'Josefin Sans', sans-serif;
+/* guidelines
+letter-spacing: -0.05em;
+*/
+$text-primary: 'Montserrat', sans-serif;
+/* guidelines
+*/
+$text-secondary: 'Nunito', sans-serif;
+/* guidelines
+*/
 
 /* COMPONENT SPECIFIC */
 
