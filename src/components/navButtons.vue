@@ -1,5 +1,5 @@
 <template>
-  <div class="page-container">
+  <div>
     <!-- top nav buttons -->
     <div class="top-nav-btns" v-show="this.topType === 'default-light'">
       <img src="../assets/icons/arrow-left-light.svg" alt />
@@ -18,11 +18,11 @@
 
     <!-- bottom nav buttons -->
     <div class="bot-nav-btns" v-show="this.botType === 'next-only'">
-      <h5>Next</h5>
+      <h5 @click="nextStep()">Next</h5>
     </div>
     <div class="bot-nav-btns" v-show="this.botType === 'default'">
-      <h5>Next</h5>
-      <h5>Back</h5>
+      <h5 @click="nextStep()">Next</h5>
+      <h5 @click="prevStep()">Back</h5>
     </div>
   </div>
 </template>
@@ -35,6 +35,14 @@ export default {
   },
   data() {
     return {};
+  },
+  methods: {
+    nextStep() {
+      this.$emit("next");
+    },
+    prevStep() {
+      this.$emit("back");
+    }
   }
 };
 </script>

@@ -3,9 +3,12 @@
     <NavBtns
       :topType="'share-dark'"
       :botType="currStep === 0 ? 'next-only' : 'default'"
+      @next="currStep += 1"
+      @back="currStep -= 1"
     />
 
-    <div class="information">
+    <!-- step 1 -->
+    <div class="step-1 step" v-if="currStep === 0">
       <img
         src="../assets/icons/event-initiation/hourglass-icon.svg"
         alt
@@ -21,13 +24,6 @@
           :return-value.sync="eventDate"
         >
           <template v-slot:activator="{ on }">
-            <!-- <v-text-field
-              v-model="eventDate"
-              label="Date"
-              v-on="on"
-              class="event-info-input event-date-input"
-              clearable
-            ></v-text-field>-->
             <textarea
               type="text"
               v-on="on"
@@ -71,11 +67,93 @@
             label=""
             v-model="establishedEvent"
             value="value"
-            ripple="false"
             color="primary"
           ></v-checkbox>
           <label class="checkbox-label">Established Event?</label>
         </div>
+      </div>
+    </div>
+
+    <!-- step 2 -->
+    <div class="step step-2" v-if="currStep === 1">
+      <img
+        src="../assets/icons/event-initiation/bonfire-icon.svg"
+        alt
+        class="step-icon"
+      />
+      <h1 class="step-title">Event Title</h1>
+      <textarea
+        type="text"
+        v-on="on"
+        placeholder="Give your event a title!"
+        class="step-input"
+        v-model="eventTitle"
+      ></textarea>
+      <div class="media">
+        <img src="../assets/vectors/ticket-vector.svg" class="step-vector" />
+      </div>
+    </div>
+
+    <!-- step 3 -->
+    <div class="step step-3" v-if="currStep === 2">
+      <img
+        src="../assets/icons/event-initiation/location-icon.svg"
+        alt
+        class="step-icon"
+      />
+      <h1 class="step-title">Event Location</h1>
+      <textarea
+        type="text"
+        v-on="on"
+        placeholder="Where is the event going to be held?"
+        class="step-input"
+        v-model="eventLocation"
+      ></textarea>
+      <div class="media">
+        <img src="../assets/vectors/location-vector.svg" class="step-vector" />
+      </div>
+    </div>
+
+    <!-- step 4 -->
+    <div class="step step-4" v-if="currStep === 3">
+      <img
+        src="../assets/icons/event-initiation/chat-icon.svg"
+        alt
+        class="step-icon"
+      />
+      <h1 class="step-title">Event Description</h1>
+      <textarea
+        type="text"
+        v-on="on"
+        placeholder="Where is the event going to be held?"
+        class="step-input"
+        v-model="eventDescription"
+      ></textarea>
+      <div class="media">
+        <img src="../assets/vectors/chill-vector.svg" class="step-vector" />
+      </div>
+    </div>
+
+    <!-- step 4 -->
+    <div class="step step-4" v-if="currStep === 4">
+      <img
+        src="../assets/icons/event-initiation/chat-icon.svg"
+        alt
+        class="step-icon"
+      />
+      <h1 class="step-title">Cover Image</h1>
+      <v-file-input
+        v-on="on"
+        placeholder="Add a cover image!"
+        class="step-input file-input"
+        v-model="coverImage"
+        solo
+        flat
+        prepend-icon=""
+        color="primary"
+      ></v-file-input>
+      <div class="media">
+        <img src="../assets/vectors/media-vector.svg" class="step-vector" />
       </div>
     </div>
   </div>
@@ -96,15 +174,30 @@ export default {
       eventTime: null,
       showDatePicker: false,
       showTimePicker: false,
+      establishedEvent: false,
 
-      establishedEvent: false
+      eventTitle: null,
+      eventLocation: null,
+      eventDescription: null,
+      coverImage: null
     };
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.information {
+@media only screen and (min-width: 700px) {
+  .page-container {
+    position: absolute;
+    display: flex;
+    left: 50%;
+    width: 30%;
+    height: 100%;
+    transform: translateX(-50%);
+  }
+}
+
+.step {
   position: absolute;
   top: 10%;
   left: 10%;
@@ -129,6 +222,7 @@ export default {
   .media {
     img {
       width: 100%;
+      max-width: 500px;
     }
   }
   .checkbox {
@@ -141,5 +235,13 @@ export default {
       padding-bottom: 0.5%;
     }
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
