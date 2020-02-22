@@ -185,4 +185,7 @@ export default {
     transform: translateX(10%);
   }
 }
+.sign-in-input.v-text-field>.v-input__control>.v-input__slot:before {
+    border-style: none;
+}
 </style>

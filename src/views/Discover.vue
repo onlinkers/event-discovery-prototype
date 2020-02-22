@@ -5,12 +5,12 @@
     @mapLoad="loadMap"
   />
   <ExploreBar
+    currPageProp="Discover"
     :class="{modalOpened: modalOpened}"
   />
   <SearchBar
     :class="{modalOpened: modalOpened}"
-  />
-  
+  />  
 </div>
 </template>
 
@@ -30,7 +30,7 @@ export default {
   components: {
     Map,
     ExploreBar,
-    SearchBar
+    SearchBar,
   },
   data() {
     return {
@@ -41,6 +41,9 @@ export default {
       modalOpened: false,
       modalFocus: 0,
     }
+  },
+  created: {
+
   },
   mounted() {
     window.addEventListener('resize', () => {
@@ -58,11 +61,13 @@ export default {
     openCard(id) {
       this.triggerModal();
       this.modalFocus = id;
-    }
+    },
   }
 };
 </script>
 <style lang="scss">
+@import '@/assets/scss/variables.scss';
+
 .background-blur {
   background: #fff;
   opacity: 0.5;

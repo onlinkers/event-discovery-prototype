@@ -15,6 +15,7 @@
             class="sign-in-input"
             clearable
             :rules="[rules.required, rules.email]"
+            v-model="inputEmail"
           ></v-text-field>
         </v-form>
       </div>
@@ -28,6 +29,7 @@
             class="sign-in-input"
             clearable
             :rules="[rules.required]"
+            v-model="inputPassword"
           ></v-text-field>
         </v-form>
       </div>
@@ -42,7 +44,7 @@
     </div>
     <div class="nav-btns">
       <div class="sign-in-btn">
-        <v-btn color="primary" block elevation="13">Sign In</v-btn>
+        <v-btn color="primary" block elevation="5">Sign In</v-btn>
       </div>
       <div class="create-acc-btn">
         <v-btn color="accent" text block to="/signup">Create Account</v-btn>
@@ -54,6 +56,8 @@
 export default {
   data() {
     return {
+      inputEmail: '',
+      inputPassword: '',
       rules: {
         required: value => !!value || 'Required.',
         counter: value => value.length <= 20 || 'Max 20 characters',
@@ -70,12 +74,18 @@ export default {
 }
 </script>
 <style lang="scss">
-@media only screen and (min-width: 700px){
+@media only screen and (min-width: 800px){
   .welcome-container {
-    width: 500px;
+    // position: absolute;
+    // left: 50%;
+    // transform: translateX(-50%);
+    // width: 500px;
     display: block;
-    // height: 100vh;
+    height: 100vh;
     margin: 0 auto;
+    .welcome-text {
+      margin-top: 20%;
+    }
     .sign-in {
       .sign-in-box {
         .sign-in-form {
@@ -87,15 +97,16 @@ export default {
       }
     }
     .nav-btns {
-      width: 30%;
+      width: 40%;
     }
   }
 }
 .welcome-container {
+  width: 500px;
   height: 100vh;
 }
 .welcome-text {
-  margin-top: 40%;
+  margin-top: 20%;
   font-family: 'Josefin Sans', sans-serif;
   .location-icon {
     margin: 0 0 5% 10%;
@@ -162,8 +173,16 @@ export default {
   left: 50%;
   bottom: 10%;
   width: 60%;
+  display: flex;
+  flex-direction: column;
+  .sign-in-btn {
+    width: 100%;
+  }
   .create-acc-btn {
     margin: 2vh 0;
   }
+}
+.sign-in-input.v-text-field>.v-input__control>.v-input__slot:before {
+    border-style: none;
 }
 </style>
