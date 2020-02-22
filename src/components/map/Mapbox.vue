@@ -9,12 +9,11 @@
     :zoom         = "defaultMapStyle.zoom"
     @load         = "onMapLoad"
   >
-    <MglMarker  v-for = "(m, index) in events"
+    <MapMarker  v-for = "(m, index) in events"
                 :key = "`marker-${index}`"
-                :coordinates  = "m.priv.coordinates">
-      <img :src="require(`../../assets/media/sample-pin-${index}.png`)" slot="marker">
-      <MglPopup><div>{{ m.pub.name }}</div></MglPopup>
-    </MglMarker>
+                :name = "m.pub.name"
+                :coords  = "m.priv.coordinates"
+                :imgSrc = "m.mediaLink.cover" />
   </MglMap>
 
 </template>
@@ -23,20 +22,16 @@
 /* MAPBOX COMPONENTS */
 import MapboxStyle from "@/assets/js/mapbox/style.json"
 import Mapbox from "mapbox-gl"
-import {
-  MglMap, 
-  MglPopup,
-  MglMarker
-  } from "vue-mapbox"
+import MapMarker from './marker'
+import { MglMap } from "vue-mapbox"
 
 /* EVENT DATA */
 import * as eventData from '@/assets/js/eventData.js'
 
 export default {
   components: {
-    MglMap, 
-    MglPopup,
-    MglMarker,
+    MglMap,
+    MapMarker
   },
   name: "Map",
   data() {
@@ -64,7 +59,8 @@ export default {
   }
 };
 </script>
-<style lang="scss">
+
+<style lang="scss" scoped>
 #mapbox-container {
   position: absolute;
 }
