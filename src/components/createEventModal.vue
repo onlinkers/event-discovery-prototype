@@ -1,27 +1,31 @@
 <template>
-<transition name="fade" mode="out-in">
-  <div class="modal-backdrop">
-    <div class="nav-icons">
-      <router-link to="/discover">
-        <font-awesome-icon icon="arrow-left" class="back-btn fa-2x" color="#1F2845"/>
-      </router-link>
-    </div>
-    <div class="modal-container">
-      <div class="input-box">
-        <div class="input-wrapper">
-          <v-form class="input-form">
-            <v-text-field
-              name="event-title"
-              label="Event Title"
-              class="event-info-input"
-              clearable
-              required
-            ></v-text-field>
-          </v-form>
-        </div>
+  <transition name="fade" mode="out-in">
+    <div class="modal-backdrop">
+      <div class="nav-icons">
+        <router-link to="/discover">
+          <font-awesome-icon
+            icon="arrow-left"
+            class="back-btn fa-2x"
+            color="#1F2845"
+          />
+        </router-link>
       </div>
-      <div class="input-box">
-        <!-- <v-menu
+      <div class="modal-container">
+        <div class="input-box">
+          <div class="input-wrapper">
+            <v-form class="input-form">
+              <v-text-field
+                name="event-title"
+                label="Event Title"
+                class="event-info-input"
+                clearable
+                required
+              ></v-text-field>
+            </v-form>
+          </div>
+        </div>
+        <div class="input-box">
+          <!-- <v-menu
           ref="menu"
           v-model="menu"
           :close-on-content-click="false"
@@ -47,90 +51,112 @@
             <v-btn text color="primary" @click="$refs.menu.save(date)">OK</v-btn>
           </v-date-picker>
         </v-menu> -->
-        <div class="date-wrapper">
-          <v-menu ref="calendarMenu" max-width="290" :close-on-content-click="false" offset-y v-model="showCalendar" :return-value.sync="eventDate">
-            <template v-slot:activator="{ on }">
-                <v-text-field v-model="eventDate" label="Date" v-on="on" class="event-info-input event-date-input" clearable></v-text-field>
-            </template>
-            <v-date-picker v-model="eventDate">
-              <v-btn text color="primary" @click="showCalendar = false">Cancel</v-btn>
-              <v-spacer></v-spacer>
-              <v-btn color="primary" @click="$refs.calendarMenu.save(eventDate)">Save</v-btn>
-            </v-date-picker>
-          </v-menu>
+          <div class="date-wrapper">
+            <v-menu
+              ref="calendarMenu"
+              max-width="290"
+              :close-on-content-click="false"
+              offset-y
+              v-model="showCalendar"
+              :return-value.sync="eventDate"
+            >
+              <template v-slot:activator="{ on }">
+                <v-text-field
+                  v-model="eventDate"
+                  label="Date"
+                  v-on="on"
+                  class="event-info-input event-date-input"
+                  clearable
+                ></v-text-field>
+              </template>
+              <v-date-picker v-model="eventDate">
+                <v-btn text color="primary" @click="showCalendar = false"
+                  >Cancel</v-btn
+                >
+                <v-spacer></v-spacer>
+                <v-btn
+                  color="primary"
+                  @click="$refs.calendarMenu.save(eventDate)"
+                  >Save</v-btn
+                >
+              </v-date-picker>
+            </v-menu>
+          </div>
         </div>
-      </div>
-      <div class="input-box">
-        <div class="input-wrapper">
-          <v-form class="input-form">
-            <v-text-field
-              name="event-location"
-              label="Location"
-              class="event-info-input"
-              clearable
-              required
-            ></v-text-field>
-          </v-form>
+        <div class="input-box">
+          <div class="input-wrapper">
+            <v-form class="input-form">
+              <v-text-field
+                name="event-location"
+                label="Location"
+                class="event-info-input"
+                clearable
+                required
+              ></v-text-field>
+            </v-form>
+          </div>
         </div>
-      </div>
-      <div class="input-box description-box">
-        <div class="description-wrapper">
-          <v-form class="input-form">
-            <v-textarea
-              name="event-description"
-              label="Description"
-              class="event-info-input"
-              clearable
-              required
-            ></v-textarea>
-          </v-form>
+        <div class="input-box description-box">
+          <div class="description-wrapper">
+            <v-form class="input-form">
+              <v-textarea
+                name="event-description"
+                label="Description"
+                class="event-info-input"
+                clearable
+                required
+              ></v-textarea>
+            </v-form>
+          </div>
         </div>
-      </div>
-      <div class="nav-btns">
-        <v-btn class="nav-btn" color="light" text @click="dismissModal()">Cancel</v-btn>
-        <v-btn class="nav-btn" color="primary" @click="dismissModal()">Create</v-btn>
+        <div class="nav-btns">
+          <v-btn class="nav-btn" color="light" text @click="dismissModal()"
+            >Cancel</v-btn
+          >
+          <v-btn class="nav-btn" color="primary" @click="dismissModal()"
+            >Create</v-btn
+          >
+        </div>
       </div>
     </div>
-  </div>
-</transition>
+  </transition>
 </template>
 <script>
-import { EventBus } from '@/event-bus.js';
+import { EventBus } from "@/event-bus.js";
 
 export default {
   data() {
     return {
       eventDate: null,
-      showCalendar: false,
-    }
+      showCalendar: false
+    };
   },
   methods: {
     dismissModal() {
-      this.$emit('close');
+      this.$emit("close");
     },
     saveDate() {
-      this.$refs
+      this.$refs;
     }
   },
   created: {
     handleCreated() {
-      EventBus.$emit('eventModalActivated', 'Discover');
+      EventBus.$emit("eventModalActivated", "Discover");
     }
   },
-  props: {
-
-  }
-}
+  props: {}
+};
 </script>
 <style lang="scss">
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
 
-@media only screen and (min-width: 700px){
+@media only screen and (min-width: 700px) {
   .modal-container {
     width: 500px;
     display: block;
@@ -194,34 +220,35 @@ export default {
   }
   .event-info-input {
     width: 100%;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 1.1em;
     outline: none;
-    color: #939DBE;
+    color: #939dbe;
     font-weight: 700;
   }
   .event-date-input {
     // extra margin needed here
     margin-top: 6%;
   }
-  .date-wrapper, .input-wrapper, .description-wrapper {
+  .date-wrapper,
+  .input-wrapper,
+  .description-wrapper {
     width: 80%;
     margin: 4% auto;
   }
   .description-wrapper {
-
   }
 }
 .description-box {
   height: 22%;
 }
 // input no border!!
-.event-info-input.v-text-field>.v-input__control>.v-input__slot:before {
-    border-style: none;
+.event-info-input.v-text-field > .v-input__control > .v-input__slot:before {
+  border-style: none;
 }
-.v-text-field__slot>label {
+.v-text-field__slot > label {
   font-size: 18px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 .nav-btns {
   text-align: center;
