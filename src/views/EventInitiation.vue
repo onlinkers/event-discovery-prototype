@@ -3,17 +3,13 @@
     <NavBtns
       :topType="'share-dark'"
       :botType="currStep === 0 ? 'next-only' : 'default'"
-      @next="currStep += 1"
-      @back="currStep -= 1"
+      @next="nextStep()"
+      @back="prevStep()"
     />
 
     <!-- step 1 -->
     <div class="step-1 step" v-if="currStep === 0">
-      <img
-        src="../assets/icons/event-initiation/hourglass-icon.svg"
-        alt
-        class="step-icon"
-      />
+      <img src="../assets/icons/event-initiation/hourglass-icon.svg" alt class="step-icon" />
       <h1 class="step-title">Date / Time</h1>
       <div class="date-wrapper">
         <v-menu
@@ -33,9 +29,7 @@
             ></textarea>
           </template>
           <v-date-picker v-model="eventDate">
-            <v-btn text color="primary" @click="showCalendar = false"
-              >Cancel</v-btn
-            >
+            <v-btn text color="primary" @click="showCalendar = false">Cancel</v-btn>
             <v-spacer></v-spacer>
             <v-btn
               color="primary"
@@ -44,8 +38,7 @@
                 showDatePicker = false;
                 showTimePicker = true;
               "
-              >Save</v-btn
-            >
+            >Save</v-btn>
           </v-date-picker>
           <!-- <v-time-picker v-model="eventTime">
             <v-btn text color="primary" @click="showTimePicker = false"
@@ -55,7 +48,7 @@
             <v-btn color="primary" @click="$refs.calendarMenu.save(eventTime)"
               >Save</v-btn
             >
-          </v-time-picker> -->
+          </v-time-picker>-->
         </v-menu>
       </div>
       <div class="media">
@@ -63,12 +56,7 @@
       </div>
       <div class="step-options">
         <div class="checkbox">
-          <v-checkbox
-            label=""
-            v-model="establishedEvent"
-            value="value"
-            color="primary"
-          ></v-checkbox>
+          <v-checkbox label v-model="establishedEvent" value="value" color="primary"></v-checkbox>
           <label class="checkbox-label">Established Event?</label>
         </div>
       </div>
@@ -76,11 +64,7 @@
 
     <!-- step 2 -->
     <div class="step step-2" v-if="currStep === 1">
-      <img
-        src="../assets/icons/event-initiation/bonfire-icon.svg"
-        alt
-        class="step-icon"
-      />
+      <img src="../assets/icons/event-initiation/bonfire-icon.svg" alt class="step-icon" />
       <h1 class="step-title">Event Title</h1>
       <textarea
         type="text"
@@ -96,11 +80,7 @@
 
     <!-- step 3 -->
     <div class="step step-3" v-if="currStep === 2">
-      <img
-        src="../assets/icons/event-initiation/location-icon.svg"
-        alt
-        class="step-icon"
-      />
+      <img src="../assets/icons/event-initiation/location-icon.svg" alt class="step-icon" />
       <h1 class="step-title">Event Location</h1>
       <textarea
         type="text"
@@ -116,11 +96,7 @@
 
     <!-- step 4 -->
     <div class="step step-4" v-if="currStep === 3">
-      <img
-        src="../assets/icons/event-initiation/chat-icon.svg"
-        alt
-        class="step-icon"
-      />
+      <img src="../assets/icons/event-initiation/chat-icon.svg" alt class="step-icon" />
       <h1 class="step-title">Event Description</h1>
       <textarea
         type="text"
@@ -136,11 +112,7 @@
 
     <!-- step 4 -->
     <div class="step step-4" v-if="currStep === 4">
-      <img
-        src="../assets/icons/event-initiation/chat-icon.svg"
-        alt
-        class="step-icon"
-      />
+      <img src="../assets/icons/event-initiation/chat-icon.svg" alt class="step-icon" />
       <h1 class="step-title">Cover Image</h1>
       <v-file-input
         v-on="on"
@@ -149,7 +121,7 @@
         v-model="coverImage"
         solo
         flat
-        prepend-icon=""
+        prepend-icon
         color="primary"
       ></v-file-input>
       <div class="media">
@@ -181,6 +153,18 @@ export default {
       eventDescription: null,
       coverImage: null
     };
+  },
+  methods: {
+    nextStep() {
+      if (this.currStep !== 4) {
+        this.currStep++;
+      }
+    },
+    prevStep() {
+      if (this.currStep !== 0) {
+        this.currStep--;
+      }
+    }
   }
 };
 </script>
