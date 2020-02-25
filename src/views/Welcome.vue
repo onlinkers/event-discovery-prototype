@@ -1,35 +1,31 @@
 <template>
-  <div class="welcome-container">
+  <div class="WelcomePage">
     <div class="welcome-text">
       <font-awesome-icon icon="location-arrow" class="location-icon fa-3x" color="#1F2845"></font-awesome-icon>
       <h1>Welcome!</h1>
       <h4>Enter your login details below to sign in.</h4>
     </div>
     <div class="sign-in">
-      <div class="sign-in-box">
-        <v-form class="sign-in-form">
-          <v-text-field
-            name="Email"
-            label="E-mail"
-            class="sign-in-input"
-            clearable
-            :rules="[rules.required, rules.email]"
-            v-model="inputEmail"
-          ></v-text-field>
-        </v-form>
-      </div>
-      <div class="sign-in-box">
-        <v-form class="sign-in-form">
-          <v-text-field
-            name="Password"
-            label="Password"
-            class="sign-in-input"
-            clearable
-            :rules="[rules.required]"
-            v-model="inputPassword"
-          ></v-text-field>
-        </v-form>
-      </div>
+      <v-form class="sign-in-form">
+        <v-text-field
+          name="Email"
+          label="E-mail"
+          class="sign-in-input"
+          clearable
+          :rules="[rules.required, rules.email]"
+          v-model="inputEmail"
+        ></v-text-field>
+      </v-form>
+      <v-form class="sign-in-form">
+        <v-text-field
+          name="Password"
+          label="Password"
+          class="sign-in-input"
+          clearable
+          :rules="[rules.required]"
+          v-model="inputPassword"
+        ></v-text-field>
+      </v-form>
       <div class="alt-accounts">
         <h3>Or sign in using</h3>
         <div class="alt-icons">
@@ -38,13 +34,13 @@
           <font-awesome-icon :icon="['fab', 'google-plus']" class="fa-2x alt-icon"></font-awesome-icon>
         </div>
       </div>
-    </div>
-    <div class="nav-btns">
-      <div class="sign-in-btn">
-        <v-btn color="primary" block elevation="5">Sign In</v-btn>
-      </div>
-      <div class="create-acc-btn">
-        <v-btn color="accent" text block to="/signup">Create Account</v-btn>
+      <div class="nav-btns">
+        <div class="sign-in-btn">
+          <v-btn color="primary" block elevation="5">Sign In</v-btn>
+        </div>
+        <div class="create-acc-btn">
+          <v-btn color="accent" text block to="/signup">Create Account</v-btn>
+        </div>
       </div>
     </div>
   </div>
@@ -71,111 +67,131 @@ export default {
 }
 </script>
 <style lang="scss">
-@media only screen and (min-width: 800px){
-  .welcome-container {
-    display: block;
-    height: 100vh;
-    margin: 0 auto;
-    .welcome-text {
-      margin-top: 20%;
+.WelcomePage {
+  display: block;
+  width: 500px;
+  max-width: 50%;
+  height: 100vh;
+  max-height: 100vh;
+  margin: 0 auto;
+
+  .welcome-text {
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 10% 10% 0 10%;
+    
+    svg {
+      margin: 0.3em;
+      margin-bottom: 1em;
     }
-    .sign-in {
-      .sign-in-box {
-        .sign-in-form {
-          width: 80%;
+
+    h1 {
+      font-weight: 800;
+      font-size: 3em;
+      color: #1F2845;
+    }
+    h4 {
+      font-family: 'Nunito', sans-serif;
+      color: grey;
+      font-weight: 600;
+    }
+  }
+  .sign-in {
+    margin-top: 1.5em;
+    width: 100%;
+    .sign-in-form {
+      display: flex;
+      padding-top: 1em;
+      padding-bottom: 1em;
+      border-radius: 0 1em 1em 0;
+      font-family: 'Nunito', sans-serif;
+
+      .sign-in-input {
+        margin: 0 10%;
+        color: #939DBE;
+        font-weight: 700;
+
+        input, .v-label {
+          font-size: 1em;
+          height: 2em;
+        }
+
+        .v-messages__message {
+          font-size: 0.9em;
         }
       }
-      .sign-in-box:hover {
-        background: none;
+    }
+    .sign-in-form:hover {
+      background: rgb(249, 249, 255);
+    }
+  }
+
+  .alt-accounts {
+    margin: 1.5em 10%;
+    h3 {
+      font-family: 'Montserrat';
+      font-size: 1.5em;
+    }
+    .alt-icons {
+      margin-top: 0.5em;
+      
+      .alt-icon {
+        margin-right: 0.5em;
+        margin-top: 0.5em;
+        transition: all 0.5s;
+      }
+      .alt-icon:hover { // DESPERATELY NEED MIXIN FOR "HOVER-ZOOM" ANIMS
+        transform: scale(1.2);
+        transition: all 0.5s;
+        cursor: pointer;
       }
     }
-    .nav-btns {
-      width: 40%;
+  }
+  .nav-btns {
+    bottom: 10%;
+    width: 80%;
+    margin: 0 10%;
+    display: flex;
+    flex-direction: column;
+    .sign-in-btn, .create-acc-btn {
+      width: 100%;
+      margin: 0.5em 0;
+      .v-btn {
+        font-size: 1.2em;
+      }
     }
   }
-}
-.welcome-container {
-  width: 500px;
-  height: 100vh;
-}
-.welcome-text {
-  margin-top: 20%;
-  font-family: 'Josefin Sans', sans-serif;
-  .location-icon {
-    margin: 0 0 5% 10%;
+  .sign-in-input.v-text-field > .v-input__control > .v-input__slot:before {
+      border-style: none;
   }
-  h1 {
-    margin: 0 10% 0;
-    font-weight: 800;
-    font-size: 3em;
-    color: #1F2845;
+
+  @media screen and (max-width: 800px) {
+    max-width: 75%;
   }
-  h4 {
-    font-family: 'Nunito', sans-serif;
-    margin: 2% 10% 5%;
-    color: grey;
-    font-weight: 600;
-  }
-}
-.sign-in {
-  width: 100%;
-  position: relative;
-}
-.sign-in-box {
-  display: flex;
-  // background: white;
-  width: 80%;
-  height: 9%;
-  border-radius: 0 15px 15px 0;
-  font-family: 'Nunito', sans-serif;
-  margin: 2% 0;
-  h5 {
-    margin: 0 0 0 10%;
-    color: #939DBE;
-    position: fixed;
-  }
-  .sign-in-input {
-    background: none;
-    border: none;
-    font-size: 1.1em;
-    margin: 0 0 0 20%;
-    outline: none;
-    color: #939DBE;
-    font-weight: 700;
-  }
-}
-.sign-in-box:hover {
-  background: rgb(249, 249, 255);
-}
-.alt-accounts {
-  margin: 5% 10% auto;
-  h3 {
-    font-family: 'Montserrat';
-    font-size: 1em;
-  }
-  .alt-icons {
-    margin: 2% 0;
-    .alt-icon {
-      margin: 0 2%;
+  @media screen and (max-width: 500px) {
+    max-width: 100%;
+    margin: 0;
+
+    .welcome-text {
+      margin-top: 20vh;
+    }
+
+    .sign-in {
+      font-size: 0.8em;
+
+      .sign-in-form {
+        width: 90%;
+      }
+
+      .nav-btns {
+        margin: 0 auto;
+        width: 80%;
+      }
     }
   }
-}
-.nav-btns {
-  position: absolute;
-  transform: translate(-50%, 0);
-  left: 50%;
-  bottom: 10%;
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  .sign-in-btn {
-    width: 100%;
-  }
-  .create-acc-btn {
-    margin: 2vh 0;
+
+  @media screen and (min-width: 1500px) {
+    width: 50%;
   }
 }
-.sign-in-input.v-text-field>.v-input__control>.v-input__slot:before {
-    border-style: none;
-}
+
 </style>

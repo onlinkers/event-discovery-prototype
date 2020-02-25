@@ -10,24 +10,24 @@
     <h1>Sign Up</h1>
     <h4>Enter a new email and password.</h4>
   </div>
-  <div class="sign-in">
-    <div class="sign-in-box">
-      <v-form class="sign-in-form">
+  <div class="sign-up">
+    <div class="sign-up-box">
+      <v-form class="sign-up-form">
         <v-text-field
           name="Email"
           label="E-mail"
-          class="sign-in-input"
+          class="sign-up-input"
           clearable
           :rules="[rules.required, rules.email]"
         ></v-text-field>
       </v-form>
     </div>
-    <div class="sign-in-box">
-      <v-form class="sign-in-form">
+    <div class="sign-up-box">
+      <v-form class="sign-up-form">
         <v-text-field
           name="Password"
           label="Password"
-          class="sign-in-input"
+          class="sign-up-input"
           clearable
           :rules="[rules.required]"
         ></v-text-field>
@@ -70,38 +70,11 @@ export default {
 
 <style lang="scss" scoped>
 .nav-icons {
-  position: absolute;
-  top: 5%;
-  left: 10%;
-}
-@media only screen and (min-width: 700px){
-  .welcome-container {
-    width: 500px;
-    display: block;
-    margin: 0 auto;
-    .sign-in {
-      .sign-in-box {
-        .sign-in-form {
-          width: 80%;
-        }
-      }
-      .sign-in-box:hover {
-        background: none;
-      }
-    }
-    .nav-btns {
-      width: 30%;
-    }
+  width: 100%;
+  a {
+    top: 5%;
+    left: 10%;
   }
-}
-.welcome-container {
-  height: 100vh;
-  margin-top: 30%;
-}
-
-.welcome-text, .sign-in {
-  margin: 0 10%;
-  width: 80%;
 }
 .welcome-text {
   font-family: 'Josefin Sans', sans-serif;
@@ -112,7 +85,7 @@ export default {
     margin: 0 10% 0;
     font-weight: 800;
     font-size: 3em;
-    color: #1F2845;
+    color: #1F2845; // TODO: COLOR AND FONT NEED MIXINS
   }
   h4 {
     font-family: 'Nunito', sans-serif;
@@ -121,25 +94,20 @@ export default {
     font-weight: 600;
   }
 }
-.sign-in {
+.sign-up {
   width: 100%;
   position: relative;
 }
-.sign-in-box {
+.sign-up-box {
   display: flex;
-  width: 80%;
-  height: 5em;
-  padding-top: 1em;
-  padding-bottom: 2em;
   border-radius: 0 15px 15px 0;
   font-family: 'Nunito', sans-serif;
   margin: 2% 0;
   h5 {
-    margin: 0 0 0 10%;
     color: #939DBE;
     position: fixed;
   }
-  .sign-in-input {
+  .sign-up-input {
     background: none;
     border: none;
     font-size: 1em;
@@ -150,7 +118,7 @@ export default {
     font-weight: 700;
   }
 }
-.sign-in-box:hover {
+.sign-up-box:hover {
   background: rgb(249, 249, 255);
 }
 .alt-accounts {
@@ -168,14 +136,14 @@ export default {
 }
 .next-icon {
   position: absolute;
-  right: 10%;
+  right: 5%;
   bottom: 10%;
-  .chevron-icon {
-    width: 15px;
+  svg {
+    width: 0.4em;
     transform: translateX(10%);
   }
 }
-.sign-in-input.v-text-field>.v-input__control>.v-input__slot:before {
+.sign-up-input.v-text-field > .v-input__control > .v-input__slot:before {
     border-style: none;
 }
 </style>
