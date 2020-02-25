@@ -12,7 +12,6 @@
   </div>
   <div class="sign-in">
     <div class="sign-in-box">
-      <!-- <h5>Name</h5> -->
       <v-form class="sign-in-form">
         <v-text-field
           name="Email"
@@ -24,8 +23,6 @@
       </v-form>
     </div>
     <div class="sign-in-box">
-      <!-- <h5>Name</h5> -->
-      <!-- <input type="text" class="sign-in-input" placeholder="Password"> -->
       <v-form class="sign-in-form">
         <v-text-field
           name="Password"
@@ -41,17 +38,6 @@
     <v-btn color="primary" fab medium to="/discover">
       <font-awesome-icon icon="chevron-right" class="chevron-icon fa-3x"></font-awesome-icon>
     </v-btn>
-    <!-- <v-btn
-      fab
-      large
-      color="primary"
-      bottom
-      left
-      absolute
-      @click.native.stop="click"
-    >
-      <v-icon icon="chevron"></v-icon>
-    </v-btn> -->
   </div>
 </div>
 </template>
@@ -84,17 +70,14 @@ export default {
 
 <style lang="scss" scoped>
 .nav-icons {
-  // text-align: center;
   position: absolute;
   top: 5%;
-  left: 5%;
-  // padding: 10% 5%;
+  left: 10%;
 }
 @media only screen and (min-width: 700px){
   .welcome-container {
     width: 500px;
     display: block;
-    // height: 100vh;
     margin: 0 auto;
     .sign-in {
       .sign-in-box {
@@ -113,9 +96,14 @@ export default {
 }
 .welcome-container {
   height: 100vh;
+  margin-top: 30%;
+}
+
+.welcome-text, .sign-in {
+  margin: 0 10%;
+  width: 80%;
 }
 .welcome-text {
-  margin-top: 40%;
   font-family: 'Josefin Sans', sans-serif;
   .user-icon {
     margin: 0 0 5% 10%;
@@ -139,9 +127,10 @@ export default {
 }
 .sign-in-box {
   display: flex;
-  // background: white;
   width: 80%;
-  height: 9%;
+  height: 5em;
+  padding-top: 1em;
+  padding-bottom: 2em;
   border-radius: 0 15px 15px 0;
   font-family: 'Nunito', sans-serif;
   margin: 2% 0;
@@ -153,7 +142,8 @@ export default {
   .sign-in-input {
     background: none;
     border: none;
-    font-size: 1.1em;
+    font-size: 1em;
+    line-height: 1.5em;
     margin: 0 0 0 20%;
     outline: none;
     color: #939DBE;

@@ -7,7 +7,6 @@
     </div>
     <div class="sign-in">
       <div class="sign-in-box">
-        <!-- <h5>Name</h5> -->
         <v-form class="sign-in-form">
           <v-text-field
             name="Email"
@@ -20,8 +19,6 @@
         </v-form>
       </div>
       <div class="sign-in-box">
-        <!-- <h5>Name</h5> -->
-        <!-- <input type="text" class="sign-in-input" placeholder="Password"> -->
         <v-form class="sign-in-form">
           <v-text-field
             name="Password"
@@ -76,10 +73,6 @@ export default {
 <style lang="scss">
 @media only screen and (min-width: 800px){
   .welcome-container {
-    // position: absolute;
-    // left: 50%;
-    // transform: translateX(-50%);
-    // width: 500px;
     display: block;
     height: 100vh;
     margin: 0 auto;
