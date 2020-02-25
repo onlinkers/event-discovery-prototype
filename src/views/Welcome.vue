@@ -36,7 +36,7 @@
       </div>
       <div class="nav-btns">
         <div class="auth-btn">
-          <v-btn color="primary" block elevation="5">Sign In</v-btn>
+          <v-btn color="primary" block elevation="5" to="/discover">Sign In</v-btn>
         </div>
         <div class="create-acc-btn">
           <v-btn color="accent" text block to="/signup">Create Account</v-btn>
