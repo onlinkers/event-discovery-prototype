@@ -5,22 +5,22 @@
       <h1>Welcome!</h1>
       <h4>Enter your login details below to sign in.</h4>
     </div>
-    <div class="sign-in">
-      <v-form class="sign-in-form">
+    <div class="auth">
+      <v-form class="auth-form">
         <v-text-field
           name="Email"
           label="E-mail"
-          class="sign-in-input"
+          class="auth-input"
           clearable
           :rules="[rules.required, rules.email]"
           v-model="inputEmail"
         ></v-text-field>
       </v-form>
-      <v-form class="sign-in-form">
+      <v-form class="auth-form">
         <v-text-field
           name="Password"
           label="Password"
-          class="sign-in-input"
+          class="auth-input"
           clearable
           :rules="[rules.required]"
           v-model="inputPassword"
@@ -35,7 +35,7 @@
         </div>
       </div>
       <div class="nav-btns">
-        <div class="sign-in-btn">
+        <div class="auth-btn">
           <v-btn color="primary" block elevation="5">Sign In</v-btn>
         </div>
         <div class="create-acc-btn">
@@ -95,17 +95,17 @@ export default {
       font-weight: 600;
     }
   }
-  .sign-in {
+  .auth {
     margin-top: 1.5em;
     width: 100%;
-    .sign-in-form {
+    .auth-form {
       display: flex;
       padding-top: 1em;
       padding-bottom: 1em;
       border-radius: 0 1em 1em 0;
       font-family: 'Nunito', sans-serif;
 
-      .sign-in-input {
+      .auth-input {
         margin: 0 10%;
         color: #939DBE;
         font-weight: 700;
@@ -120,7 +120,7 @@ export default {
         }
       }
     }
-    .sign-in-form:hover {
+    .auth-form:hover {
       background: rgb(249, 249, 255);
     }
   }
@@ -152,7 +152,7 @@ export default {
     margin: 0 10%;
     display: flex;
     flex-direction: column;
-    .sign-in-btn, .create-acc-btn {
+    .auth-btn, .create-acc-btn {
       width: 100%;
       margin: 0.5em 0;
       .v-btn {
@@ -160,7 +160,7 @@ export default {
       }
     }
   }
-  .sign-in-input.v-text-field > .v-input__control > .v-input__slot:before {
+  .auth-input.v-text-field > .v-input__control > .v-input__slot:before {
       border-style: none;
   }
 
@@ -175,10 +175,10 @@ export default {
       margin-top: 20vh;
     }
 
-    .sign-in {
+    .auth {
       font-size: 0.8em;
 
-      .sign-in-form {
+      .auth-form {
         width: 90%;
       }
 
