@@ -28,8 +28,8 @@
             "type": "vector"
         }
     },
-    "sprite": "mapbox://sprites/kraytaps/ck1poevsq2ojz1dpnqxuccoxv/ck2u8j60r58fu0sgyxrigm3cu",
-    "glyphs": "mapbox://fonts/kraytaps/{fontstack}/{range}.pbf",
+    "sprite": "mapbox://sprites/mapbox/bright-v8",
+    "glyphs": "mapbox://fonts/mapbox/{fontstack}/{range}.pbf",
     "layers": [
         {
             "id": "land",
