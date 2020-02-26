@@ -112,10 +112,8 @@ export default {
       this.$refs
     }
   },
-  created: {
-    handleCreated() {
-      EventBus.$emit('eventModalActivated', 'Discover');
-    }
+  created() {
+    EventBus.$emit('eventModalActivated', 'Discover');
   },
   props: {
 

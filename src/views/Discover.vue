@@ -42,9 +42,6 @@ export default {
       modalFocus: 0,
     }
   },
-  created: {
-
-  },
   mounted() {
     window.addEventListener('resize', () => {
       this.windowWidth = window.innerWidth;

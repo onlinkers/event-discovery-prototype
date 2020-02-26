@@ -82,23 +82,15 @@ export default {
     Eclipse,
     CreateEventModal,
   },
-  created: {
-    eventCreateListen() {
-      EventBus.$on('eventModalActivated', () => {
-        this.triggerEventCreateModal();
-      })
-    },
-    eventDismissListen() {
-      EventBus.$on('close', () => {
-        console.log('close modal');
-        this.isEventCreateModalVisible = false;
-      })
-    }
+  created() {
+    EventBus.$on('close', () => {
+        this.triggerEventCreateModal(false);
+    })
   },
-  methods : {
-    triggerEventCreateModal() {
-      this.isEventCreateModalVisible = !this.isEventCreateModalVisible;
-    },
+  methods: {
+    triggerEventCreateModal(forceVar) {
+      this.isEventCreateModalVisible = forceVar || !this.isEventCreateModalVisible;
+    }
   }
 }
 </script>
