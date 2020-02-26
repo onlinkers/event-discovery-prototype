@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 
-// import Welcome from "./views/Welcome";
+import Welcome from "./views/Welcome";
 import SignUp from "./views/SignUp";
 import Discover from "./views/Discover";
 import EventPage from "./views/EventPage";
@@ -19,6 +19,11 @@ const router = new Router({
   routes: [
     {
       path: "/",
+      name: "onboarding",
+      component: Welcome
+    },
+    {
+      path: "/discover",
       name: "discover",
       component: Discover
     },

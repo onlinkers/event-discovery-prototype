@@ -1,4 +1,5 @@
 @import "@/assets/scss/variables.scss";
+@import "@/assets/scss/overwrites.scss";
 
 @media screen and (min-width: 800px) {
   html,
@@ -25,13 +26,4 @@
   /* Firefox 4 - 18 */
   color: $secondary;
   opacity: 1;
-}
-
-/* OVERWRITES */
-
-div.v-input__slot {
-  padding-left: 0 !important;
-}
-div.v-file-input__text--placeholder {
-  color: $secondary !important;
 }

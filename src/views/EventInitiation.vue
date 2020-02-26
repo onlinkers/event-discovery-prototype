@@ -5,7 +5,7 @@
       :botType="currStep === 0 ? 'next-only' : 'default-confirm'"
       :currStep="currStep"
       :maxStep="4"
-      :backRoute="'/'"
+      :backRoute="'/discover'"
       @next="nextStep()"
       @back="prevStep()"
       @confirm="confirm()"
@@ -194,6 +194,9 @@ export default {
     transform: translateX(-50%);
   }
 }
+.page-container {
+  overflow: hidden;
+}
 
 .step {
   position: absolute;
@@ -204,6 +207,7 @@ export default {
     padding-left: 5%;
   }
   .step-title {
+    user-select: none;
     font-family: $title-lg;
     font-weight: 700;
     font-size: 36px;
