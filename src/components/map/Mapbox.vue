@@ -7,7 +7,7 @@
     :mapStyle     = "mapStyle"
     :center       = "defaultMapStyle.center"
     :zoom         = "defaultMapStyle.zoom"
-    @load         = "onMapLoad"
+    @load         = "onMapLoaded"
   >
     <MapMarker  v-for = "(m, index) in events"
                 :key = "`marker-${index}`"
@@ -21,7 +21,6 @@
 <script>
 /* MAPBOX COMPONENTS */
 import MapboxStyle from "@/assets/js/mapbox/style.json"
-import Mapbox from "mapbox-gl"
 import MapMarker from './marker'
 import { MglMap } from "vue-mapbox"
 
@@ -49,12 +48,13 @@ export default {
   },
 
   created() {
-    this.mapbox = Mapbox;
+    this.map = null;
   },
 
   methods: {
-    onMapLoad() {
+    onMapLoaded(event) {
       console.log("Map loaded!");
+      this.map = event.map;
     }
   }
 };
