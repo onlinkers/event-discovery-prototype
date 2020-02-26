@@ -2,17 +2,25 @@
   <div>
     <!-- top nav buttons -->
     <div class="top-nav-btns" v-show="this.topType === 'default-light'">
-      <img src="../assets/icons/arrow-left-light.svg" alt />
+      <router-link :to="this.backRoute">
+        <img src="../assets/icons/arrow-left-light.svg" alt />
+      </router-link>
     </div>
     <div class="top-nav-btns" v-show="this.topType === 'default-dark'">
-      <img src="../assets/icons/arrow-left-dark.svg" alt />
+      <router-link :to="this.backRoute">
+        <img src="../assets/icons/arrow-left-dark.svg" alt />
+      </router-link>
     </div>
     <div class="top-nav-btns" v-show="this.topType === 'share-light'">
-      <img src="../assets/icons/arrow-left-light.svg" alt />
+      <router-link :to="this.backRoute">
+        <img src="../assets/icons/arrow-left-light.svg" alt />
+      </router-link>
       <img src="../assets/icons/share-light.svg" alt />
     </div>
     <div class="top-nav-btns" v-show="this.topType === 'share-dark'">
-      <img src="../assets/icons/arrow-left-dark.svg" alt />
+      <router-link :to="this.backRoute">
+        <img src="../assets/icons/arrow-left-dark.svg" alt />
+      </router-link>
       <img src="../assets/icons/share-dark.svg" alt />
     </div>
 
@@ -24,6 +32,11 @@
       <h5 @click="nextStep()">Next</h5>
       <h5 @click="prevStep()">Back</h5>
     </div>
+    <div class="bot-nav-btns" v-show="this.botType === 'default-confirm'">
+      <h5 @click="nextStep()" v-if="this.currStep !== this.maxStep">Next</h5>
+      <h5 @click="confirm()" v-else>Confirm</h5>
+      <h5 @click="prevStep()">Back</h5>
+    </div>
   </div>
 </template>
 
@@ -31,7 +44,11 @@
 export default {
   props: {
     topType: String,
-    botType: String
+    botType: String,
+    maxStep: Number,
+    currStep: Number,
+
+    backRoute: String
   },
   data() {
     return {};
@@ -42,6 +59,9 @@ export default {
     },
     prevStep() {
       this.$emit("back");
+    },
+    confirm() {
+      this.$emit("confirm");
     }
   }
 };
@@ -58,6 +78,10 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   align-content: center;
+  a {
+    display: flex;
+    align-items: center;
+  }
 }
 .bot-nav-btns {
   position: fixed;
@@ -70,6 +94,8 @@ export default {
   justify-content: space-between;
   align-content: center;
   h5 {
+    user-select: none;
+    cursor: pointer;
     font-family: $text-secondary;
     font-weight: 700;
     font-size: 20px;

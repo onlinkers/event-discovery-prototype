@@ -1,10 +1,14 @@
 <template>
   <div class="page-container">
     <NavBtns
-      :topType="'share-dark'"
-      :botType="currStep === 0 ? 'next-only' : 'default'"
+      :topType="'default-dark'"
+      :botType="currStep === 0 ? 'next-only' : 'default-confirm'"
+      :currStep="currStep"
+      :maxStep="4"
+      :backRoute="'/'"
       @next="nextStep()"
       @back="prevStep()"
+      @confirm="confirm()"
     />
 
     <!-- step 1 -->
@@ -12,43 +16,36 @@
       <img src="../assets/icons/event-initiation/hourglass-icon.svg" alt class="step-icon" />
       <h1 class="step-title">Date / Time</h1>
       <div class="date-wrapper">
+        <!-- date-time picker -->
         <v-menu
           ref="calendarMenu"
           max-width="290"
           :close-on-content-click="false"
           offset-y
-          :return-value.sync="eventDate"
+          :return-value.sync="eventDateTimeString"
         >
+          <!-- activates the menu which contains both date and time pickers -->
           <template v-slot:activator="{ on }">
             <textarea
               type="text"
               v-on="on"
               placeholder="When should the event be held?"
               class="step-input"
-              v-model="eventDate"
+              v-model="eventDateTimeString"
             ></textarea>
           </template>
-          <v-date-picker v-model="eventDate">
-            <v-btn text color="primary" @click="showCalendar = false">Cancel</v-btn>
+          <v-date-picker v-model="eventDate" v-if="showDatePicker === true">
             <v-spacer></v-spacer>
-            <v-btn
-              color="primary"
-              @click="
-                $refs.calendarMenu.save(eventDate);
-                showDatePicker = false;
-                showTimePicker = true;
-              "
-            >Save</v-btn>
+            <v-btn color="primary" @click="saveDate(eventDate)">Save</v-btn>
           </v-date-picker>
-          <!-- <v-time-picker v-model="eventTime">
-            <v-btn text color="primary" @click="showTimePicker = false"
-              >Cancel</v-btn
-            >
+          <v-time-picker
+            v-model="eventTime"
+            v-if="showTimePicker === true && showDatePicker === false"
+            ampm-in-title
+          >
             <v-spacer></v-spacer>
-            <v-btn color="primary" @click="$refs.calendarMenu.save(eventTime)"
-              >Save</v-btn
-            >
-          </v-time-picker>-->
+            <v-btn color="primary" @click="saveTime(eventTime)">Save</v-btn>
+          </v-time-picker>
         </v-menu>
       </div>
       <div class="media">
@@ -68,7 +65,6 @@
       <h1 class="step-title">Event Title</h1>
       <textarea
         type="text"
-        v-on="on"
         placeholder="Give your event a title!"
         class="step-input"
         v-model="eventTitle"
@@ -84,7 +80,6 @@
       <h1 class="step-title">Event Location</h1>
       <textarea
         type="text"
-        v-on="on"
         placeholder="Where is the event going to be held?"
         class="step-input"
         v-model="eventLocation"
@@ -100,7 +95,6 @@
       <h1 class="step-title">Event Description</h1>
       <textarea
         type="text"
-        v-on="on"
         placeholder="Where is the event going to be held?"
         class="step-input"
         v-model="eventDescription"
@@ -111,11 +105,10 @@
     </div>
 
     <!-- step 4 -->
-    <div class="step step-4" v-if="currStep === 4">
+    <div class="step step-5" v-if="currStep === 4">
       <img src="../assets/icons/event-initiation/chat-icon.svg" alt class="step-icon" />
       <h1 class="step-title">Cover Image</h1>
       <v-file-input
-        v-on="on"
         placeholder="Add a cover image!"
         class="step-input file-input"
         v-model="coverImage"
@@ -142,9 +135,11 @@ export default {
     return {
       currStep: 0,
 
-      eventDate: null,
-      eventTime: null,
-      showDatePicker: false,
+      eventDate: "",
+      eventTime: "",
+      eventDateTimeString: "",
+
+      showDatePicker: true,
       showTimePicker: false,
       establishedEvent: false,
 
@@ -156,14 +151,33 @@ export default {
   },
   methods: {
     nextStep() {
-      if (this.currStep !== 4) {
+      if (this.currStep < 4) {
         this.currStep++;
+        console.log(this.currStep);
       }
     },
     prevStep() {
       if (this.currStep !== 0) {
         this.currStep--;
+        console.log(this.currStep);
       }
+    },
+    confirm() {
+      console.log("confirm");
+    },
+    saveDate(eventDate) {
+      this.eventDateTimeString = eventDate;
+      this.showDatePicker = false;
+      this.showTimePicker = true;
+    },
+    saveTime(eventTime) {
+      this.eventDateTimeString = this.eventDate + ", " + eventTime;
+      this.$refs.calendarMenu.save(this.eventDate + ", " + eventTime);
+      setTimeout(() => {
+        this.showDatePicker = true;
+      }, 200);
+      console.log(eventTime);
+      console.log(this.eventDateTimeString);
     }
   }
 };
@@ -206,7 +220,7 @@ export default {
   .media {
     img {
       width: 100%;
-      max-width: 500px;
+      max-width: 400px;
     }
   }
   .checkbox {
