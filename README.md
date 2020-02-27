@@ -1,4 +1,4 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/3b398591-ef2c-400a-ade2-f02e6f27c42f/deploy-status)](https://app.netlify.com/sites/link-link-web-app/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9c2b1115-c493-484a-a3be-e9062c9573f4/deploy-status)](https://app.netlify.com/sites/link-link-web-app/deploys)
 
 # Event Discovery App
 ONLINKERS' Event Web Application
@@ -23,6 +23,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 1. Clone the repository: ```git clone```
 2. Install the packages: ```cd event-discovery-prototype``` and ```npm install```
+3. Setup the [environmental files](###environmental-files)
 
 ### Running
 
@@ -40,7 +41,7 @@ Development is recommended to be done on a system where [eslint](https://eslint.
 
 Linters are put into place to exercise good and consistent coding style, regardless of developer. Editing lint rules and such can be done by changing the `.eslintrc.js` file, which is not recommended until approved by lead developers of the team.
 
-Lint checks will run during a *pre-commit*, meaning that they will throw an error and abort the commit if the style checks detech an error (warnings are ignored)
+Lint checks will run during a *pre-commit*, meaning that they will throw an error and abort the commit if the style checks detect an error (warnings are ignored)
 
 <hr />
 
@@ -54,7 +55,7 @@ A dotenv (`.env.local`) environmental file needs to be created at `root`
 
 > You can do this easily by copying and renaming `.env.default`
 
-### Components, Services, and Styles
+### Components and Services
 
 Custom pages are located in `src/views`, while custom-created components are located in `src/components`
 
@@ -70,7 +71,7 @@ Overwrites to libraries or global style variables and constants can be wrriten i
 
 ## Deployment
 
-None yet. Application's `master` branch is currently built on Netlify for live viewing
+None yet. Application's `master` branch is currently built on Netlify for live viewing. Build settings can be accessed ONLY through the onlinker-admin netlify account. Netlify teams has a billing plan which we are too cheap to purchase as of now.
 
 Run `npm run build` to minify and compile the application for production
 
@@ -78,7 +79,7 @@ Run `npm run build` to minify and compile the application for production
 Contributions are only accepted from members of the [team](https://github.com/orgs/onlinkers/people). Instructions to start contributing are as follows:
 
 1. Clone the remote repository into a local environment
-2. Setup the repository (instructions [here](## Getting Started))
+2. Setup the repository (instructions [here](##getting-started))
 3. Make the appropriate edits and additions
 4. Submit pull requests with a detailed commit message of what additions were made
 --> Pull requests will be accepted after being reviewed and after the appropriate tests are conducted
