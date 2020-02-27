@@ -1,5 +1,6 @@
 <template>
   <div class="WelcomePage">
+    <div class="WelcomePage-container">
     <div class="welcome-text">
       <font-awesome-icon icon="location-arrow" class="location-icon fa-3x" color="#1F2845"></font-awesome-icon>
       <h1>Welcome!</h1>
@@ -44,6 +45,7 @@
       </div>
     </div>
   </div>
+  </div>
 </template>
 <script>
 import { rules } from '../utils'
@@ -59,12 +61,18 @@ export default {
 </script>
 <style lang="scss">
 .WelcomePage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.WelcomePage-container {
   display: block;
   width: 500px;
   max-width: 50%;
-  height: 100vh;
   max-height: 100vh;
-  margin: 0 auto;
 
   .welcome-text {
     font-family: 'Josefin Sans', sans-serif;
@@ -163,7 +171,7 @@ export default {
     margin: 0;
 
     .welcome-text {
-      margin-top: 20vh;
+      margin-top: 10vh;
     }
 
     .auth {

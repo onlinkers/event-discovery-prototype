@@ -25,7 +25,7 @@
             <v-icon>mdi-plus</v-icon>
           </v-btn> -->
         </div>
-        <v-btn color="primary" fab small text class="profile-icon">
+        <v-btn color="primary" fab large text class="profile-icon">
           <font-awesome-icon icon="user-circle" class="fa-2x"></font-awesome-icon>
         </v-btn>
       </div>
@@ -151,6 +151,7 @@ export default {
       flex-direction: row;
       flex-grow: 1;
       justify-content: space-evenly;
+      max-width: 50em;
     }
     .page-link {
       text-decoration: none;
