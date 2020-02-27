@@ -7,7 +7,6 @@ import Discover from "./views/Discover";
 import EventPage from "./views/EventPage";
 
 /* FOR TESTING */
-import createEventModal from "./components/createEventModal";
 // import eventInitiation from "./components/eventInitiation";
 import EventInitiation from "./views/EventInitiation.vue";
 
@@ -31,11 +30,6 @@ const router = new Router({
       path: "/signup",
       name: "sign-up",
       component: SignUp
-    },
-    {
-      path: "/createEventModal",
-      name: "create-event",
-      component: createEventModal
     },
     {
       path: "/eventpage",

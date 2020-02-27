@@ -1,9 +1,8 @@
 <template>
   <div class="explore-bar-wrapper">
-
     <!-- DESKTOP VIEW -->
     <mq-layout mq="desktop">
-      <CreateEventModal v-show="isEventCreateModalVisible" @close="triggerEventCreateModal()"/>
+      <CreateEventModal v-show="isEventCreateModalVisible" @close="triggerEventCreateModal()" />
       <div class="navbar">
         <router-link class="logo" to="/">
           <h1>LINK-LINK</h1>
@@ -23,7 +22,7 @@
           </router-link>
           <!-- <v-btn color="secondary" text @click="triggerEventCreateModal()" class="temp-create-btn">
             <v-icon>mdi-plus</v-icon>
-          </v-btn> -->
+          </v-btn>-->
         </div>
         <v-btn color="primary" fab small text class="profile-icon">
           <font-awesome-icon icon="user-circle" class="fa-2x"></font-awesome-icon>
@@ -41,20 +40,19 @@
       <div class="explore-bar-icons">
         <div class="left-icons icon-wrapper">
           <router-link to="/">
-            <img src="../assets/icons/mobile-explore-bar/home-outline.png" alt="">
+            <img src="../assets/icons/mobile-explore-bar/home-outline.png" alt />
           </router-link>
           <router-link to="/">
-            <img src="../assets/icons/mobile-explore-bar/earth-outline.png" alt="">
+            <img src="../assets/icons/mobile-explore-bar/earth-outline.png" alt />
           </router-link>
         </div>
         <div class="right-icons icon-wrapper">
           <router-link to="/">
-            <img src="../assets/icons/mobile-explore-bar/bulb-outline.png" alt="">
+            <img src="../assets/icons/mobile-explore-bar/bulb-outline.png" alt />
           </router-link>
           <router-link to="/">
-            <img src="../assets/icons/mobile-explore-bar/person-circle-outline.png" alt="">
+            <img src="../assets/icons/mobile-explore-bar/person-circle-outline.png" alt />
           </router-link>
-          
         </div>
       </div>
     </mq-layout>
@@ -62,9 +60,7 @@
 </template>
 
 <script>
-import { EventBus } from '@/event-bus.js'
-import Eclipse from '@/assets/icons/mobile-explore-bar/explore-eclipse'
-import CreateEventModal from '@/components/createEventModal'
+import Eclipse from "@/assets/icons/mobile-explore-bar/explore-eclipse";
 
 export default {
   props: {
@@ -74,40 +70,22 @@ export default {
   },
   data() {
     return {
-      activePage: this.currPageProp,
-      isEventCreateModalVisible: false,
-    }
+      activePage: this.currPageProp
+    };
   },
   components: {
-    Eclipse,
-    CreateEventModal,
+    Eclipse
   },
-  created: {
-    eventCreateListen() {
-      EventBus.$on('eventModalActivated', () => {
-        this.triggerEventCreateModal();
-      })
-    },
-    eventDismissListen() {
-      EventBus.$on('close', () => {
-        console.log('close modal');
-        this.isEventCreateModalVisible = false;
-      })
-    }
-  },
-  methods : {
-    triggerEventCreateModal() {
-      this.isEventCreateModalVisible = !this.isEventCreateModalVisible;
-    },
-  }
-}
+  created() {},
+  methods: {}
+};
 </script>
 
 <style lang="scss">
-@import '@/assets/scss/variables.scss';
+@import "@/assets/scss/variables.scss";
 
 .active-page {
-    color: $primary !important;
+  color: $primary !important;
 }
 .active-page::after {
   position: relative;
@@ -134,7 +112,7 @@ export default {
     align-items: center;
     justify-content: space-between;
     .logo {
-      font-family: 'Nunito', sans-serif;
+      font-family: "Nunito", sans-serif;
       text-decoration: none;
       align-items: center;
       margin-left: 2%;
@@ -149,7 +127,7 @@ export default {
     }
     .page-link {
       text-decoration: none;
-      font-family: 'Nunito', sans-serif;
+      font-family: "Nunito", sans-serif;
       h3 {
         color: $secondary;
         font-weight: 600;
@@ -170,14 +148,14 @@ export default {
     position: absolute;
     transform: translate(-50%, 50%);
     @media screen and (max-height: 600px) {
-      bottom: 10vh
+      bottom: 10vh;
     }
     .explore-window__button-icon {
       width: 7em;
       height: 7em;
       cursor: pointer;
       g circle {
-        fill:blue;
+        fill: blue;
         fill-opacity: 0.65;
         transition: all 0.3s;
       }
@@ -204,7 +182,7 @@ export default {
     .left-icons {
       left: 2%;
     }
-    
+
     .right-icons {
       right: 2%;
     }
