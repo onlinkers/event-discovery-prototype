@@ -1,5 +1,6 @@
 <!-- Landing page (using mapbox) -->
 <template>
+
   <MglMap
     container     = "mapbox-container"
     :accessToken  = "accessToken"
@@ -8,13 +9,11 @@
     :zoom         = "defaultMapStyle.zoom"
     @load         = "onMapLoad"
   >
-    <!-- <MglMarker v-for = "m,i in eventData" :coordinates  = "eventData[i].priv.coordinates">
-      <MglPopup>
-        <div>
-          <div>{{ eventData[i].pub.name }}</div>
-        </div>
-      </MglPopup>
-    </MglMarker> -->
+    <MapMarker  v-for = "(m, index) in events"
+                :key = "`marker-${index}`"
+                :name = "m.pub.name"
+                :coords  = "m.priv.coordinates"
+                :imgSrc = "m.mediaLink.cover" />
   </MglMap>
 
 </template>
@@ -23,34 +22,29 @@
 /* MAPBOX COMPONENTS */
 import MapboxStyle from "@/assets/js/mapbox/style.json"
 import Mapbox from "mapbox-gl"
-import {
-  MglMap, 
-  // MglPopup,
-  // MglMarker
-  } from "vue-mapbox"
+import MapMarker from './marker'
+import { MglMap } from "vue-mapbox"
 
 /* EVENT DATA */
-import eventData from '@/assets/js/eventData.js'
+import * as eventData from '@/assets/js/eventData.js'
 
 export default {
   components: {
     MglMap,
-    // MglMarker,
-    // MglPopup,
-    // eventData
+    MapMarker
   },
   name: "Map",
   data() {
     return {
       accessToken: "pk.eyJ1Ijoib25saW5rZXJzIiwiYSI6ImNrMWQyOHV6MDAzcnIzbm9laDdna213MWYifQ.-9uLdEhCUfIYP3ot-u5zeg",
-      mapStyle:     MapboxStyle,
+      mapStyle: MapboxStyle,
       // https://docs.mapbox.com/help/glossary/style-url/
       // https://studio.mapbox.com/
       defaultMapStyle: {
-        center:       [-123.221412, 49.258983],
-        zoom:         12,
+        center: [-123.221412, 49.258983],
+        zoom: 12,
       },
-      eventData:    eventData,
+      events: eventData.default
     }
   },
 
@@ -59,16 +53,14 @@ export default {
   },
 
   methods: {
-    onMapLoad(event) {
-      // console.log("Map loaded!");
-      this.map = event.map;
-      this.$store.map = event.map;
-      this.$emit('mapLoad');
+    onMapLoad() {
+      console.log("Map loaded!");
     }
   }
 };
 </script>
-<style lang="scss">
+
+<style lang="scss" scoped>
 #mapbox-container {
   position: absolute;
 }

@@ -62,7 +62,8 @@ export default {
 
 <style lang="scss" scoped>
 .nav-icons {
-  width: 100%;
+  width: 90%;
+  margin: 0 10%;
   a {
     top: 5%;
     left: 10%;
