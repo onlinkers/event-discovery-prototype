@@ -80,7 +80,7 @@
       <h1 class="step-title">Event Location</h1>
       <textarea
         type="text"
-        placeholder="Where is the event going to be held?"
+        placeholder="Where will the event be held?"
         class="step-input"
         v-model="eventLocation"
       ></textarea>
@@ -95,7 +95,7 @@
       <h1 class="step-title">Event Description</h1>
       <textarea
         type="text"
-        placeholder="Where is the event going to be held?"
+        placeholder="What is the event about?"
         class="step-input"
         v-model="eventDescription"
       ></textarea>
@@ -222,6 +222,8 @@ export default {
     outline: none;
   }
   .media {
+    height: 40vh;
+    max-height: 40vh;
     img {
       width: 100%;
       max-width: 300px;

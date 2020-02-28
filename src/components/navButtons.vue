@@ -78,6 +78,7 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   align-content: center;
+  z-index: 1000;
   a {
     display: flex;
     align-items: center;
@@ -94,6 +95,7 @@ export default {
   flex-direction: row-reverse;
   justify-content: space-between;
   align-content: center;
+  z-index: 1000;
   h5 {
     user-select: none;
     cursor: pointer;
@@ -101,7 +103,6 @@ export default {
     font-weight: 700;
     font-size: 20px;
     color: $primary-alt;
-    z-index: 99;
   }
 }
 </style>
