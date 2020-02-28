@@ -5,6 +5,8 @@
       <font-awesome-icon icon="arrow-left" class="back-btn fa-2x" color="#1F2845"/>
     </router-link>
   </div>
+
+  <div class="WelcomePage-container">
   <div class="welcome-text">
     <font-awesome-icon icon="user" class="user-icon fa-3x" color="#1F2845"></font-awesome-icon>
     <h1>Sign Up</h1>
@@ -42,6 +44,7 @@
     <v-btn color="primary" fab medium to="/discover">
       <font-awesome-icon icon="chevron-right" class="chevron-icon fa-3x"></font-awesome-icon>
     </v-btn>
+  </div>
   </div>
 </div>
 </template>

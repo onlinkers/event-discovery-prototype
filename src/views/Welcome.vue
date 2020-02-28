@@ -74,6 +74,10 @@ export default {
   max-width: 50%;
   max-height: 100vh;
 
+  @media (max-height: 800px) {
+    height: 90vh;
+  }
+
   .welcome-text {
     font-family: 'Josefin Sans', sans-serif;
     margin: 10% 10% 0 10%;
