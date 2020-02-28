@@ -20,7 +20,7 @@
             <h3 :class="{'active-page': activePage === 'Create'}">Create</h3>
           </router-link>
         </div>
-        <v-btn color="primary" fab small text class="profile-icon">
+        <v-btn color="primary" fab large text class="profile-icon">
           <font-awesome-icon icon="user-circle" class="fa-2x"></font-awesome-icon>
         </v-btn>
       </div>
@@ -95,31 +95,37 @@ export default {
 }
 .explore-bar-wrapper {
   position: fixed;
-  font-size: 1em;
+  font-size: 1.5em;
   bottom: 0;
   width: 100%;
   .navbar {
     position: fixed;
     top: 0;
-    height: 10%;
+    min-height: 10vh;
     background-color: white;
     width: 100%;
     display: flex;
+    flex-grow: 1;
     align-items: center;
     justify-content: space-between;
     .logo {
       font-family: "Nunito", sans-serif;
       text-decoration: none;
       align-items: center;
-      margin-left: 2%;
+      white-space: nowrap;
+      margin: 0 2%;
       h1 {
         color: $primary;
+        font-size: 1.5em;
         font-weight: 900;
       }
     }
     .nav-links {
       display: flex;
       flex-direction: row;
+      flex-grow: 1;
+      justify-content: space-evenly;
+      max-width: 50em;
     }
     .page-link {
       text-decoration: none;
@@ -127,12 +133,11 @@ export default {
       h3 {
         color: $secondary;
         font-weight: 600;
-        margin: 0 2em;
+        font-size: 1em;
       }
     }
     .profile-icon {
-      margin-right: 10em;
-      transform: translateX(200%);
+      margin-right: 1em;
     }
   }
   .explore-window__button {
@@ -143,12 +148,9 @@ export default {
     align-items: center;
     position: absolute;
     transform: translate(-50%, 50%);
-    @media screen and (max-height: 600px) {
-      bottom: 10vh;
-    }
     .explore-window__button-icon {
-      width: 7em;
-      height: 7em;
+      width: 4em;
+      height: 4em;
       cursor: pointer;
       g circle {
         fill: blue;
@@ -163,24 +165,32 @@ export default {
     }
   }
   .explore-bar-icons {
-    height: 8vh;
     background: white;
+    flex-grow: 1;
+    display: flex;
     .icon-wrapper {
       display: flex;
-      position: absolute;
       flex-direction: row;
       justify-content: space-around;
       align-items: center;
-      width: 35%;
+      width: 40vw;
       height: 100%;
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+      
+      img {
+        max-width: 2em;
+        margin-left: 1em;
+        margin-right: 1em;
+      }
     }
 
     .left-icons {
-      left: 2%;
+      margin-right: 10vw;
     }
 
     .right-icons {
-      right: 2%;
+      margin-left: 10vw;
     }
   }
 }
