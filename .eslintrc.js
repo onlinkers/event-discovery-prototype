@@ -66,6 +66,9 @@ module.exports = {
         'allowFirstLine': false
       }
     }],
+
+    'vue/singleline-html-element-content-newline': 0,
+    'vue/require-default-prop': 0,
     
     // Non-vue rules
     'comma-dangle': [1, "only-multiline"]

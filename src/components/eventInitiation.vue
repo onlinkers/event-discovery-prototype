@@ -1,89 +1,125 @@
 <template>
-<transition name="fade" mode="out-in">
-  <div class="modal-backdrop">
-    <div class="nav-icons">
-      <router-link to="/discover">
-        <font-awesome-icon icon="arrow-left" class="back-btn fa-2x" color="#1F2845"/>
-      </router-link>
-    </div>
+  <transition name="fade" mode="out-in">
+    <div class="modal-backdrop">
+      <div class="nav-icons">
+        <router-link to="/discover">
+          <font-awesome-icon
+            icon="arrow-left"
+            class="back-btn fa-2x"
+            color="#1F2845"
+          />
+        </router-link>
+      </div>
 
-    <div class="modal-container">
+      <div class="modal-container">
         <div class="ini-icon">
-            <img src="@/assets/icons/event-initiation/initiation-icon.svg" alt="">
+          <img src="@/assets/icons/event-initiation/initiation-icon.svg" alt="">
         </div>
-        <div  class="title">
-            <h1 font-family="Josefin Sans"> Event Initation </h1>
+        <div class="title">
+          <h1 font-family="Josefin Sans"> Event Initation </h1>
         </div>
-      <div class="input-box">
-        <div class="input-wrapper">
-          <v-form class="input-form">
-            <v-text-field
-              name="event-title"
-              label="Event Title"
-              class="event-info-input"
-              clearable
-              required
-            ></v-text-field>
-          </v-form>
+        <div class="input-box">
+          <div class="input-wrapper">
+            <v-form class="input-form">
+              <v-text-field
+                name="event-title"
+                label="Event Title"
+                class="event-info-input"
+                clearable
+                required
+              />
+            </v-form>
+          </div>
         </div>
-      </div>
       
-      <div class="input-box">
-
-        <div class="date-wrapper">
-          <v-menu ref="calendarMenu" max-width="290" :close-on-content-click="false" offset-y v-model="showCalendar" :return-value.sync="eventDate">
-            <template v-slot:activator="{ on }">
-                <v-text-field v-model="eventDate" label="Date" v-on="on" class="event-info-input event-date-input" clearable></v-text-field>
-            </template>
-            <v-date-picker v-model="eventDate">
-              <v-btn text color="primary" @click="showCalendar = false">Cancel</v-btn>
-              <v-spacer></v-spacer>
-              <v-btn color="primary" @click="$refs.calendarMenu.save(eventDate)">Save</v-btn>
-            </v-date-picker>
-          </v-menu>
+        <div class="input-box">
+          <div class="date-wrapper">
+            <v-menu
+              ref="calendarMenu"
+              max-width="290"
+              :close-on-content-click="false"
+              offset-y
+              v-model="showCalendar"
+              :return-value.sync="eventDate"
+            >
+              <template v-slot:activator="{ on }">
+                <v-text-field
+                  v-model="eventDate"
+                  label="Date"
+                  v-on="on"
+                  class="event-info-input event-date-input"
+                  clearable
+                />
+              </template>
+              <v-date-picker v-model="eventDate">
+                <v-btn
+                  text
+                  color="primary"
+                  @click="showCalendar = false"
+                >
+                  Cancel
+                </v-btn>
+                <v-spacer />
+                <v-btn color="primary" @click="$refs.calendarMenu.save(eventDate)">Save</v-btn>
+              </v-date-picker>
+            </v-menu>
+          </div>
         </div>
-      </div>
-      <div class="input-box">
-        <div class="input-wrapper">
-          <v-form class="input-form">
-            <v-text-field
-              name="event-location"
-              label="Location"
-              class="event-info-input"
-              clearable
-              required
-            ></v-text-field>
-          </v-form>
+        <div class="input-box">
+          <div class="input-wrapper">
+            <v-form class="input-form">
+              <v-text-field
+                name="event-location"
+                label="Location"
+                class="event-info-input"
+                clearable
+                required
+              />
+            </v-form>
+          </div>
         </div>
-      </div>
-      <div class="input-box description-box">
-        <div class="description-wrapper">
-          <v-form class="input-form">
-            <v-textarea
-              name="event-description"
-              label="Description"
-              class="event-info-input"
-              clearable
-              required
-            ></v-textarea>
-          </v-form>
+        <div class="input-box description-box">
+          <div class="description-wrapper">
+            <v-form class="input-form">
+              <v-textarea
+                name="event-description"
+                label="Description"
+                class="event-info-input"
+                clearable
+                required
+              />
+            </v-form>
+          </div>
         </div>
-      </div>
-      <div class="nav-btns">
-        <v-btn class="nav-btn" color="primary" @click="dismissModal()">Initiate</v-btn>
+        <div class="nav-btns">
+          <v-btn
+            class="nav-btn"
+            color="primary"
+            @click="dismissModal()"
+          >
+            Initiate
+          </v-btn>
+        </div>
       </div>
     </div>
-  </div>
-</transition>
+  </transition>
 </template>
 <script>
 import { EventBus } from '@/event-bus.js';
 
 export default {
+  props: {
+
+  },
   data() {
     return {
       eventDate: null,
       showCalendar: false,
+    }
+  },
+  created: {
+    handleCreated() {
+      EventBus.$emit('eventModalActivated', 'Discover');
     }
   },
   methods: {
@@ -93,14 +129,6 @@ export default {
     saveDate() {
       this.$refs
     }
-  },
-  created: {
-    handleCreated() {
-      EventBus.$emit('eventModalActivated', 'Discover');
-    }
-  },
-  props: {
-
   }
 }
 </script>
@@ -116,7 +144,6 @@ export default {
   .modal-container {
     width: 500px;
     display: block;
-    // height: 100vh;
     margin: 0 auto;
     position: absolute;
   }
@@ -141,13 +168,6 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  // .modal {
-  //   background: #FFFFFF;
-  //   box-shadow: 2px 2px 20px 1px;
-  //   overflow-x: auto;
-  //   display: flex;
-  //   flex-direction: column;
-  // }
 }
 .title{
     align-content:left;
@@ -155,11 +175,9 @@ export default {
 }
 
 .nav-icon {
-  // text-align: center;
   position: absolute;
   top: 5%;
   left: 5%;
-  // padding: 10% 5%;
 }
 .input-box {
   position: relative;
@@ -200,13 +218,8 @@ export default {
   }
 
 .title{
-
-text-align: left;
-
+  text-align: left;
 }
-  .description-wrapper {
-
-  }
 }
 .description-box {
   height: 22%;

@@ -20,8 +20,14 @@
             <h3 :class="{'active-page': activePage === 'Create'}">Create</h3>
           </router-link>
         </div>
-        <v-btn color="primary" fab large text class="profile-icon">
-          <font-awesome-icon icon="user-circle" class="fa-2x"></font-awesome-icon>
+        <v-btn
+          color="primary"
+          class="profile-icon"
+          fab
+          large
+          text
+        >
+          <font-awesome-icon icon="user-circle" class="fa-2x" />
         </v-btn>
       </div>
     </mq-layout>
@@ -36,18 +42,18 @@
       <div class="explore-bar-icons">
         <div class="left-icons icon-wrapper">
           <router-link to="/">
-            <img src="../assets/icons/mobile-explore-bar/home-outline.png" alt />
+            <img src="../assets/icons/mobile-explore-bar/home-outline.png" alt>
           </router-link>
           <router-link to="/">
-            <img src="../assets/icons/mobile-explore-bar/earth-outline.png" alt />
+            <img src="../assets/icons/mobile-explore-bar/earth-outline.png" alt>
           </router-link>
         </div>
         <div class="right-icons icon-wrapper">
           <router-link to="/">
-            <img src="../assets/icons/mobile-explore-bar/bulb-outline.png" alt />
+            <img src="../assets/icons/mobile-explore-bar/bulb-outline.png" alt>
           </router-link>
           <router-link to="/">
-            <img src="../assets/icons/mobile-explore-bar/person-circle-outline.png" alt />
+            <img src="../assets/icons/mobile-explore-bar/person-circle-outline.png" alt>
           </router-link>
         </div>
       </div>
@@ -59,18 +65,19 @@
 import Eclipse from "@/assets/icons/mobile-explore-bar/explore-eclipse";
 
 export default {
+  components: {
+    Eclipse
+  },
   props: {
     currPageProp: {
-      type: String
+      type: String,
+      default: 'none'
     }
   },
   data() {
     return {
       activePage: this.currPageProp
     };
-  },
-  components: {
-    Eclipse
   },
 };
 </script>

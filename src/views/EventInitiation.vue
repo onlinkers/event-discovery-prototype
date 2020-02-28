@@ -1,11 +1,11 @@
 <template>
   <div class="EventInitiation">
     <NavBtns
-      :topType="'default-dark'"
-      :botType="$route.params.step && $route.params.step === '0' ? 'next-only' : 'default-confirm'"
-      :currStep="parseInt($route.params.step) || 0"
-      :maxStep="4"
-      :backRoute="'/discover'"
+      :top-type="'default-dark'"
+      :bot-type="$route.params.step && $route.params.step === '0' ? 'next-only' : 'default-confirm'"
+      :curr-step="parseInt($route.params.step) || 0"
+      :max-step="4"
+      :back-route="'/discover'"
       @next="nextStep()"
       @back="prevStep()"
       @confirm="confirm()"
@@ -13,8 +13,14 @@
 
     <!-- step 1 -->
     <div class="step-1 step" v-if="$route.params.step === '0'">
-      <img src="../assets/icons/event-initiation/hourglass-icon.svg" alt class="step-icon" />
-      <h1 class="step-title">Date / Time</h1>
+      <img
+        src="../assets/icons/event-initiation/hourglass-icon.svg"
+        alt
+        class="step-icon"
+      >
+      <h1 class="step-title">
+        Date / Time
+      </h1>
       <div class="date-wrapper">
         <!-- date-time picker -->
         <v-menu
@@ -32,28 +38,37 @@
               placeholder="When should the event be held?"
               class="step-input"
               v-model="eventDateTimeString"
-            ></textarea>
+            />
           </template>
           <v-date-picker v-model="eventDate" v-if="showDatePicker === true">
-            <v-spacer></v-spacer>
-            <v-btn color="primary" @click="saveDate(eventDate)">Save</v-btn>
+            <v-spacer />
+            <v-btn color="primary" @click="saveDate(eventDate)">
+              Save
+            </v-btn>
           </v-date-picker>
           <v-time-picker
             v-model="eventTime"
             v-if="showTimePicker === true && showDatePicker === false"
             ampm-in-title
           >
-            <v-spacer></v-spacer>
-            <v-btn color="primary" @click="saveTime(eventTime)">Save</v-btn>
+            <v-spacer />
+            <v-btn color="primary" @click="saveTime(eventTime)">
+              Save
+            </v-btn>
           </v-time-picker>
         </v-menu>
       </div>
       <div class="media">
-        <img src="../assets/vectors/date-vector.svg" class="step-vector" />
+        <img src="../assets/vectors/date-vector.svg" class="step-vector">
       </div>
       <div class="step-options">
         <div class="checkbox">
-          <v-checkbox label v-model="establishedEvent" value="value" color="primary"></v-checkbox>
+          <v-checkbox
+            label
+            v-model="establishedEvent"
+            value="value"
+            color="primary"
+          />
           <label class="checkbox-label">Established Event?</label>
         </div>
       </div>
@@ -61,53 +76,77 @@
 
     <!-- step 2 -->
     <div class="step step-2" v-if="$route.params.step === '1'">
-      <img src="../assets/icons/event-initiation/bonfire-icon.svg" alt class="step-icon" />
-      <h1 class="step-title">Event Title</h1>
+      <img
+        src="../assets/icons/event-initiation/bonfire-icon.svg"
+        alt
+        class="step-icon"
+      >
+      <h1 class="step-title">
+        Event Title
+      </h1>
       <textarea
         type="text"
         placeholder="Give your event a title!"
         class="step-input"
         v-model="eventTitle"
-      ></textarea>
+      />
       <div class="media">
-        <img src="../assets/vectors/ticket-vector.svg" class="step-vector" />
+        <img src="../assets/vectors/ticket-vector.svg" class="step-vector">
       </div>
     </div>
 
     <!-- step 3 -->
     <div class="step step-3" v-if="$route.params.step === '2'">
-      <img src="../assets/icons/event-initiation/location-icon.svg" alt class="step-icon" />
-      <h1 class="step-title">Event Location</h1>
+      <img
+        src="../assets/icons/event-initiation/location-icon.svg"
+        alt
+        class="step-icon"
+      >
+      <h1 class="step-title">
+        Event Location
+      </h1>
       <textarea
         type="text"
         placeholder="Where will the event be held?"
         class="step-input"
         v-model="eventLocation"
-      ></textarea>
+      />
       <div class="media">
-        <img src="../assets/vectors/location-vector.svg" class="step-vector" />
+        <img src="../assets/vectors/location-vector.svg" class="step-vector">
       </div>
     </div>
 
     <!-- step 4 -->
     <div class="step step-4" v-if="$route.params.step === '3'">
-      <img src="../assets/icons/event-initiation/chat-icon.svg" alt class="step-icon" />
-      <h1 class="step-title">Event Description</h1>
+      <img
+        src="../assets/icons/event-initiation/chat-icon.svg"
+        alt
+        class="step-icon"
+      >
+      <h1 class="step-title">
+        Event Description
+      </h1>
       <textarea
         type="text"
         placeholder="What is the event about?"
         class="step-input"
         v-model="eventDescription"
-      ></textarea>
+      />
       <div class="media">
-        <img src="../assets/vectors/chill-vector.svg" class="step-vector" />
+        <img src="../assets/vectors/chill-vector.svg" class="step-vector">
       </div>
     </div>
 
     <!-- step 4 -->
     <div class="step step-5" v-if="$route.params.step === '4'">
-      <img src="../assets/icons/event-initiation/chat-icon.svg" alt class="step-icon" />
-      <h1 class="step-title">Cover Image</h1>
+      <img
+        src="../assets/icons/event-initiation/chat-icon.svg"
+        alt
+        class="step-icon"
+      >
+      <h1 class="step-title">
+        Cover Image
+      </h1>
       <v-file-input
         placeholder="Add a cover image!"
         class="step-input file-input"
@@ -116,9 +155,9 @@
         flat
         prepend-icon
         color="primary"
-      ></v-file-input>
+      />
       <div class="media">
-        <img src="../assets/vectors/media-vector.svg" class="step-vector" />
+        <img src="../assets/vectors/media-vector.svg" class="step-vector">
       </div>
     </div>
   </div>
@@ -172,8 +211,6 @@ export default {
       setTimeout(() => {
         this.showDatePicker = true;
       }, 200);
-      console.log(eventTime);
-      console.log(this.eventDateTimeString);
     }
   }
 };
