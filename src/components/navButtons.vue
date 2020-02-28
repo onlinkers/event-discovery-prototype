@@ -81,6 +81,7 @@ export default {
   a {
     display: flex;
     align-items: center;
+    z-index: 99;
   }
 }
 .bot-nav-btns {
@@ -100,6 +101,7 @@ export default {
     font-weight: 700;
     font-size: 20px;
     color: $primary-alt;
+    z-index: 99;
   }
 }
 </style>
