@@ -177,7 +177,7 @@ export default {
       height: 100%;
       margin-top: 0.5em;
       margin-bottom: 0.5em;
-      
+
       img {
         max-width: 2em;
         margin-left: 1em;

@@ -149,13 +149,13 @@ export default {
   },
   methods: {
     nextStep() {
-      if (+this.$route.params.step === 4) return
-      const nextStep = +this.$route.params.step + 1
+      if (+this.$route.params.step === 4) return;
+      const nextStep = +this.$route.params.step + 1;
       this.$router.push({ path: `/new/${nextStep}` });
     },
     prevStep() {
-      if (+this.$route.params.step === 0) return
-      const nextStep = +this.$route.params.step - 1
+      if (+this.$route.params.step === 0) return;
+      const nextStep = +this.$route.params.step - 1;
       this.$router.push({ path: `/new/${nextStep}` });
     },
     confirm() {
@@ -181,12 +181,13 @@ export default {
 
 <style lang="scss" scoped>
 .EventInitiation {
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
+  // overflow: hidden;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  // height: 100vh;
+  // width: 100%;
+  @include page-container-middle;
 }
 
 .step {
