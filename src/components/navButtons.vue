@@ -1,39 +1,39 @@
 <template>
   <div>
     <!-- top nav buttons -->
-    <div class="top-nav-btns" v-show="this.topType === 'default-light'">
-      <router-link :to="this.backRoute">
-        <img src="../assets/icons/arrow-left-light.svg" alt />
+    <div class="top-nav-btns" v-show="topType === 'default-light'">
+      <router-link :to="backRoute">
+        <img src="../assets/icons/arrow-left-light.svg" alt>
       </router-link>
     </div>
-    <div class="top-nav-btns" v-show="this.topType === 'default-dark'">
-      <router-link :to="this.backRoute">
-        <img src="../assets/icons/arrow-left-dark.svg" alt />
+    <div class="top-nav-btns" v-show="topType === 'default-dark'">
+      <router-link :to="backRoute">
+        <img src="../assets/icons/arrow-left-dark.svg" alt>
       </router-link>
     </div>
-    <div class="top-nav-btns" v-show="this.topType === 'share-light'">
-      <router-link :to="this.backRoute">
-        <img src="../assets/icons/arrow-left-light.svg" alt />
+    <div class="top-nav-btns" v-show="topType === 'share-light'">
+      <router-link :to="backRoute">
+        <img src="../assets/icons/arrow-left-light.svg" alt>
       </router-link>
-      <img src="../assets/icons/share-light.svg" alt />
+      <img src="../assets/icons/share-light.svg" alt>
     </div>
-    <div class="top-nav-btns" v-show="this.topType === 'share-dark'">
-      <router-link :to="this.backRoute">
-        <img src="../assets/icons/arrow-left-dark.svg" alt />
+    <div class="top-nav-btns" v-show="topType === 'share-dark'">
+      <router-link :to="backRoute">
+        <img src="../assets/icons/arrow-left-dark.svg" alt>
       </router-link>
-      <img src="../assets/icons/share-dark.svg" alt />
+      <img src="../assets/icons/share-dark.svg" alt>
     </div>
 
     <!-- bottom nav buttons -->
-    <div class="bot-nav-btns" v-show="this.botType === 'next-only'">
+    <div class="bot-nav-btns" v-show="botType === 'next-only'">
       <h5 @click="nextStep()">Next</h5>
     </div>
-    <div class="bot-nav-btns" v-show="this.botType === 'default'">
+    <div class="bot-nav-btns" v-show="botType === 'default'">
       <h5 @click="nextStep()">Next</h5>
       <h5 @click="prevStep()">Back</h5>
     </div>
-    <div class="bot-nav-btns" v-show="this.botType === 'default-confirm'">
-      <h5 @click="nextStep()" v-if="this.currStep !== this.maxStep">Next</h5>
+    <div class="bot-nav-btns" v-show="botType === 'default-confirm'">
+      <h5 @click="nextStep()" v-if="currStep !== maxStep">Next</h5>
       <h5 @click="confirm()" v-else>Confirm</h5>
       <h5 @click="prevStep()">Back</h5>
     </div>
@@ -43,8 +43,14 @@
 <script>
 export default {
   props: {
-    topType: String,
-    botType: String,
+    topType: {
+      type: String,
+      default: 'default-light'
+    },
+    botType: {
+      type: String,
+      default: 'default'
+    },
     maxStep: Number,
     currStep: Number,
 

@@ -1,9 +1,9 @@
 <template>
-<div class="map-components-wrapper">
-  <Map @mapLoad="loadMap" />
-  <ExploreBar currPageProp="Discover" />
-  <SearchBar />  
-</div>
+  <div class="map-components-wrapper">
+    <Map @mapLoad="loadMap" />
+    <ExploreBar curr-page-prop="Discover" />
+    <SearchBar />  
+  </div>
 </template>
 
 <script>
@@ -78,8 +78,10 @@ export default {
 }
 ::-webkit-scrollbar-thumb {
   background: grey;
-  -webkit-border-radius: 1ex;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+  border-radius: 1ex;
   -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+  -webkit-border-radius: 1ex;
 }
 ::-webkit-scrollbar-corner {
   background: none;

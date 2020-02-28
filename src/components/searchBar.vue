@@ -1,12 +1,16 @@
 <template>
-<div class="search-wrapper">
-  <div class="search-bar">
-    <div class="search-icon">
-      <img src="@/assets/icons/search.png" alt="">
+  <div class="search-wrapper">
+    <div class="search-bar">
+      <div class="search-icon">
+        <img src="@/assets/icons/search.png" alt="">
+      </div>
+      <input
+        v-model="searchQuery"
+        ref="autocomplete"
+        placeholder="Search events, locations, dates"
+      >
     </div>
-    <input v-model="searchQuery" ref="autocomplete" placeholder="Search events, locations, dates">
   </div>
-</div>
 </template>
 <script>
 export default {
@@ -15,9 +19,6 @@ export default {
       searchQuery: '',
     }
   },
-  mounted() {
-
-  }
 }
 </script>
 <style lang="scss">

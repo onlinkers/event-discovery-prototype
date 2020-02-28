@@ -1,7 +1,7 @@
 <template>
   <v-app :style="{background: $vuetify.theme.themes.light.background}">
     <transition name="fade" mode="out-in">
-      <router-view/>
+      <router-view />
     </transition>
   </v-app>
 </template>

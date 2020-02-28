@@ -1,15 +1,15 @@
 <template>
   <div class="page-container">
     <div class="nav-btns">
-      <img src="../assets/icons/arrow-left-light.svg" alt />
-      <img src="../assets/icons/share-light.svg" alt />
+      <img src="../assets/icons/arrow-left-light.svg" alt>
+      <img src="../assets/icons/share-light.svg" alt>
     </div>
     <div class="title-container">
       <h1 class="event-title">Burning Man</h1>
       <v-btn fab text>
-        <img src="../assets/icons/like-button.svg" alt />
+        <img src="../assets/icons/like-button.svg" alt>
       </v-btn>
-      <img src alt />
+      <img src alt>
     </div>
   </div>
 </template>
@@ -54,9 +54,6 @@ export default {
     flex-direction: row;
     justify-content: space-between;
     align-content: center;
-
-    .like-btn {
-    }
 
     .event-title {
       font-family: "Josefin Sans", sans-serif;
