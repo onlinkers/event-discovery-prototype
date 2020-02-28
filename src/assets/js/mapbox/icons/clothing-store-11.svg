@@ -1,3 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17" height="17" width="17"><title>clothing-store-11.svg</title><rect fill="none" x="0" y="0" width="17" height="17"></rect><path fill="rgba(255,255,255,0.75)" transform="translate(3 3)" d="
-	M2.5,1l-2,2v2h2v5h6V5h2V3l-2-2H7L5.5,4L4,1H2.5z" style="stroke-linejoin:round;stroke-miterlimit:4;" stroke="rgba(255,255,255,0.75)" stroke-width="2"></path><path fill="#735139" transform="translate(3 3)" d="
-	M2.5,1l-2,2v2h2v5h6V5h2V3l-2-2H7L5.5,4L4,1H2.5z"></path></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17"><g><path d="M0,0 H17 V17 H0 Z" fill="none"/><path d="M5.5 4l-2 2v2h2v5h6V8h2V6l-2-2H10L8.5 7 7 4H5.5z" fill="hsl(26, 25%, 32%)" stroke="hsl(35, 19%, 100%)" stroke-linejoin="round" stroke-miterlimit="4px" stroke-width="2"/><path d="M5.5 4l-2 2v2h2v5h6V8h2V6l-2-2H10L8.5 7 7 4H5.5z" fill="hsl(26, 25%, 32%)"/></g></svg>

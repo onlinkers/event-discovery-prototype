@@ -681,7 +681,7 @@ export default [
     },
     ticketLink: "https://www.bcbeerawards.com/event-2019",
     mediaLink: {
-      cover: 'https://scontent.fyvr4-1.fna.fbcdn.net/v/t1.0-9/69165993_10157609978852716_5821098055352451072_n.jpg?_nc_cat=107&_nc_oc=AQnSMI8h5IENzaQF9TqUdkE8-Ygee0moL5sMLOmtz_kksU67P32t2Pe5bu5tWPoDNjo&_nc_ht=scontent.fyvr4-1.fna&oh=f714cfcf10a77343680baf07a4556e50&oe=5E1D18A0',
+      cover: 'https://images.squarespace-cdn.com/content/v1/521128cbe4b0750ce7e72b37/1572144017469-8IN0CVOPWJEYSBAF6PRI/ke17ZwdGBToddI8pDm48kHH9S2ID7_bpupQnTdrPcoF7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0nQwvinDXPV4EYh2MRzm-RRB5rUELEv7EY2n0AZOrEupxpSyqbqKSgmzcCPWV5WMiQ/BCBeerAwards2019-CroationCulturalCentre-20191019-364+%281%29.jpg?format=2500w',
       host: [],
       users: []
     },
@@ -752,7 +752,7 @@ export default [
     },
     ticketLink: "https://www.scienceworld.ca/after-dark",
     mediaLink: {
-      cover: 'https://www.scienceworld.ca/sites/default/files/styles/half_banner_wide_desktop/public/SWAD_web_slider_2500x425_20180425.jpg?itok=VF593OGj',
+      cover: 'https://miss604.com/wordpress/wp-content/uploads/2019/04/Science-World-After-Dark-80s-Party.jpg',
       host: [
         'https://d3qvqlc701gzhm.cloudfront.net/full/1b5916ca6a73cf9fb07429317110ffde067d61ea40b9515cadbdb9cb23fc5b71.jpg',
         'https://d3qvqlc701gzhm.cloudfront.net/full/bcc2cec7c8d27f908fc4fc5e1d754a802db1c12da514d74910e30e2f1be9b913.jpg',
@@ -828,7 +828,7 @@ export default [
     },
     ticketLink: "https://www.scienceworld.ca/girls-steam",
     mediaLink: {
-      cover: 'https://www.scienceworld.ca/sites/default/files/styles/half_banner_wide_desktop/public/front-slider/GirlsSTEAM_2500x435V2.jpg?itok=vwpXn4vp',
+      cover: 'https://www.scienceworld.ca/wp-content/uploads/GirlsandSTEAM_600x323V2.jpg',
       host: [
         'https://d3qvqlc701gzhm.cloudfront.net/full/1b5916ca6a73cf9fb07429317110ffde067d61ea40b9515cadbdb9cb23fc5b71.jpg',
         'https://d3qvqlc701gzhm.cloudfront.net/full/bcc2cec7c8d27f908fc4fc5e1d754a802db1c12da514d74910e30e2f1be9b913.jpg',
