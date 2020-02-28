@@ -23,7 +23,7 @@ export default {
 <style lang="scss">
 .search-wrapper {
   position: absolute;
-  top: 10%;
+  top: 15%;
   left: 50%;
   transform: translateX(-50%);
   @media screen and (min-width: 700px){
@@ -37,16 +37,11 @@ export default {
     justify-content: center;
     font-family: 'Nunito', sans-serif;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 1.2em;
     height: 3em;
-    width: 30vw;
+    width: 40vw;
     transition: width 0.5s;
     @media screen and (max-width: 850px) {
-      font-size: 16px;
-      width: 70vw;
-    }
-    @media screen and (max-width: 650px) {
-      font-size: 14px;
       width: 70vw;
     }
     input {
@@ -59,6 +54,7 @@ export default {
       height: 3em;
       padding: 0 1em;
       width: 90%;
+      text-overflow: ellipsis;
     }
     input:focus, textarea:focus, select:focus {
       outline: none;

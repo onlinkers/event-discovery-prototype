@@ -1,9 +1,7 @@
 <template>
   <div class="explore-bar-wrapper">
-
     <!-- DESKTOP VIEW -->
     <mq-layout mq="desktop">
-      <CreateEventModal v-show="isEventCreateModalVisible" @close="triggerEventCreateModal()"/>
       <div class="navbar">
         <router-link class="logo" to="/">
           <h1>LINK-LINK</h1>
@@ -18,14 +16,11 @@
           <router-link to="#" class="page-link">
             <h3 :class="{'active-page': activePage === 'Moments'}">Moments</h3>
           </router-link>
-          <router-link to="#" class="page-link" @click.native="triggerEventCreateModal()">
+          <router-link to="/new" class="page-link">
             <h3 :class="{'active-page': activePage === 'Create'}">Create</h3>
           </router-link>
-          <!-- <v-btn color="secondary" text @click="triggerEventCreateModal()" class="temp-create-btn">
-            <v-icon>mdi-plus</v-icon>
-          </v-btn> -->
         </div>
-        <v-btn color="primary" fab small text class="profile-icon">
+        <v-btn color="primary" fab large text class="profile-icon">
           <font-awesome-icon icon="user-circle" class="fa-2x"></font-awesome-icon>
         </v-btn>
       </div>
@@ -41,20 +36,19 @@
       <div class="explore-bar-icons">
         <div class="left-icons icon-wrapper">
           <router-link to="/">
-            <img src="../assets/icons/mobile-explore-bar/home-outline.png" alt="">
+            <img src="../assets/icons/mobile-explore-bar/home-outline.png" alt />
           </router-link>
           <router-link to="/">
-            <img src="../assets/icons/mobile-explore-bar/earth-outline.png" alt="">
+            <img src="../assets/icons/mobile-explore-bar/earth-outline.png" alt />
           </router-link>
         </div>
         <div class="right-icons icon-wrapper">
           <router-link to="/">
-            <img src="../assets/icons/mobile-explore-bar/bulb-outline.png" alt="">
+            <img src="../assets/icons/mobile-explore-bar/bulb-outline.png" alt />
           </router-link>
           <router-link to="/">
-            <img src="../assets/icons/mobile-explore-bar/person-circle-outline.png" alt="">
+            <img src="../assets/icons/mobile-explore-bar/person-circle-outline.png" alt />
           </router-link>
-          
         </div>
       </div>
     </mq-layout>
@@ -62,9 +56,7 @@
 </template>
 
 <script>
-import { EventBus } from '@/event-bus.js'
-import Eclipse from '@/assets/icons/mobile-explore-bar/explore-eclipse'
-import CreateEventModal from '@/components/createEventModal'
+import Eclipse from "@/assets/icons/mobile-explore-bar/explore-eclipse";
 
 export default {
   props: {
@@ -74,32 +66,20 @@ export default {
   },
   data() {
     return {
-      activePage: this.currPageProp,
-      isEventCreateModalVisible: false,
-    }
+      activePage: this.currPageProp
+    };
   },
   components: {
-    Eclipse,
-    CreateEventModal,
+    Eclipse
   },
-  created() {
-    EventBus.$on('close', () => {
-        this.triggerEventCreateModal(false);
-    })
-  },
-  methods: {
-    triggerEventCreateModal(forceVar) {
-      this.isEventCreateModalVisible = forceVar || !this.isEventCreateModalVisible;
-    }
-  }
-}
+};
 </script>
 
 <style lang="scss">
-@import '@/assets/scss/variables.scss';
+@import "@/assets/scss/variables.scss";
 
 .active-page {
-    color: $primary !important;
+  color: $primary !important;
 }
 .active-page::after {
   position: relative;
@@ -113,44 +93,49 @@ export default {
 }
 .explore-bar-wrapper {
   position: fixed;
-  font-size: 1em;
+  font-size: 1.5em;
   bottom: 0;
   width: 100%;
   .navbar {
     position: fixed;
     top: 0;
-    height: 10%;
+    min-height: 10vh;
     background-color: white;
     width: 100%;
     display: flex;
+    flex-grow: 1;
     align-items: center;
     justify-content: space-between;
     .logo {
-      font-family: 'Nunito', sans-serif;
+      font-family: "Nunito", sans-serif;
       text-decoration: none;
       align-items: center;
-      margin-left: 2%;
+      white-space: nowrap;
+      margin: 0 2%;
       h1 {
         color: $primary;
+        font-size: 1.5em;
         font-weight: 900;
       }
     }
     .nav-links {
       display: flex;
       flex-direction: row;
+      flex-grow: 1;
+      justify-content: space-evenly;
+      max-width: 50em;
     }
     .page-link {
       text-decoration: none;
-      font-family: 'Nunito', sans-serif;
+      font-family: "Nunito", sans-serif;
       h3 {
         color: $secondary;
         font-weight: 600;
-        margin: 0 2em;
+        font-size: 1em;
       }
     }
     .profile-icon {
-      margin-right: 10em;
-      transform: translateX(200%);
+      margin-right: 1em;
     }
   }
   .explore-window__button {
@@ -161,15 +146,12 @@ export default {
     align-items: center;
     position: absolute;
     transform: translate(-50%, 50%);
-    @media screen and (max-height: 600px) {
-      bottom: 10vh
-    }
     .explore-window__button-icon {
-      width: 7em;
-      height: 7em;
+      width: 4em;
+      height: 4em;
       cursor: pointer;
       g circle {
-        fill:blue;
+        fill: blue;
         fill-opacity: 0.65;
         transition: all 0.3s;
       }
@@ -181,24 +163,32 @@ export default {
     }
   }
   .explore-bar-icons {
-    height: 8vh;
     background: white;
+    flex-grow: 1;
+    display: flex;
     .icon-wrapper {
       display: flex;
-      position: absolute;
       flex-direction: row;
       justify-content: space-around;
       align-items: center;
-      width: 35%;
+      width: 40vw;
       height: 100%;
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+      
+      img {
+        max-width: 2em;
+        margin-left: 1em;
+        margin-right: 1em;
+      }
     }
 
     .left-icons {
-      left: 2%;
+      margin-right: 10vw;
     }
-    
+
     .right-icons {
-      right: 2%;
+      margin-left: 10vw;
     }
   }
 }
