@@ -2,7 +2,6 @@
   <div class="explore-bar-wrapper">
     <!-- DESKTOP VIEW -->
     <mq-layout mq="desktop">
-      <CreateEventModal v-show="isEventCreateModalVisible" @close="triggerEventCreateModal()" />
       <div class="navbar">
         <router-link class="logo" to="/">
           <h1>LINK-LINK</h1>
@@ -17,12 +16,9 @@
           <router-link to="#" class="page-link">
             <h3 :class="{'active-page': activePage === 'Moments'}">Moments</h3>
           </router-link>
-          <router-link to="#" class="page-link" @click.native="triggerEventCreateModal()">
+          <router-link to="/new" class="page-link">
             <h3 :class="{'active-page': activePage === 'Create'}">Create</h3>
           </router-link>
-          <!-- <v-btn color="secondary" text @click="triggerEventCreateModal()" class="temp-create-btn">
-            <v-icon>mdi-plus</v-icon>
-          </v-btn>-->
         </div>
         <v-btn color="primary" fab small text class="profile-icon">
           <font-awesome-icon icon="user-circle" class="fa-2x"></font-awesome-icon>
