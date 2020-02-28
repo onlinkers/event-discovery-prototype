@@ -37,7 +37,11 @@ const router = new Router({
       component: EventPage
     },
     {
-      path: "/new",
+      path: '/new',
+      redirect: { path: '/new/0' }
+    },
+    {
+      path: "/new/:step",
       name: "event-initiation",
       component: EventInitiation
     }

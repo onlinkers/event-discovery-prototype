@@ -2,8 +2,8 @@
   <div class="EventInitiation">
     <NavBtns
       :topType="'default-dark'"
-      :botType="currStep === 0 ? 'next-only' : 'default-confirm'"
-      :currStep="currStep"
+      :botType="$route.params.step && $route.params.step === '0' ? 'next-only' : 'default-confirm'"
+      :currStep="parseInt($route.params.step) || 0"
       :maxStep="4"
       :backRoute="'/discover'"
       @next="nextStep()"
@@ -12,7 +12,7 @@
     />
 
     <!-- step 1 -->
-    <div class="step-1 step" v-if="currStep === 0">
+    <div class="step-1 step" v-if="$route.params.step === '0'">
       <img src="../assets/icons/event-initiation/hourglass-icon.svg" alt class="step-icon" />
       <h1 class="step-title">Date / Time</h1>
       <div class="date-wrapper">
@@ -60,7 +60,7 @@
     </div>
 
     <!-- step 2 -->
-    <div class="step step-2" v-if="currStep === 1">
+    <div class="step step-2" v-if="$route.params.step === '1'">
       <img src="../assets/icons/event-initiation/bonfire-icon.svg" alt class="step-icon" />
       <h1 class="step-title">Event Title</h1>
       <textarea
@@ -75,7 +75,7 @@
     </div>
 
     <!-- step 3 -->
-    <div class="step step-3" v-if="currStep === 2">
+    <div class="step step-3" v-if="$route.params.step === '2'">
       <img src="../assets/icons/event-initiation/location-icon.svg" alt class="step-icon" />
       <h1 class="step-title">Event Location</h1>
       <textarea
@@ -90,7 +90,7 @@
     </div>
 
     <!-- step 4 -->
-    <div class="step step-4" v-if="currStep === 3">
+    <div class="step step-4" v-if="$route.params.step === '3'">
       <img src="../assets/icons/event-initiation/chat-icon.svg" alt class="step-icon" />
       <h1 class="step-title">Event Description</h1>
       <textarea
@@ -105,7 +105,7 @@
     </div>
 
     <!-- step 4 -->
-    <div class="step step-5" v-if="currStep === 4">
+    <div class="step step-5" v-if="$route.params.step === '4'">
       <img src="../assets/icons/event-initiation/chat-icon.svg" alt class="step-icon" />
       <h1 class="step-title">Cover Image</h1>
       <v-file-input
@@ -133,8 +133,6 @@ export default {
   },
   data() {
     return {
-      currStep: 0,
-
       eventDate: "",
       eventTime: "",
       eventDateTimeString: "",
@@ -151,19 +149,17 @@ export default {
   },
   methods: {
     nextStep() {
-      if (this.currStep < 4) {
-        this.currStep++;
-        console.log(this.currStep);
-      }
+      if (+this.$route.params.step === 4) return
+      const nextStep = +this.$route.params.step + 1
+      this.$router.push({ path: `/new/${nextStep}` });
     },
     prevStep() {
-      if (this.currStep !== 0) {
-        this.currStep--;
-        console.log(this.currStep);
-      }
+      if (+this.$route.params.step === 0) return
+      const nextStep = +this.$route.params.step - 1
+      this.$router.push({ path: `/new/${nextStep}` });
     },
     confirm() {
-      console.log("confirm");
+      this.$router.push({ path: `/discover` });
     },
     saveDate(eventDate) {
       this.eventDateTimeString = eventDate;
