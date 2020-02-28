@@ -1,5 +1,5 @@
 <template>
-  <div class="page-container">
+  <div class="EventInitiation">
     <NavBtns
       :topType="'default-dark'"
       :botType="currStep === 0 ? 'next-only' : 'default-confirm'"
@@ -184,25 +184,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@media only screen and (min-width: 700px) {
-  .page-container {
-    position: absolute;
-    display: flex;
-    left: 50%;
-    width: 30%;
-    height: 100%;
-    transform: translateX(-50%);
-  }
-}
-.page-container {
+.EventInitiation {
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
 }
 
 .step {
-  position: absolute;
-  top: 10%;
-  left: 10%;
-  width: 80%;
   .step-icon {
     padding-left: 5%;
   }
