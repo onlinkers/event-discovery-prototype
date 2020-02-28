@@ -1,17 +1,9 @@
 <template>
-<div class="map-components-wrapper">
-  <Map
-    :class="{modalOpened: modalOpened}"
-    @mapLoad="loadMap"
-  />
-  <ExploreBar
-    currPageProp="Discover"
-    :class="{modalOpened: modalOpened}"
-  />
-  <SearchBar
-    :class="{modalOpened: modalOpened}"
-  />  
-</div>
+  <div class="map-components-wrapper">
+    <Map @mapLoad="loadMap" />
+    <ExploreBar curr-page-prop="Discover" />
+    <SearchBar />  
+  </div>
 </template>
 
 <script>
@@ -38,12 +30,7 @@ export default {
       windowHeight: 0,
       eventList: events,
       mapLoaded: false,
-      modalOpened: false,
-      modalFocus: 0,
     }
-  },
-  created: {
-
   },
   mounted() {
     window.addEventListener('resize', () => {
@@ -54,13 +41,6 @@ export default {
   methods: {
     loadMap() {
       setTimeout(() => { this.mapLoaded = true }, 2000);
-    },
-    triggerModal() {
-      this.modalOpened = !this.modalOpened;
-    },
-    openCard(id) {
-      this.triggerModal();
-      this.modalFocus = id;
     },
   }
 };
@@ -91,9 +71,6 @@ export default {
 .mapboxgl-canvas-container {
   position: absolute;
 }
-.modalOpened {
-  filter: blur(2px);
-}
 ::-webkit-scrollbar {
   height: 4px;
   width: 4px;
@@ -101,8 +78,10 @@ export default {
 }
 ::-webkit-scrollbar-thumb {
   background: grey;
-  -webkit-border-radius: 1ex;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+  border-radius: 1ex;
   -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+  -webkit-border-radius: 1ex;
 }
 ::-webkit-scrollbar-corner {
   background: none;

@@ -1,50 +1,68 @@
 <template>
   <div class="WelcomePage">
     <div class="WelcomePage-container">
-    <div class="welcome-text">
-      <font-awesome-icon icon="location-arrow" class="location-icon fa-3x" color="#1F2845"></font-awesome-icon>
-      <h1>Welcome!</h1>
-      <h4>Enter your login details below to sign in.</h4>
-    </div>
-    <div class="auth">
-      <v-form class="auth-form">
-        <v-text-field
-          name="Email"
-          label="E-mail"
-          class="auth-input"
-          clearable
-          :rules="[rules.required, rules.email]"
-          v-model="inputEmail"
-        ></v-text-field>
-      </v-form>
-      <v-form class="auth-form">
-        <v-text-field
-          name="Password"
-          label="Password"
-          class="auth-input"
-          clearable
-          :rules="[rules.required]"
-          v-model="inputPassword"
-        ></v-text-field>
-      </v-form>
-      <div class="alt-accounts">
-        <h3>Or sign in using</h3>
-        <div class="alt-icons">
-          <font-awesome-icon :icon="['fab', 'facebook']" class="fa-2x alt-icon"></font-awesome-icon>
-          <font-awesome-icon :icon="['fab', 'twitter']" class="fa-2x alt-icon"></font-awesome-icon>
-          <font-awesome-icon :icon="['fab', 'google-plus']" class="fa-2x alt-icon"></font-awesome-icon>
+      <div class="welcome-text">
+        <font-awesome-icon
+          icon="location-arrow"
+          class="location-icon fa-3x"
+          color="#1F2845"
+        />
+        <h1>Welcome!</h1>
+        <h4>Enter your login details below to sign in.</h4>
+      </div>
+      <div class="auth">
+        <v-form class="auth-form">
+          <v-text-field
+            name="Email"
+            label="E-mail"
+            class="auth-input"
+            clearable
+            :rules="[rules.required, rules.email]"
+            v-model="inputEmail"
+          />
+        </v-form>
+        <v-form class="auth-form">
+          <v-text-field
+            name="Password"
+            label="Password"
+            class="auth-input"
+            clearable
+            :rules="[rules.required]"
+            v-model="inputPassword"
+          />
+        </v-form>
+        <div class="alt-accounts">
+          <h3>Or sign in using</h3>
+          <div class="alt-icons">
+            <font-awesome-icon :icon="['fab', 'facebook']" class="fa-2x alt-icon" />
+            <font-awesome-icon :icon="['fab', 'twitter']" class="fa-2x alt-icon" />
+            <font-awesome-icon :icon="['fab', 'google-plus']" class="fa-2x alt-icon" />
+          </div>
+        </div>
+        <div class="nav-btns">
+          <div class="auth-btn">
+            <v-btn
+              color="primary"
+              block
+              elevation="5"
+              to="/discover"
+            >
+              Sign In
+            </v-btn>
+          </div>
+          <div class="create-acc-btn">
+            <v-btn
+              color="accent"
+              text
+              block
+              to="/signup"
+            >
+              Create Account
+            </v-btn>
+          </div>
         </div>
       </div>
-      <div class="nav-btns">
-        <div class="auth-btn">
-          <v-btn color="primary" block elevation="5" to="/discover">Sign In</v-btn>
-        </div>
-        <div class="create-acc-btn">
-          <v-btn color="accent" text block to="/signup">Create Account</v-btn>
-        </div>
-      </div>
     </div>
-  </div>
   </div>
 </template>
 <script>
