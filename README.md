@@ -16,7 +16,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-- Node.js v13 (npm v6) (Download [here](https://nodejs.org/en/download/)
+- Node.js v13 (npm v6) (Download [here](https://nodejs.org/en/download/))
 - EsLint v6.8 (Setup Instructions [here](https://eslint.org/))
 
 ### Installing
