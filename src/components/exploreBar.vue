@@ -72,8 +72,6 @@ export default {
   components: {
     Eclipse
   },
-  created() {},
-  methods: {}
 };
 </script>
 
