@@ -23,7 +23,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 1. Clone the repository: ```git clone```
 2. Install the packages: ```cd event-discovery-prototype``` and ```npm install```
-3. Setup the [environmental files](###environmental-files)
+3. Setup the [environmental files](#environmental-files)
 
 ### Running
 
@@ -79,7 +79,7 @@ Run `npm run build` to minify and compile the application for production
 Contributions are only accepted from members of the [team](https://github.com/orgs/onlinkers/people). Instructions to start contributing are as follows:
 
 1. Clone the remote repository into a local environment
-2. Setup the repository (instructions [here](##getting-started))
+2. Setup the repository (instructions [here](#getting-started))
 3. Make the appropriate edits and additions
 4. Submit pull requests with a detailed commit message of what additions were made
 --> Pull requests will be accepted after being reviewed and after the appropriate tests are conducted
