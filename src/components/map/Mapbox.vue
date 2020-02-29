@@ -1,21 +1,21 @@
 <!-- Landing page (using mapbox) -->
 <template>
-
   <MglMap
-    container     = "mapbox-container"
-    :accessToken  = "accessToken"
-    :mapStyle     = "mapStyle"
-    :center       = "defaultMapStyle.center"
-    :zoom         = "defaultMapStyle.zoom"
-    @load         = "onMapLoaded"
+    container="mapbox-container"
+    :access-token="accessToken"
+    :map-style="mapStyle"
+    :center="defaultMapStyle.center"
+    :zoom="defaultMapStyle.zoom"
+    @load="onMapLoaded"
   >
-    <MapMarker  v-for = "(m, index) in events"
-                :key = "`marker-${index}`"
-                :name = "m.pub.name"
-                :coords  = "m.priv.coordinates"
-                :imgSrc = "m.mediaLink.cover" />
+    <MapMarker
+      v-for="(m, index) in events"
+      :key="`marker-${index}`"
+      :name="m.pub.name"
+      :coords="m.priv.coordinates"
+      :img-src="m.mediaLink.cover"
+    />
   </MglMap>
-
 </template>
 
 <script>
@@ -28,11 +28,11 @@ import { MglMap } from "vue-mapbox"
 import * as eventData from '@/assets/js/eventData.js'
 
 export default {
+  name: "Map",
   components: {
     MglMap,
     MapMarker
   },
-  name: "Map",
   data() {
     return {
       accessToken: "pk.eyJ1Ijoib25saW5rZXJzIiwiYSI6ImNrMWQyOHV6MDAzcnIzbm9laDdna213MWYifQ.-9uLdEhCUfIYP3ot-u5zeg",
@@ -53,7 +53,7 @@ export default {
 
   methods: {
     onMapLoaded(event) {
-      console.log("Map loaded!");
+      // console.log("Map loaded!");
       this.map = event.map;
     }
   }
