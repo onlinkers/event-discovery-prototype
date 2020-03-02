@@ -3,25 +3,25 @@
     <!-- top nav buttons -->
     <div class="top-nav-btns" v-show="topType === 'default-light'">
       <router-link :to="backRoute">
-        <img src="../assets/icons/arrow-left-light.svg" alt />
+        <img src="../assets/icons/arrow-left-light.svg" alt>
       </router-link>
     </div>
     <div class="top-nav-btns" v-show="topType === 'default-dark'">
       <router-link :to="backRoute">
-        <img src="../assets/icons/arrow-left-dark.svg" alt />
+        <img src="../assets/icons/arrow-left-dark.svg" alt>
       </router-link>
     </div>
     <div class="top-nav-btns" v-show="topType === 'share-light'">
       <router-link :to="backRoute">
-        <img src="../assets/icons/arrow-left-light.svg" alt />
+        <img src="../assets/icons/arrow-left-light.svg" alt>
       </router-link>
-      <img src="../assets/icons/share-light.svg" alt />
+      <img src="../assets/icons/share-light.svg" alt>
     </div>
     <div class="top-nav-btns" v-show="topType === 'share-dark'">
       <router-link :to="backRoute">
-        <img src="../assets/icons/arrow-left-dark.svg" alt />
+        <img src="../assets/icons/arrow-left-dark.svg" alt>
       </router-link>
-      <img src="../assets/icons/share-dark.svg" alt />
+      <img src="../assets/icons/share-dark.svg" alt>
     </div>
 
     <!-- bottom nav buttons -->

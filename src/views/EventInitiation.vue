@@ -21,7 +21,7 @@
         src="../assets/icons/event-initiation/hourglass-icon.svg"
         alt
         class="step-icon"
-      />
+      >
       <h1 class="step-title">
         Date / Time
       </h1>
@@ -63,7 +63,7 @@
         </v-menu>
       </div>
       <div class="media">
-        <img src="../assets/vectors/date-vector.svg" class="step-vector" />
+        <img src="../assets/vectors/date-vector.svg" class="step-vector">
       </div>
       <div class="step-options">
         <div class="checkbox">
@@ -84,7 +84,7 @@
         src="../assets/icons/event-initiation/bonfire-icon.svg"
         alt
         class="step-icon"
-      />
+      >
       <h1 class="step-title">
         Event Title
       </h1>
@@ -95,7 +95,7 @@
         v-model="eventTitle"
       />
       <div class="media">
-        <img src="../assets/vectors/ticket-vector.svg" class="step-vector" />
+        <img src="../assets/vectors/ticket-vector.svg" class="step-vector">
       </div>
     </div>
 
@@ -105,7 +105,7 @@
         src="../assets/icons/event-initiation/location-icon.svg"
         alt
         class="step-icon"
-      />
+      >
       <h1 class="step-title">
         Event Location
       </h1>
@@ -116,7 +116,7 @@
         v-model="eventLocation"
       />
       <div class="media">
-        <img src="../assets/vectors/location-vector.svg" class="step-vector" />
+        <img src="../assets/vectors/location-vector.svg" class="step-vector">
       </div>
     </div>
 
@@ -126,7 +126,7 @@
         src="../assets/icons/event-initiation/chat-icon.svg"
         alt
         class="step-icon"
-      />
+      >
       <h1 class="step-title">
         Event Description
       </h1>
@@ -137,7 +137,7 @@
         v-model="eventDescription"
       />
       <div class="media">
-        <img src="../assets/vectors/chill-vector.svg" class="step-vector" />
+        <img src="../assets/vectors/chill-vector.svg" class="step-vector">
       </div>
     </div>
 
@@ -147,7 +147,7 @@
         src="../assets/icons/event-initiation/chat-icon.svg"
         alt
         class="step-icon"
-      />
+      >
       <h1 class="step-title">
         Cover Image
       </h1>
@@ -161,7 +161,7 @@
         color="primary"
       />
       <div class="media">
-        <img src="../assets/vectors/media-vector.svg" class="step-vector" />
+        <img src="../assets/vectors/media-vector.svg" class="step-vector">
       </div>
     </div>
   </div>
