@@ -53,7 +53,7 @@ export default {
 
   methods: {
     onMapLoaded(event) {
-      console.log("Map loaded!");
+      // console.log("Map loaded!");
       this.map = event.map;
     }
   }

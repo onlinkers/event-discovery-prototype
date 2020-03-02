@@ -43,11 +43,11 @@ export default {
     MglPopup,
     MglMarker,
   },
-  props: [
-    'name',
-    'coords',
-    'imgSrc'
-  ],
+  props: {
+    name: String,
+    coords: [Number],
+    imgSrc: String
+  },
   computed: {
       imageKey: function() {
           return 'image-' + this.name.replace(/\s/g,'_').toLowerCase().substring(0,15);
