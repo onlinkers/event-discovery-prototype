@@ -45,11 +45,10 @@ export default {
   props: {
     topType: {
       type: String,
-      default: 'default-light'
+      default: "default-dark"
     },
     botType: {
-      type: String,
-      default: 'default'
+      type: String
     },
     maxStep: Number,
     currStep: Number,
