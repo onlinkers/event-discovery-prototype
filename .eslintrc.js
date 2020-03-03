@@ -13,9 +13,10 @@ module.exports = {
     "plugin:vue/essential",
     "plugin:vue/strongly-recommended",
     "plugin:vue/recommended",
-    "prettier"
+    "prettier",
+    "prettier/vue"
   ],
-  "ignorePatterns": [".eslintrc.js", "node_modules/"],
+  // ignorePatterns: [".eslintrc.js", "node_modules/"],
   rules: {
     // Disable console logs on production branch
     "no-console": process.env.NODE_ENV === "prod" ? 2 : 1,
@@ -80,6 +81,14 @@ module.exports = {
 
     "vue/singleline-html-element-content-newline": 0,
     "vue/require-default-prop": 0,
+    "vue/html-self-closing": [
+      "error",
+      {
+        html: {
+          void: "any"
+        }
+      }
+    ],
 
     // Non-vue rules
     "comma-dangle": [1, "only-multiline"]
