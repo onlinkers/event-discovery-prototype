@@ -87,7 +87,6 @@ export default {
   a {
     display: flex;
     align-items: center;
-    z-index: 99;
   }
 }
 .bot-nav-btns {
