@@ -16,7 +16,6 @@ module.exports = {
     "prettier",
     "prettier/vue"
   ],
-  // ignorePatterns: [".eslintrc.js", "node_modules/"],
   rules: {
     // Disable console logs on production branch
     "no-console": process.env.NODE_ENV === "prod" ? 2 : 1,
@@ -95,5 +94,5 @@ module.exports = {
   },
   parserOptions: {
     parser: "babel-eslint"
-  }
+  },
 };
