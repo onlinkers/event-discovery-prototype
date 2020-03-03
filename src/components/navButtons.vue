@@ -45,11 +45,11 @@ export default {
   props: {
     topType: {
       type: String,
-      default: 'default-light'
+      default: "default-light"
     },
     botType: {
       type: String,
-      default: 'default'
+      default: "default"
     },
     maxStep: Number,
     currStep: Number,
@@ -88,7 +88,6 @@ export default {
   a {
     display: flex;
     align-items: center;
-    z-index: 99;
   }
 }
 .bot-nav-btns {
