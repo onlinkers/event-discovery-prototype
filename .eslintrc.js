@@ -20,7 +20,7 @@ module.exports = {
     // Disable console logs on production branch
     "no-console": process.env.NODE_ENV === "prod" ? 2 : 1,
     "no-debugger": process.env.NODE_ENV === "prod" ? 2 : 1,
-    "no-unused-vars": "off",
+
     // Order of component details (default)
     "vue/order-in-components": [
       1,
@@ -90,9 +90,10 @@ module.exports = {
     ],
 
     // Non-vue rules
-    "comma-dangle": [1, "only-multiline"]
+    "comma-dangle": [1, "only-multiline"],
+    "no-unused-vars": "off"
   },
   parserOptions: {
     parser: "babel-eslint"
-  },
+  }
 };
