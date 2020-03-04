@@ -19,6 +19,7 @@
     "bootstrap": "^4.4.1",
     "bootstrap-vue": "^2.2.2",
     "core-js": "^3.4.4",
+    "eslint-config-prettier": "^6.10.0",
     "mapbox-gl": "^1.7.0",
     "vue": "^2.6.11",
     "vue-mapbox": "^0.4.1",
