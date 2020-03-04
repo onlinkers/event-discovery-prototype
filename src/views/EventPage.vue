@@ -7,11 +7,7 @@
       /> -->
     </div>
     <div class="media-assets">
-      <img
-        v-for="n in 3"
-        :key="n.id"
-        :src="eventDetails.mediaLink"
-      >
+      <img v-for="n in 3" :key="n.id" />
     </div>
   </div>
 </template>

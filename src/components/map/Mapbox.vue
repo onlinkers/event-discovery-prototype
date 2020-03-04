@@ -14,6 +14,7 @@
       :name="event.pub.name"
       :coords="event.priv.coordinates"
       :img-src="event.mediaLink.cover"
+      @navigate="navigateToEvent(event)"
     />
   </MglMap>
 </template>
@@ -59,6 +60,10 @@ export default {
     onMapLoaded(event) {
       // console.log("Map loaded!");
       this.map = event.map;
+    },
+    navigateToEvent(event) {
+      const eventId = event.priv.id;
+      this.$router.push({ path: `/eventpage/${eventId}` });
     }
   }
 };

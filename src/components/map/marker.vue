@@ -1,5 +1,5 @@
 <template>
-  <MglMarker :coordinates="coords">
+  <MglMarker :coordinates="coords" @click="emitNavigationEvent">
     <div class="marker" slot="marker">
       <svg
         width="100%"
@@ -15,12 +15,13 @@
         />
       </svg>
       <img
-        class="marker__image"
-        :src="checkImage"
-        :alt="imageKey"
-      >
+class="marker__image"
+:src="checkImage"
+:alt="imageKey" />
     </div>
-    <MglPopup><div>{{ name }}</div></MglPopup>
+    <MglPopup
+      ><div>{{ name }}</div></MglPopup
+    >
   </MglMarker>
 </template>
 
@@ -30,18 +31,15 @@
  * So then when there is 100000+ images, it doesn't load slowly or quickly
  * Will probably need some resizing done in AWS so that when images are uploaded,
  * smaller size images are generated alongside for icons and stuff.
- */ 
+ */
 
-import {
-  MglPopup,
-  MglMarker
-  } from "vue-mapbox"
+import { MglPopup, MglMarker } from "vue-mapbox";
 
 export default {
   name: "MapMarker",
   components: {
     MglPopup,
-    MglMarker,
+    MglMarker
   },
   props: {
     name: String,
@@ -49,34 +47,43 @@ export default {
     imgSrc: String
   },
   computed: {
-      imageKey: function() {
-          return 'image-' + this.name.replace(/\s/g,'_').toLowerCase().substring(0,15);
-      },
-      checkImage: function() {
-        return this.imgSrc || require('@/assets/media/no-image-default.png')
-      }
+    imageKey: function() {
+      return (
+        "image-" +
+        this.name
+          .replace(/\s/g, "_")
+          .toLowerCase()
+          .substring(0, 15)
+      );
+    },
+    checkImage: function() {
+      return this.imgSrc || require("@/assets/media/no-image-default.png");
+    }
+  },
+  methods: {
+    emitNavigationEvent() {
+      this.$emit("navigate");
+    }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
 .marker {
-    max-width: 20vh;
-    width: 60px;
-    overflow: hidden;
+  max-width: 20vh;
+  width: 60px;
+  overflow: hidden;
 
-    .marker__image {
-        width: 56%;
-        height: 56%;
-        border-radius: 50%;
-        object-fit: cover;
-        position: absolute;
-        left: 0;
-        top: 0;
-        margin: 22%;
-        margin-top: 11%;
-    }
+  .marker__image {
+    width: 56%;
+    height: 56%;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 22%;
+    margin-top: 11%;
+  }
 }
-
-
 </style>
