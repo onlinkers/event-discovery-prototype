@@ -21,7 +21,7 @@ module.exports = {
     // Disable console logs on production branch
     "no-console": process.env.NODE_ENV === "prod" ? 2 : 1,
     "no-debugger": process.env.NODE_ENV === "prod" ? 2 : 1,
-
+    "no-unused-vars": "off",
     // Order of component details (default)
     "vue/order-in-components": [
       1,
