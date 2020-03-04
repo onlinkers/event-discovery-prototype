@@ -6,6 +6,13 @@
         src="https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2134&q=80"
       /> -->
     </div>
+    <div class="media-assets">
+      <img
+        v-for="n in 3"
+        :key="n.id"
+        :src="eventDetails.mediaLink"
+      >
+    </div>
   </div>
 </template>
 
@@ -15,6 +22,9 @@ import NavBtns from '../components/navButtons';
 export default {
   components: {
     NavBtns
+  },
+  props: {
+    eventDetails: Object
   },
   data() {
     return {
@@ -35,7 +45,8 @@ export default {
   @include page-container-middle;
   .background-img {
     @include gradient-white-background(
-      "https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2134&q=80"
+      "https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2134&q=80",
+      true
     );
   }
 }

@@ -7,13 +7,18 @@
   width: 100%;
 }
 
-@mixin gradient-white-background($img-url) {
-  background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0.97) 64.58%
-    ),
-    url($img-url);
+@mixin gradient-white-background($img-url, $light-themed: true) {
+  @if $light-themed {
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.97) 64.58%
+      ),
+      url($img-url);
+  } @else {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 73.05%),
+      url($img-url);
+  }
   background-size: cover;
   height: 100vh;
   width: 100%;

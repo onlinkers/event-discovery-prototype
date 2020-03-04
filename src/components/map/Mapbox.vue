@@ -9,23 +9,26 @@
     @load="onMapLoaded"
   >
     <MapMarker
-      v-for="(m, index) in events"
+      v-for="(event, index) in events"
       :key="`marker-${index}`"
-      :name="m.pub.name"
-      :coords="m.priv.coordinates"
-      :img-src="m.mediaLink.cover"
+      :name="event.pub.name"
+      :coords="event.priv.coordinates"
+      :img-src="event.mediaLink.cover"
     />
   </MglMap>
 </template>
 
 <script>
 /* MAPBOX COMPONENTS */
-import MapboxStyle from "@/assets/js/mapbox/style.json"
-import MapMarker from './marker'
-import { MglMap } from "vue-mapbox"
+import MapboxStyle from "@/assets/js/mapbox/style.json";
+import MapMarker from "./marker";
+import { MglMap } from "vue-mapbox";
 
 /* EVENT DATA */
-import * as eventData from '@/assets/js/eventData.js'
+import * as eventData from "@/assets/js/eventData.js";
+
+/* UTILITIES */
+// import EventBus from "../../event-bus";
 
 export default {
   name: "Map",
@@ -35,16 +38,17 @@ export default {
   },
   data() {
     return {
-      accessToken: "pk.eyJ1Ijoib25saW5rZXJzIiwiYSI6ImNrMWQyOHV6MDAzcnIzbm9laDdna213MWYifQ.-9uLdEhCUfIYP3ot-u5zeg",
+      accessToken:
+        "pk.eyJ1Ijoib25saW5rZXJzIiwiYSI6ImNrMWQyOHV6MDAzcnIzbm9laDdna213MWYifQ.-9uLdEhCUfIYP3ot-u5zeg",
       mapStyle: MapboxStyle,
       // https://docs.mapbox.com/help/glossary/style-url/
       // https://studio.mapbox.com/
       defaultMapStyle: {
         center: [-123.221412, 49.258983],
-        zoom: 12,
+        zoom: 12
       },
       events: eventData.default
-    }
+    };
   },
 
   created() {
@@ -72,7 +76,8 @@ export default {
   height: 100%;
   width: 100%;
 }
-.map-container, .map-components-wrapper {
+.map-container,
+.map-components-wrapper {
   display: block;
   position: absolute;
   width: 100vw;
