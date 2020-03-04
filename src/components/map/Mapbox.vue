@@ -29,7 +29,7 @@ import { MglMap } from "vue-mapbox";
 import * as eventData from "@/assets/js/eventData.js";
 
 /* UTILITIES */
-// import EventBus from "../../event-bus";
+import EventBus from "../../event-bus";
 
 export default {
   name: "Map",
@@ -63,7 +63,10 @@ export default {
     },
     navigateToEvent(event) {
       const eventId = event.priv.id;
-      this.$router.push({ path: `/eventpage/${eventId}` });
+      this.$router.push({
+        path: `/eventpage/${eventId}`,
+        components: {}
+      });
     }
   }
 };

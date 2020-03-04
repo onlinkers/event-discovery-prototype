@@ -13,7 +13,7 @@
 </template>
 
 <script lang="js">
-import NavBtns from '../components/navButtons';
+import NavBtns from "../components/navButtons";
 
 export default {
   components: {
