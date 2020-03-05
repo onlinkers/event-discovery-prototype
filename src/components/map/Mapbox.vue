@@ -30,6 +30,7 @@ import * as eventData from "@/assets/js/eventData.js";
 
 /* UTILITIES */
 import EventBus from "../../event-bus";
+import EventPage from "../../views/EventPage.vue";
 
 export default {
   name: "Map",
@@ -62,10 +63,13 @@ export default {
       this.map = event.map;
     },
     navigateToEvent(event) {
-      const eventId = event.priv.id;
+      const { id } = event.priv;
       this.$router.push({
-        path: `/eventpage/${eventId}`,
-        components: {}
+        name: "event-page",
+        params: {
+          event: event,
+          id: id
+        }
       });
     }
   }

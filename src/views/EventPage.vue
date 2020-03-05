@@ -1,11 +1,12 @@
 <template>
   <div class="page-container">
+    <img
+:src="event.mediaLink.cover"
+alt=""
+class="background-img" />
     <NavBtns v-bind="navOptions" />
-    <div class="background-img">
-      <!-- <img
-        src="https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2134&q=80"
-      /> -->
-    </div>
+    <h1>{{ event.priv.id }}</h1>
+    <h1>{{ event.mediaLink.cover }}</h1>
     <div class="media-assets">
       <img v-for="n in 3" :key="n.id" />
     </div>
@@ -20,7 +21,7 @@ export default {
     NavBtns
   },
   props: {
-    eventDetails: Object
+    event: Object
   },
   data() {
     return {
@@ -39,11 +40,8 @@ export default {
 <style lang="scss" scoped>
 .page-container {
   @include page-container-middle;
-  .background-img {
-    @include gradient-white-background(
-      "https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2134&q=80",
-      true
-    );
-  }
+}
+.background-img {
+  @include gradient-white-img(true);
 }
 </style>

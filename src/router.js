@@ -32,9 +32,10 @@ const router = new Router({
       component: SignUp
     },
     {
-      path: "/eventpage/:id",
+      path: "/eventpage/:event:id",
       name: "event-page",
-      component: EventPage
+      component: EventPage,
+      props: true
     },
     {
       path: "/new",

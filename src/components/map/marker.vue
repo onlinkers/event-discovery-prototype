@@ -43,7 +43,7 @@ export default {
   },
   props: {
     name: String,
-    coords: [Number],
+    coords: Array,
     imgSrc: String
   },
   computed: {
