@@ -7,7 +7,7 @@
     </div>
 
     <NavBtns v-bind="navOptions" />
-    <ExploreBar />
+    <!-- <ExploreBar /> -->
 
     <!-- event details -->
     <div class="event-container">
@@ -72,7 +72,6 @@ import ExploreBar from "../components/exploreBar";
 export default {
   components: {
     NavBtns,
-    ExploreBar
   },
   filters: {
     snippet(value) {

@@ -1,7 +1,6 @@
 <template>
   <div class="map-components-wrapper">
     <Map @mapLoad="loadMap" />
-    <ExploreBar curr-page-prop="Discover" />
     <SearchBar />
   </div>
 </template>
@@ -21,7 +20,6 @@ export default {
   name: "Discover",
   components: {
     Map,
-    ExploreBar,
     SearchBar
   },
   data() {

@@ -1,29 +1,36 @@
 <template>
-  <v-app :style="{background: $vuetify.theme.themes.light.background}">
+  <v-app :style="{ background: $vuetify.theme.themes.light.background }">
     <transition name="fade" mode="out-in">
       <router-view />
     </transition>
+    <ExploreBar />
   </v-app>
 </template>
 
 <script>
-import '@/global.scss'
+import ExploreBar from "./components/exploreBar";
+
+import "@/global.scss";
 export default {
-  name: 'App',
+  name: "App",
+  components: {
+    ExploreBar
+  },
 
   data: () => ({
     //
   }),
   computed: {
-    theme(){
-      return (this.$vuetify.theme.dark) ? 'dark' : 'light'
+    theme() {
+      return this.$vuetify.theme.dark ? "dark" : "light";
     }
   }
 };
 </script>
 <style lang="scss">
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
