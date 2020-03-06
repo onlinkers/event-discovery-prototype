@@ -55,7 +55,7 @@
       <div class="event-description">
         <h5>OVERVIEW</h5>
         <p v-if="snipped">{{ event.pub.description | snippet }}</p>
-        <p v-else>{{ event.pub.description }}</p>
+        <p v-else>{{ event.pub.description | hardSnippet }}</p>
         <h5 v-if="snipped" @click="snipped = false">Read More</h5>
       </div>
     </div>
@@ -78,6 +78,15 @@ export default {
     snippet(value) {
       if (value.length > 150) {
         return value.slice(0, 150) + "...";
+      } else {
+        return value;
+      }
+    },
+    hardSnippet(value) {
+      if (value.length > 300) {
+        return value.slice(0, 300) + "...";
+      } else {
+        return value;
       }
     }
   },
@@ -136,6 +145,8 @@ export default {
     bottom: 15%;
     z-index: 2;
     width: 85%;
+    overflow-y: auto;
+    max-height: 70vh;
 
     /* IMAGE GALLERY */
     .gallery {
@@ -220,7 +231,7 @@ export default {
 
       p {
         @include event-detail;
-        font-weight: 500;
+        color: $dark;
         margin-bottom: 1em;
       }
       p + h5 {
