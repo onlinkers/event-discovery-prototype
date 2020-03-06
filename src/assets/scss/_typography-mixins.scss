@@ -12,3 +12,10 @@
   text-transform: uppercase;
   font-weight: 600;
 }
+
+@mixin event-detail {
+  font-family: $text-primary;
+  font-weight: 600;
+  color: $secondary;
+  font-size: 1.375em;
+}

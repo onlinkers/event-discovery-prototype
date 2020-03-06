@@ -5,12 +5,12 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700|Source+Serif+Pro:400,600,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&display=swap");
 
 /* COLORS */
 $primary: #2351f4;
 $secondary: #939dbe;
-$dark: #081838;
+$dark: #1f2845;
 $primary-alt: #4868f8;
 $success: #10dc60;
 $background: #f5f6fa;
@@ -35,17 +35,3 @@ $text-secondary: "Nunito", sans-serif;
 */
 
 /* COMPONENT SPECIFIC */
-
-// Popular Events Window
-$card-width: 200px;
-$card-height: 30vh;
-
-$large-card-font: 1em;
-$small-card-font: 0.2em;
-
-// Explore Button
-$icon-distance: 1.5em;
-$icon-distance-special: 3.5em;
-
-// Map
-$map-size: 100%;

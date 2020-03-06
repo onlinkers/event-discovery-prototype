@@ -29,8 +29,6 @@ import { MglMap } from "vue-mapbox";
 import * as eventData from "@/assets/js/eventData.js";
 
 /* UTILITIES */
-import EventBus from "../../event-bus";
-import EventPage from "../../views/EventPage.vue";
 
 export default {
   name: "Map",
@@ -46,7 +44,7 @@ export default {
       // https://docs.mapbox.com/help/glossary/style-url/
       // https://studio.mapbox.com/
       defaultMapStyle: {
-        center: [-123.221412, 49.258983],
+        center: [-123.120735, 49.28273],
         zoom: 12
       },
       events: eventData.default
