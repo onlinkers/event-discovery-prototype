@@ -82,7 +82,7 @@ module.exports = {
     "vue/singleline-html-element-content-newline": 0,
     "vue/require-default-prop": 0,
     "vue/html-self-closing": [
-      "error",
+      1,
       {
         html: {
           void: "any"

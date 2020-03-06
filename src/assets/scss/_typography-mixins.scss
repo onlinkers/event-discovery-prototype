@@ -1,0 +1,14 @@
+@mixin title-serif-dark {
+  font-family: $title-lg;
+  font-weight: 700;
+  color: $dark;
+  font-size: 4em;
+}
+
+@mixin event-tag {
+  font-family: $title-md;
+  color: $primary-alt;
+  font-size: 1.375em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
