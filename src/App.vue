@@ -3,7 +3,9 @@
     <transition name="fade" mode="out-in">
       <router-view />
     </transition>
-    <ExploreBar class="explore-bar" />
+    <mq-layout mq="mobile">
+      <ExploreBar class="explore-bar" />
+    </mq-layout>
   </v-app>
 </template>
 

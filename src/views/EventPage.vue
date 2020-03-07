@@ -126,6 +126,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@media screen and (min-width: 1000px) {
+  .page-container {
+    -ms-overflow-style: none;
+  }
+  .event-container {
+    max-width: 30%;
+  }
+  html {
+    border-style: none;
+    overflow-x: hidden;
+  }
+  img {
+    border-style: none;
+  }
+}
+
 .page-container {
   @include page-container-middle--scrollable;
 
