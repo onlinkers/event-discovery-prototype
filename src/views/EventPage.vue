@@ -10,17 +10,17 @@
     <!-- <ExploreBar /> -->
 
     <!-- event details -->
-    <div class="event-container" v-rellax="{ speed: 10 }">
+    <div v-rellax="{ speed: 10 }" class="event-container">
       <!-- gallery -->
       <div class="gallery">
         <div
-          class="image-container"
           v-for="(img, index) in activeImages"
           :key="`tag-${index}`"
+          class="image-container"
         >
           <img :src="img" alt />
         </div>
-        <div class="image-container" v-if="event.mediaLink.host.length > 3">
+        <div v-if="event.mediaLink.host.length > 3" class="image-container">
           <h4>+{{ event.mediaLink.host.length - 3 }}</h4>
         </div>
       </div>
@@ -28,9 +28,9 @@
       <!-- tags -->
       <div class="event-tags">
         <div
-          class="event-tags__tag"
           v-for="(tag, index) in activeTags"
           :key="`tag-${index}`"
+          class="event-tags__tag"
         >
           <h5>{{ tag }}</h5>
         </div>
@@ -127,9 +127,6 @@ export default {
 
 <style lang="scss" scoped>
 @media screen and (min-width: 1000px) {
-  .page-container {
-    -ms-overflow-style: none;
-  }
   .event-container {
     max-width: 30%;
   }
@@ -142,6 +139,7 @@ export default {
   }
 }
 
+/* MAIN DIV */
 .page-container {
   @include page-container-middle--scrollable;
 
@@ -149,14 +147,16 @@ export default {
     z-index: 1000;
   }
 
-  .gradient-overlay {
-    @include background-img-gradient(true);
-  }
-
+  /* BACKGROUND IMG */
   .background-img {
     @include background-img;
+
+    .gradient-overlay {
+      @include background-img-gradient(true);
+    }
   }
 
+  /* ALL EVENT DETAILS */
   .event-container {
     position: absolute;
     top: 30%;
