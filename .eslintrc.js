@@ -50,7 +50,7 @@ module.exports = {
     ],
     // Order in component attributes (default)
     "vue/attributes-order": [
-      "warning",
+      1,
       {
         order: [
           "DEFINITION",
