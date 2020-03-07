@@ -8,7 +8,6 @@
 <script>
 /* MAIN COMPONENTS */
 import Map from "@/components/map/Mapbox";
-import ExploreBar from "@/components/exploreBar";
 import SearchBar from "@/components/searchBar";
 
 /* EVENT DATA */

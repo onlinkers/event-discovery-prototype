@@ -6,11 +6,11 @@
       <img :src="event.mediaLink.cover" alt class="background-img" />
     </div>
 
-    <NavBtns v-bind="navOptions" />
+    <NavBtns v-bind="navOptions" class="nav-btns" />
     <!-- <ExploreBar /> -->
 
     <!-- event details -->
-    <div class="event-container">
+    <div class="event-container" v-rellax="{ speed: 10 }">
       <!-- gallery -->
       <div class="gallery">
         <div
@@ -55,12 +55,10 @@
       <div class="event-description">
         <h5>OVERVIEW</h5>
         <p v-if="snipped">{{ event.pub.description | snippet }}</p>
-        <p v-else>{{ event.pub.description | hardSnippet }}</p>
+        <p v-else>{{ event.pub.description }}</p>
         <h5 v-if="snipped" @click="snipped = false">Read More</h5>
+        <h5 v-else @click="snipped = true">See Less</h5>
       </div>
-    </div>
-    <div class="media-assets">
-      <img v-for="n in 3" :key="n.id" />
     </div>
   </div>
 </template>
@@ -129,7 +127,11 @@ export default {
 
 <style lang="scss" scoped>
 .page-container {
-  @include page-container-middle;
+  @include page-container-middle--scrollable;
+
+  .nav-btns {
+    z-index: 1000;
+  }
 
   .gradient-overlay {
     @include background-img-gradient(true);
@@ -141,11 +143,12 @@ export default {
 
   .event-container {
     position: absolute;
-    bottom: 15%;
-    z-index: 2;
+    top: 30%;
+    z-index: 10;
     width: 85%;
-    overflow-y: auto;
-    max-height: 70vh;
+    height: auto;
+    margin-bottom: 10vh;
+    // max-height: 70vh;
 
     /* IMAGE GALLERY */
     .gallery {
@@ -234,6 +237,10 @@ export default {
         margin-bottom: 1em;
       }
       p + h5 {
+        color: $primary-alt;
+      }
+
+      h5 + h5 {
         color: $primary-alt;
       }
     }
