@@ -126,6 +126,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/* DESKTOP */
 @media screen and (min-width: 1000px) {
   .event-container {
     max-width: 30%;
