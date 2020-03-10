@@ -5,8 +5,8 @@
         <img src="@/assets/icons/search.png" alt="">
       </div>
       <input
-        v-model="searchQuery"
         ref="autocomplete"
+        v-model="searchQuery"
         placeholder="Search events, locations, dates"
       >
     </div>

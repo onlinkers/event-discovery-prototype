@@ -1,6 +1,6 @@
 <template>
   <MglMarker :coordinates="coords" @click="emitNavigationEvent">
-    <div class="marker" slot="marker">
+    <div slot="marker" class="marker">
       <svg
         width="100%"
         viewBox="0 0 66 66"

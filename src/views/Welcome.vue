@@ -13,22 +13,22 @@
       <div class="auth">
         <v-form class="auth-form">
           <v-text-field
+            v-model="inputEmail"
             name="Email"
             label="E-mail"
             class="auth-input"
             clearable
             :rules="[rules.required, rules.email]"
-            v-model="inputEmail"
           />
         </v-form>
         <v-form class="auth-form">
           <v-text-field
+            v-model="inputPassword"
             name="Password"
             label="Password"
             class="auth-input"
             clearable
             :rules="[rules.required]"
-            v-model="inputPassword"
           />
         </v-form>
         <div class="alt-accounts">
