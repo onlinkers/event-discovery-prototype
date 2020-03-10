@@ -16,7 +16,7 @@
     />
 
     <!-- step 1 -->
-    <div class="step-1 step" v-if="$route.params.step === '0'">
+    <div v-if="$route.params.step === '0'" class="step-1 step">
       <img
         src="../assets/icons/event-initiation/hourglass-icon.svg"
         alt
@@ -37,22 +37,22 @@
           <!-- activates the menu which contains both date and time pickers -->
           <template v-slot:activator="{ on }">
             <textarea
+              v-model="eventDateTimeString"
               type="text"
-              v-on="on"
               placeholder="When should the event be held?"
               class="step-input"
-              v-model="eventDateTimeString"
+              v-on="on"
             />
           </template>
-          <v-date-picker v-model="eventDate" v-if="showDatePicker === true">
+          <v-date-picker v-if="showDatePicker === true" v-model="eventDate">
             <v-spacer />
             <v-btn color="primary" @click="saveDate(eventDate)">
               Save
             </v-btn>
           </v-date-picker>
           <v-time-picker
-            v-model="eventTime"
             v-if="showTimePicker === true && showDatePicker === false"
+            v-model="eventTime"
             ampm-in-title
           >
             <v-spacer />
@@ -68,8 +68,8 @@
       <div class="step-options">
         <div class="checkbox">
           <v-checkbox
-            label
             v-model="establishedEvent"
+            label
             value="value"
             color="primary"
           />
@@ -79,7 +79,7 @@
     </div>
 
     <!-- step 2 -->
-    <div class="step step-2" v-if="$route.params.step === '1'">
+    <div v-if="$route.params.step === '1'" class="step step-2">
       <img
         src="../assets/icons/event-initiation/bonfire-icon.svg"
         alt
@@ -89,10 +89,10 @@
         Event Title
       </h1>
       <textarea
+        v-model="eventTitle"
         type="text"
         placeholder="Give your event a title!"
         class="step-input"
-        v-model="eventTitle"
       />
       <div class="media">
         <img src="../assets/vectors/ticket-vector.svg" class="step-vector" />
@@ -100,7 +100,7 @@
     </div>
 
     <!-- step 3 -->
-    <div class="step step-3" v-if="$route.params.step === '2'">
+    <div v-if="$route.params.step === '2'" class="step step-3">
       <img
         src="../assets/icons/event-initiation/location-icon.svg"
         alt
@@ -110,10 +110,10 @@
         Event Location
       </h1>
       <textarea
+        v-model="eventLocation"
         type="text"
         placeholder="Where will the event be held?"
         class="step-input"
-        v-model="eventLocation"
       />
       <div class="media">
         <img src="../assets/vectors/location-vector.svg" class="step-vector" />
@@ -121,7 +121,7 @@
     </div>
 
     <!-- step 4 -->
-    <div class="step step-4" v-if="$route.params.step === '3'">
+    <div v-if="$route.params.step === '3'" class="step step-4">
       <img
         src="../assets/icons/event-initiation/chat-icon.svg"
         alt
@@ -131,10 +131,10 @@
         Event Description
       </h1>
       <textarea
+        v-model="eventDescription"
         type="text"
         placeholder="What is the event about?"
         class="step-input"
-        v-model="eventDescription"
       />
       <div class="media">
         <img src="../assets/vectors/chill-vector.svg" class="step-vector" />
@@ -142,7 +142,7 @@
     </div>
 
     <!-- step 4 -->
-    <div class="step step-5" v-if="$route.params.step === '4'">
+    <div v-if="$route.params.step === '4'" class="step step-5">
       <img
         src="../assets/icons/event-initiation/chat-icon.svg"
         alt
@@ -152,9 +152,9 @@
         Cover Image
       </h1>
       <v-file-input
+        v-model="coverImage"
         placeholder="Add a cover image!"
         class="step-input file-input"
-        v-model="coverImage"
         solo
         flat
         prepend-icon
