@@ -1,0 +1,22 @@
+@mixin page-container-middle {
+  // position: absolute;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+@mixin page-container-middle--scrollable {
+  @include page-container-middle;
+  height: auto;
+  min-height: 100vh;
+}
+
+@mixin flex-middle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

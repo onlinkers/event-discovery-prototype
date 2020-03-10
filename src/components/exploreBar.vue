@@ -8,25 +8,30 @@
         </router-link>
         <div class="nav-links">
           <router-link to="#" class="page-link">
-            <h3 :class="{'active-page': activePage === 'Dashboard'}">Dashboard</h3>
+            <h3 :class="{ 'active-page': activePage === 'Dashboard' }">
+              Dashboard
+            </h3>
           </router-link>
           <router-link to="/discover" class="page-link">
-            <h3 :class="{'active-page': activePage === 'Discover'}">Discover</h3>
+            <h3 :class="{ 'active-page': activePage === 'Discover' }">
+              Discover
+            </h3>
           </router-link>
           <router-link to="#" class="page-link">
-            <h3 :class="{'active-page': activePage === 'Moments'}">Moments</h3>
+            <h3 :class="{ 'active-page': activePage === 'Moments' }">
+              Moments
+            </h3>
           </router-link>
           <router-link to="/new" class="page-link">
-            <h3 :class="{'active-page': activePage === 'Create'}">Create</h3>
+            <h3 :class="{ 'active-page': activePage === 'Create' }">Create</h3>
           </router-link>
         </div>
         <v-btn
-          color="primary"
-          class="profile-icon"
-          fab
-          large
-          text
-        >
+color="primary"
+class="profile-icon"
+fab
+large
+text>
           <font-awesome-icon icon="user-circle" class="fa-2x" />
         </v-btn>
       </div>
@@ -42,18 +47,30 @@
       <div class="explore-bar-icons">
         <div class="left-icons icon-wrapper">
           <router-link to="/">
-            <img src="../assets/icons/mobile-explore-bar/home-outline.png" alt>
+            <img
+              src="../assets/icons/mobile-explore-bar/home-outline.png"
+              alt
+            />
           </router-link>
-          <router-link to="/">
-            <img src="../assets/icons/mobile-explore-bar/earth-outline.png" alt>
+          <router-link to="/discover">
+            <img
+              src="../assets/icons/mobile-explore-bar/earth-outline.png"
+              alt
+            />
           </router-link>
         </div>
         <div class="right-icons icon-wrapper">
           <router-link to="/">
-            <img src="../assets/icons/mobile-explore-bar/bulb-outline.png" alt>
+            <img
+              src="../assets/icons/mobile-explore-bar/bulb-outline.png"
+              alt
+            />
           </router-link>
           <router-link to="/">
-            <img src="../assets/icons/mobile-explore-bar/person-circle-outline.png" alt>
+            <img
+              src="../assets/icons/mobile-explore-bar/person-circle-outline.png"
+              alt
+            />
           </router-link>
         </div>
       </div>
@@ -71,14 +88,14 @@ export default {
   props: {
     currPageProp: {
       type: String,
-      default: 'none'
+      default: "none"
     }
   },
   data() {
     return {
       activePage: this.currPageProp
     };
-  },
+  }
 };
 </script>
 

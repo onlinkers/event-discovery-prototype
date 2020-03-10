@@ -1,52 +1,51 @@
 <template>
   <div class="map-components-wrapper">
     <Map @mapLoad="loadMap" />
-    <ExploreBar curr-page-prop="Discover" />
-    <SearchBar />  
+    <SearchBar />
   </div>
 </template>
 
 <script>
 /* MAIN COMPONENTS */
-import Map from '@/components/map/Mapbox'
-import ExploreBar from '@/components/exploreBar'
-import SearchBar from '@/components/searchBar'
+import Map from "@/components/map/Mapbox";
+import SearchBar from "@/components/searchBar";
 
 /* EVENT DATA */
-import events from '@/assets/js/eventData.js'
+import events from "@/assets/js/eventData.js";
 
 /* STYLES */
 
 export default {
-  name: 'Discover',
+  name: "Discover",
   components: {
     Map,
-    ExploreBar,
-    SearchBar,
+    SearchBar
   },
   data() {
     return {
       windowWidth: 0,
       windowHeight: 0,
       eventList: events,
-      mapLoaded: false,
-    }
+      mapLoaded: false
+    };
   },
   mounted() {
-    window.addEventListener('resize', () => {
+    window.addEventListener("resize", () => {
       this.windowWidth = window.innerWidth;
       this.windowHeight = window.innerHeight;
-    })
+    });
   },
   methods: {
     loadMap() {
-      setTimeout(() => { this.mapLoaded = true }, 2000);
-    },
+      setTimeout(() => {
+        this.mapLoaded = true;
+      }, 2000);
+    }
   }
 };
 </script>
 <style lang="scss" scoped>
-@import '@/assets/scss/variables.scss';
+@import "@/assets/scss/variables.scss";
 
 .background-blur {
   background: #fff;
@@ -56,7 +55,8 @@ export default {
   height: 100%;
   width: 100%;
 }
-.map-container, .map-components-wrapper {
+.map-container,
+.map-components-wrapper {
   display: block;
   position: absolute;
   width: 100vw;

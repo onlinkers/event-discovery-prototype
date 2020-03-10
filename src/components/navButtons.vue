@@ -45,16 +45,24 @@ export default {
   props: {
     topType: {
       type: String,
-      default: "default-light"
+      default: "default-dark"
     },
     botType: {
       type: String,
-      default: "default"
+      required: false
     },
-    maxStep: Number,
-    currStep: Number,
-
-    backRoute: String
+    maxStep: {
+      type: Number,
+      required: false
+    },
+    currStep: {
+      type: Number,
+      required: false
+    },
+    backRoute: {
+      type: String,
+      required: true
+    }
   },
   data() {
     return {};
@@ -84,8 +92,9 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   align-content: center;
-  z-index: 1000;
+
   a {
+    z-index: 1000;
     display: flex;
     align-items: center;
   }

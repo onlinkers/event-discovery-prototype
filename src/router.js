@@ -7,6 +7,7 @@ import Discover from "./views/Discover";
 
 /* FOR TESTING */
 // import eventInitiation from "./components/eventInitiation";
+import EventPage from "./views/EventPage.vue";
 import EventInitiation from "./views/EventInitiation.vue";
 
 Vue.use(Router);
@@ -29,6 +30,12 @@ const router = new Router({
       path: "/signup",
       name: "sign-up",
       component: SignUp
+    },
+    {
+      path: "/eventpage/:event:id",
+      name: "event-page",
+      component: EventPage,
+      props: true
     },
     {
       path: "/new",

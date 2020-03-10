@@ -1,0 +1,24 @@
+@mixin background-img-gradient($light-themed: true) {
+  position: absolute;
+  @if $light-themed {
+    background-image: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgb(255, 255, 255) 64.58%
+    );
+  } @else {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 73.05%);
+  }
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  z-index: 1;
+}
+
+@mixin background-img {
+  position: absolute;
+  object-fit: cover;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+}

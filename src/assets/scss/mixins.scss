@@ -1,8 +1,3 @@
-@mixin page-container-middle {
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
-}
+@import "./mixins/typography-mixins";
+@import "./mixins/media-mixins";
+@import "./mixins/alignment-mixins";

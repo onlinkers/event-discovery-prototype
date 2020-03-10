@@ -20,7 +20,7 @@ module.exports = {
     // Disable console logs on production branch
     "no-console": process.env.NODE_ENV === "prod" ? 2 : 1,
     "no-debugger": process.env.NODE_ENV === "prod" ? 2 : 1,
-    "no-unused-vars": process.env.NODE_ENV === "prod" ? 2 : 1,
+    "no-unused-vars": 1,
 
     // Order of component details (default)
     "vue/order-in-components": [
@@ -82,7 +82,7 @@ module.exports = {
     "vue/singleline-html-element-content-newline": 0,
     "vue/require-default-prop": 0,
     "vue/html-self-closing": [
-      "error",
+      1,
       {
         html: {
           void: "any"
