@@ -65,7 +65,6 @@
 
 <script lang="js">
 import NavBtns from "../components/navButtons";
-import ExploreBar from "../components/exploreBar";
 
 export default {
   components: {

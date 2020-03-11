@@ -1,23 +1,23 @@
 <template>
   <div>
     <!-- top nav buttons -->
-    <div class="top-nav-btns" v-show="topType === 'default-light'">
+    <div v-show="topType === 'default-light'" class="top-nav-btns">
       <router-link :to="backRoute">
         <img src="../assets/icons/arrow-left-light.svg" alt>
       </router-link>
     </div>
-    <div class="top-nav-btns" v-show="topType === 'default-dark'">
+    <div v-show="topType === 'default-dark'" class="top-nav-btns">
       <router-link :to="backRoute">
         <img src="../assets/icons/arrow-left-dark.svg" alt>
       </router-link>
     </div>
-    <div class="top-nav-btns" v-show="topType === 'share-light'">
+    <div v-show="topType === 'share-light'" class="top-nav-btns">
       <router-link :to="backRoute">
         <img src="../assets/icons/arrow-left-light.svg" alt>
       </router-link>
       <img src="../assets/icons/share-light.svg" alt>
     </div>
-    <div class="top-nav-btns" v-show="topType === 'share-dark'">
+    <div v-show="topType === 'share-dark'" class="top-nav-btns">
       <router-link :to="backRoute">
         <img src="../assets/icons/arrow-left-dark.svg" alt>
       </router-link>
@@ -25,16 +25,16 @@
     </div>
 
     <!-- bottom nav buttons -->
-    <div class="bot-nav-btns" v-show="botType === 'next-only'">
+    <div v-show="botType === 'next-only'" class="bot-nav-btns">
       <h5 @click="nextStep()">Next</h5>
     </div>
-    <div class="bot-nav-btns" v-show="botType === 'default'">
+    <div v-show="botType === 'default'" class="bot-nav-btns">
       <h5 @click="nextStep()">Next</h5>
       <h5 @click="prevStep()">Back</h5>
     </div>
-    <div class="bot-nav-btns" v-show="botType === 'default-confirm'">
-      <h5 @click="nextStep()" v-if="currStep !== maxStep">Next</h5>
-      <h5 @click="confirm()" v-else>Confirm</h5>
+    <div v-show="botType === 'default-confirm'" class="bot-nav-btns">
+      <h5 v-if="currStep !== maxStep" @click="nextStep()">Next</h5>
+      <h5 v-else @click="confirm()">Confirm</h5>
       <h5 @click="prevStep()">Back</h5>
     </div>
   </div>

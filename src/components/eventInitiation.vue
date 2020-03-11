@@ -36,19 +36,19 @@
           <div class="date-wrapper">
             <v-menu
               ref="calendarMenu"
+              v-model="showCalendar"
               max-width="290"
               :close-on-content-click="false"
               offset-y
-              v-model="showCalendar"
               :return-value.sync="eventDate"
             >
               <template v-slot:activator="{ on }">
                 <v-text-field
                   v-model="eventDate"
                   label="Date"
-                  v-on="on"
                   class="event-info-input event-date-input"
                   clearable
+                  v-on="on"
                 />
               </template>
               <v-date-picker v-model="eventDate">
