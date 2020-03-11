@@ -2,6 +2,9 @@
   <div class="map-components-wrapper">
     <Map @mapLoad="loadMap" />
     <SearchBar />
+    <mq-layout mq="desktop">
+      <ExploreBar />
+    </mq-layout>
   </div>
 </template>
 
@@ -9,6 +12,7 @@
 /* MAIN COMPONENTS */
 import Map from "@/components/map/Mapbox";
 import SearchBar from "@/components/searchBar";
+import ExploreBar from "../components/exploreBar";
 
 /* EVENT DATA */
 import events from "@/assets/js/eventData.js";
@@ -19,7 +23,8 @@ export default {
   name: "Discover",
   components: {
     Map,
-    SearchBar
+    SearchBar,
+    ExploreBar
   },
   data() {
     return {

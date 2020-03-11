@@ -32,7 +32,7 @@
           :key="`tag-${index}`"
           class="event-tags__tag"
         >
-          <h5>{{ tag }}</h5>
+          <h5>{{ tag | tagSnippet }}</h5>
         </div>
       </div>
 
@@ -54,7 +54,7 @@
       <!-- description -->
       <div class="event-description">
         <h5>OVERVIEW</h5>
-        <p v-if="snipped">{{ event.pub.description | snippet }}</p>
+        <p v-if="snipped">{{ event.pub.description | descriptionSnippet }}</p>
         <p v-else>{{ event.pub.description }}</p>
         <h5 v-if="snipped" @click="snipped = false">Read More</h5>
         <h5 v-else @click="snipped = true">See Less</h5>
@@ -72,16 +72,23 @@ export default {
     NavBtns,
   },
   filters: {
-    snippet(value) {
+    descriptionSnippet(value) {
       if (value.length > 150) {
         return value.slice(0, 150) + "...";
       } else {
         return value;
       }
     },
-    hardSnippet(value) {
+    descriptionHardSnippet(value) {
       if (value.length > 300) {
         return value.slice(0, 300) + "...";
+      } else {
+        return value;
+      }
+    },
+    tagSnippet(value) {
+      if (value.length > 8) {
+        return value.slice(0, 8) + "...";
       } else {
         return value;
       }
@@ -160,7 +167,7 @@ export default {
   /* ALL EVENT DETAILS */
   .event-container {
     position: absolute;
-    top: 30%;
+    top: 35%;
     z-index: 10;
     width: 85%;
     height: auto;
@@ -204,6 +211,7 @@ export default {
     .event-tags {
       display: flex;
       justify-content: flex-start;
+      overflow-x: hidden;
 
       .event-tags__tag {
         @include flex-middle;
@@ -216,6 +224,7 @@ export default {
 
         h5 {
           @include event-tag;
+          user-select: none;
         }
       }
     }
