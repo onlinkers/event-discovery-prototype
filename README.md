@@ -9,6 +9,7 @@ Some libraries used in this app:
 - Component Styles via `vuetify` and `bootstrap-vue`
 - Maps via `mapbox-gl` and `vue-mapbox`
 - Free Icons via `fortawesome`
+- HTTP Requests via `axios`
 
 ## Getting Started
 
@@ -55,11 +56,19 @@ A dotenv (`.env.local`) environmental file needs to be created at `root`
 
 > You can do this easily by copying and renaming `.env.default`
 
-### Components and Services
+### Components and Utilities
 
 Custom pages are located in `src/views`, while custom-created components are located in `src/components`
 
 Any miscellaneous functions are located in `src/utils`, where `src/utils/index.js` compiles all the functions and exports them for easy importing
+
+### API Requests and Services
+
+Throughout the application, service functions will be using `axios` to make HTTP requests to save/recieve data from the backend database. The axios client is initialized in the `src/api.js` folder, which is used to make different requests as used by the service files located in `src/services`.
+
+> Axios is used because of its advantage in handling JSON conversion, error responses, and compatibility with the Promise API introduced in ES6. 
+
+When a service is used, the function will return a promise, which can then be used dynamically by chaining with functions specified in `.then` and `.catch` calls
 
 ### Styles
 
