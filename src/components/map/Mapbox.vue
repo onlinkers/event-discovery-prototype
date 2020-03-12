@@ -63,12 +63,7 @@ export default {
     },
     navigateToEvent(event) {
       const { _id: id } = event;
-      this.$router.push({
-        name: "event-page",
-        params: {
-          id: id
-        }
-      });
+      this.$router.push({ path: `/eventpage/${id}` });
     }
   }
 };

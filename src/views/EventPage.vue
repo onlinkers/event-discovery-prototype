@@ -3,7 +3,7 @@
     <!-- background img -->
     <div class="background-img">
       <div class="gradient-overlay" />
-      <img :src="event.mediaLink.cover" alt class="background-img" />
+      <img :src="backgroundImg" alt class="background-img" />
     </div>
 
     <NavBtns v-bind="navOptions" class="nav-btns" />
@@ -20,8 +20,8 @@
         >
           <img :src="img" alt />
         </div>
-        <div v-if="event.mediaLink.host.length > 3" class="image-container">
-          <h4>+{{ event.mediaLink.host.length - 3 }}</h4>
+        <div v-if="numPhotos > 3" class="image-container">
+          <h4>+{{ numPhotos }}</h4>
         </div>
       </div>
 
@@ -37,25 +37,25 @@
       </div>
 
       <!-- title -->
-      <h1>{{ event.pub.name }}</h1>
+      <h1>{{ eventName }}</h1>
 
       <!-- details -->
       <div class="event-details">
         <div class="event-details__detail event-location">
           <img src="../assets/icons/event-page/location.svg" alt />
-          <h5>{{ event.pub.venue }}</h5>
+          <h5>{{ venueName }}</h5>
         </div>
         <div class="event-details__detail event-date">
           <img src="../assets/icons/event-page/hourglass.svg" alt="" />
-          <h5>{{ event.pub.date }}</h5>
+          <h5>{{ startDate }}</h5>
         </div>
       </div>
 
       <!-- description -->
       <div class="event-description">
         <h5>OVERVIEW</h5>
-        <p v-if="snipped">{{ event.pub.description | snippet }}</p>
-        <p v-else>{{ event.pub.description }}</p>
+        <p v-if="snipped">{{ description | snippet }}</p>
+        <p v-else>{{ description }}</p>
         <h5 v-if="snipped" @click="snipped = false">Read More</h5>
         <h5 v-else @click="snipped = true">See Less</h5>
       </div>
@@ -65,6 +65,7 @@
 
 <script lang="js">
 import NavBtns from "../components/navButtons";
+import { mapActions, mapState } from "vuex";
 
 export default {
   components: {
@@ -86,9 +87,6 @@ export default {
       }
     }
   },
-  props: {
-    event: Object,
-  },
   data() {
     return {
       // navigation component options
@@ -96,12 +94,24 @@ export default {
         topType: 'share-light',
         backRoute: '/discover'
       },
-      snipped: true
+      snipped: true,
+
+      backgroundImg: null,
+      numPhotos: 0,
+      imageList: [],
+      tags: [],
+      eventName: '',
+      venueName: '',
+      startDate: '',
+      description: '',
     };
   },
   computed: {
+    ...mapState('events', {
+      event: state => state.local
+    }),
     activeTags() {
-      const tagList = this.event.eventTags.host.filter(tag => {
+      const tagList = this.tags.filter(tag => {
         return tag !== '';
       });
       if (tagList.length > 3) {
@@ -111,15 +121,29 @@ export default {
       }
     },
     activeImages() {
-      const imageList = this.event.mediaLink.host;
-      if (imageList.length > 3) {
-        return imageList.slice(0, 3);
+      if (this.imageList.length > 3) {
+        return this.imageList.slice(0, 3);
       } else {
-        return imageList;
+        return this.imageList;
       }
-    }
+    },
+  },
+  created() {
+    this.queryLocalEvent(this.$route.params.eventId)
+    .then(() => {
+      this.backgroundImg = this.event.media.coverPhoto.baseSrc
+      this.numPhotos = this.event.media.hostPhotos.length + this.event.media.userPhotos.length
+      this.imageList = [ ...this.event.media.hostPhotos, ...this.event.media.userPhotos ]
+      this.tags = this.event.tags.hostTags
+      this.eventName = this.event.name
+      this.startDate = this.event.startDate
+      this.description = this.event.description
+    })
   },
   methods: {
+    ...mapActions('events', [
+      'queryLocalEvent'
+    ]),
   }
 };
 </script>
