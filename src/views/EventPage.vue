@@ -2,7 +2,8 @@
   <div class="page-container">
     <!-- background img -->
     <div class="background-img">
-      <div class="gradient-overlay" />
+      <!-- TODO: create a copy for a dark overlay -->
+      <div class="light-gradient-overlay" />
       <img :src="event.mediaLink.cover" alt class="background-img" />
     </div>
 
@@ -38,6 +39,7 @@
 
       <!-- title -->
       <h1>{{ event.pub.name }}</h1>
+      <!-- TODO: create a copy for dark overlay -->
 
       <!-- details -->
       <div class="event-details">
@@ -58,6 +60,7 @@
         <p v-else>{{ event.pub.description }}</p>
         <h5 v-if="snipped" @click="snipped = false">Read More</h5>
         <h5 v-else @click="snipped = true">See Less</h5>
+        <!-- TODO: create copies for dark overlay -->
       </div>
     </div>
   </div>
@@ -129,6 +132,12 @@ export default {
     }
   },
   created() {
+    /* change navButtons to dark if no picture in event */
+    if (this.eventProp.mediaLink.cover === "") {
+      this.navOptions.topType = 'share-dark';
+    }
+
+
     /* TODO: get event from API call instead of passing an object as a prop */
     // if (this.eventProp != undefined) {
     //   this.event = this.eventProp;
@@ -172,7 +181,7 @@ export default {
   .background-img {
     @include background-img;
 
-    .gradient-overlay {
+    .light-gradient-overlay {
       @include background-img-gradient(true);
     }
   }

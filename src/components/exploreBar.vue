@@ -6,24 +6,26 @@
         <router-link class="logo" to="/">
           <h1>LINK-LINK</h1>
         </router-link>
-        <div class="nav-links">
+        <div class="page-links">
           <router-link to="/" class="page-link">
-            <h3 :class="{ 'active-page': activePage === 'Dashboard' }">
+            <h3 :class="{ 'page-link--active': activePage === 'dashboard' }">
               Dashboard
             </h3>
           </router-link>
           <router-link to="/discover" class="page-link">
-            <h3 :class="{ 'active-page': activePage === 'Discover' }">
+            <h3 :class="{ 'page-link--active': activePage === 'discover' }">
               Discover
             </h3>
           </router-link>
           <router-link to="#" class="page-link">
-            <h3 :class="{ 'active-page': activePage === 'Moments' }">
+            <h3 :class="{ 'page-link--active': activePage === 'moments' }">
               Moments
             </h3>
           </router-link>
           <router-link to="/new" class="page-link">
-            <h3 :class="{ 'active-page': activePage === 'Create' }">Create</h3>
+            <h3 :class="{ 'page-link--active': activePage === 'create' }">
+              Create
+            </h3>
           </router-link>
         </div>
         <v-btn
@@ -51,7 +53,7 @@ text>
                 src="../assets/icons/mobile-explore-bar/home-outline.png"
                 alt
                 class="icon"
-                :class="{ 'icon--active': currPage.name === 'dashboard' }"
+                :class="{ 'icon--active': activePage === 'dashboard' }"
               />
             </router-link>
             <router-link to="/discover">
@@ -59,7 +61,7 @@ text>
                 src="../assets/icons/mobile-explore-bar/earth-outline.png"
                 alt
                 class="icon"
-                :class="{ 'icon--active': currPage.name === 'discover' }"
+                :class="{ 'icon--active': activePage === 'discover' }"
               />
             </router-link>
           </div>
@@ -69,7 +71,7 @@ text>
                 src="../assets/icons/mobile-explore-bar/bulb-outline.png"
                 alt
                 class="icon"
-                :class="{ 'icon--active': currPage.name === 'ideas' }"
+                :class="{ 'icon--active': activePage === 'ideas' }"
               />
             </router-link>
             <router-link to="/">
@@ -77,7 +79,7 @@ text>
                 src="../assets/icons/mobile-explore-bar/person-circle-outline.png"
                 alt
                 class="icon"
-                :class="{ 'icon--active': currPage.name === 'profile' }"
+                :class="{ 'icon--active': activePage === 'profile' }"
               />
             </router-link>
           </div>
@@ -95,16 +97,21 @@ export default {
     Eclipse
   },
   props: {
-    currPage: {
+    currPageProp: {
       type: Object,
-      required: false,
-      default: null
+      required: false
     }
   },
   data() {
     return {
-      activePage: this.currPageProp
+      activePage: ""
     };
+  },
+  created() {
+    // if (this.currPageProp) {
+    //   this.activePage = this.currPageProp.name;
+    // }
+    this.activePage = this.$route.name;
   }
 };
 </script>
@@ -120,6 +127,53 @@ export default {
     position: fixed;
     top: 0;
     width: 100%;
+    height: 10vh;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2%;
+    text-decoration: none;
+
+    .logo {
+      text-decoration: none;
+      color: $primary-alt;
+      font-family: $text-secondary;
+      font-weight: 700;
+    }
+
+    .page-links {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      .page-link {
+        font-family: $text-secondary;
+        font-weight: 700;
+        font-size: 1em;
+        text-decoration: none;
+        color: $secondary;
+        padding: 0 5%;
+      }
+
+      .page-link--active {
+        color: $primary-alt !important;
+        &::after {
+          content: "";
+          position: relative;
+          display: block;
+          height: 2px;
+          bottom: 30%;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 100%;
+          background: $primary;
+          transition: all 0.5s;
+        }
+      }
+    }
   }
 
   /* MOBILE */
