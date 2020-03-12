@@ -65,7 +65,7 @@ export default {
       this.$router.push({
         name: "event-page",
         params: {
-          event: event,
+          eventProp: event,
           id: id
         }
       });

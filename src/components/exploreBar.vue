@@ -44,7 +44,6 @@ text>
           <Eclipse />
         </div>
 
-        <!-- these icons only show up on mobile -->
         <div class="navbar-icons">
           <div class="left-icons icons-wrapper">
             <router-link to="/">
@@ -120,6 +119,7 @@ export default {
   .desktop-navbar {
     position: fixed;
     top: 0;
+    width: 100%;
   }
 
   /* MOBILE */

@@ -32,7 +32,7 @@
           :key="`tag-${index}`"
           class="event-tags__tag"
         >
-          <h5>{{ tag | tagSnippet }}</h5>
+          <h5>{{ tag }}</h5>
         </div>
       </div>
 
@@ -94,16 +94,18 @@ export default {
     }
   },
   props: {
-    event: Object,
+    eventProp: Object,
   },
   data() {
     return {
-      // navigation component options
+      event: this.eventProp,
+      snipped: true,
+
+      /* navButtons options */
       navOptions: {
         topType: 'share-light',
         backRoute: '/discover'
       },
-      snipped: true
     };
   },
   computed: {
@@ -125,6 +127,18 @@ export default {
         return imageList;
       }
     }
+  },
+  created() {
+    /* TODO: get event from API call instead of passing an object as a prop */
+    // if (this.eventProp != undefined) {
+    //   this.event = this.eventProp;
+    // } else {
+    //   const fetchedEvent = eventData.filter(event => {
+    //     return event.priv.id === this.$route.params.id;
+    //   });
+    //   this.event = fetchedEvent;
+    // }
+    /* ------------ */
   },
   methods: {
   }
@@ -210,7 +224,13 @@ export default {
     .event-tags {
       display: flex;
       justify-content: flex-start;
-      overflow-x: hidden;
+      overflow-x: scroll;
+      white-space: nowrap;
+      -ms-overflow-style: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
 
       .event-tags__tag {
         @include flex-middle;
