@@ -131,13 +131,16 @@ export default {
   created() {
     this.queryLocalEvent(this.$route.params.eventId)
     .then(() => {
+      // Import queried events into data
+      this.eventName = this.event.name
+      this.description = this.event.description
+      this.startDate = this.event.startDate
+      this.venueName = this.event.venue.name
+      this.tags = this.event.tags.hostTags
+
       this.backgroundImg = this.event.media.coverPhoto.baseSrc
       this.numPhotos = this.event.media.hostPhotos.length + this.event.media.userPhotos.length
       this.imageList = [ ...this.event.media.hostPhotos, ...this.event.media.userPhotos ]
-      this.tags = this.event.tags.hostTags
-      this.eventName = this.event.name
-      this.startDate = this.event.startDate
-      this.description = this.event.description
     })
   },
   methods: {
