@@ -1,15 +1,15 @@
 <template>
   <div class="page-container">
     <!-- loaded contents || TODO: create skeleton screen -->
+
     <div v-if="loadedContents" class="loaded-screen">
       <!-- background img -->
-      <div class="background-img">
+      <div v-rellax="{ speed: 5 }" class="background-img">
         <!-- TODO: create a copy for a dark overlay -->
         <div class="light-gradient-overlay" />
         <img :src="event.mediaLink.cover" alt class="background-img" />
       </div>
 
-      <NavBtns v-bind="navOptions" class="nav-btns" />
       <!-- <ExploreBar /> -->
 
       <!-- event details -->
@@ -66,6 +66,7 @@
         </div>
       </div>
     </div>
+    <NavBtns v-bind="navOptions" class="nav-btns" />
   </div>
 </template>
 
@@ -117,6 +118,12 @@ export default {
     };
   },
   computed: {
+    eventRefresh() {
+      const fetchedEvent = eventData.default.find(event => {
+        return event.priv.id.toString() === this.$route.params.id;
+      });
+      return fetchedEvent;
+    },
     activeTags() {
       const tagList = this.event.eventTags.host.filter(tag => {
         return tag !== '';
@@ -141,18 +148,23 @@ export default {
   },
   mounted() {
     /* TODO: get event from API call instead of passing an object as a prop */
-    const fetchedEvent = eventData.default.find(event => {
-      return event.priv.id.toString() === this.$route.params.id;
-    });
-    this.event = fetchedEvent;
-    /* ------------ */
+    if (this.eventProp) {
+      this.loadedContents = true;
+    } else {
+      const fetchedEvent = eventData.default.find(event => {
+        return event.priv.id.toString() === this.$route.params.id;
+      });
+      this.event = fetchedEvent;
+      /* ------------ */
 
-    if (this.event.mediaLink.cover === "") {
-      this.navOptions.topType = 'share-dark';
+      if (this.event.mediaLink.cover === "") {
+        this.navOptions.topType = 'share-dark';
+      }
+
+      /* TODO: show skeleton screen before this */
+      this.loadedContents = true;
     }
 
-    /* TODO: show skeleton screen before this */
-    this.loadedContents = true;
   },
   methods: {
   }
@@ -176,6 +188,8 @@ export default {
 
 /* MAIN DIV */
 .page-container {
+  height: auto;
+
   .loaded-screen {
     @include page-container-middle--scrollable;
   }
