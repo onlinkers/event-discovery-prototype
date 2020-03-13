@@ -1,66 +1,69 @@
 <template>
   <div class="page-container">
-    <!-- background img -->
-    <div class="background-img">
-      <!-- TODO: create a copy for a dark overlay -->
-      <div class="light-gradient-overlay" />
-      <img :src="event.mediaLink.cover" alt class="background-img" />
-    </div>
-
-    <NavBtns v-bind="navOptions" class="nav-btns" />
-    <!-- <ExploreBar /> -->
-
-    <!-- event details -->
-    <div v-rellax="{ speed: 10 }" class="event-container">
-      <!-- gallery -->
-      <div class="gallery">
-        <div
-          v-for="(img, index) in activeImages"
-          :key="`tag-${index}`"
-          class="image-container"
-        >
-          <img :src="img" alt />
-        </div>
-        <div v-if="event.mediaLink.host.length > 3" class="image-container">
-          <h4>+{{ event.mediaLink.host.length - 3 }}</h4>
-        </div>
+    <!-- loaded contents || TODO: create skeleton screen -->
+    <div v-if="loadedContents" class="loaded-screen">
+      <!-- background img -->
+      <div class="background-img">
+        <!-- TODO: create a copy for a dark overlay -->
+        <div class="light-gradient-overlay" />
+        <img :src="event.mediaLink.cover" alt class="background-img" />
       </div>
 
-      <!-- tags -->
-      <div class="event-tags">
-        <div
-          v-for="(tag, index) in activeTags"
-          :key="`tag-${index}`"
-          class="event-tags__tag"
-        >
-          <h5>{{ tag }}</h5>
-        </div>
-      </div>
+      <NavBtns v-bind="navOptions" class="nav-btns" />
+      <!-- <ExploreBar /> -->
 
-      <!-- title -->
-      <h1>{{ event.pub.name }}</h1>
-      <!-- TODO: create a copy for dark overlay -->
-
-      <!-- details -->
-      <div class="event-details">
-        <div class="event-details__detail event-location">
-          <img src="../assets/icons/event-page/location.svg" alt />
-          <h5>{{ event.pub.venue }}</h5>
+      <!-- event details -->
+      <div v-rellax="{ speed: 10 }" class="event-container">
+        <!-- gallery -->
+        <div class="gallery">
+          <div
+            v-for="(img, index) in activeImages"
+            :key="`tag-${index}`"
+            class="image-container"
+          >
+            <img :src="img" alt />
+          </div>
+          <div v-if="event.mediaLink.host.length > 3" class="image-container">
+            <h4>+{{ event.mediaLink.host.length - 3 }}</h4>
+          </div>
         </div>
-        <div class="event-details__detail event-date">
-          <img src="../assets/icons/event-page/hourglass.svg" alt="" />
-          <h5>{{ event.pub.date }}</h5>
-        </div>
-      </div>
 
-      <!-- description -->
-      <div class="event-description">
-        <h5>OVERVIEW</h5>
-        <p v-if="snipped">{{ event.pub.description | descriptionSnippet }}</p>
-        <p v-else>{{ event.pub.description }}</p>
-        <h5 v-if="snipped" @click="snipped = false">Read More</h5>
-        <h5 v-else @click="snipped = true">See Less</h5>
-        <!-- TODO: create copies for dark overlay -->
+        <!-- tags -->
+        <div class="event-tags">
+          <div
+            v-for="(tag, index) in activeTags"
+            :key="`tag-${index}`"
+            class="event-tags__tag"
+          >
+            <h5>{{ tag }}</h5>
+          </div>
+        </div>
+
+        <!-- title -->
+        <h1>{{ event.pub.name }}</h1>
+        <!-- TODO: create a copy for dark overlay -->
+
+        <!-- details -->
+        <div class="event-details">
+          <div class="event-details__detail event-location">
+            <img src="../assets/icons/event-page/location.svg" alt />
+            <h5>{{ event.pub.venue }}</h5>
+          </div>
+          <div class="event-details__detail event-date">
+            <img src="../assets/icons/event-page/hourglass.svg" alt="" />
+            <h5>{{ event.pub.date }}</h5>
+          </div>
+        </div>
+
+        <!-- description -->
+        <div class="event-description">
+          <h5>OVERVIEW</h5>
+          <p v-if="snipped">{{ event.pub.description | descriptionSnippet }}</p>
+          <p v-else>{{ event.pub.description }}</p>
+          <h5 v-if="snipped" @click="snipped = false">Read More</h5>
+          <h5 v-else @click="snipped = true">See Less</h5>
+          <!-- TODO: create copies for dark overlay -->
+        </div>
       </div>
     </div>
   </div>
@@ -68,6 +71,7 @@
 
 <script lang="js">
 import NavBtns from "../components/navButtons";
+import * as eventData from "../assets/js/eventData.js";
 
 export default {
   components: {
@@ -103,12 +107,13 @@ export default {
     return {
       event: this.eventProp,
       snipped: true,
-
       /* navButtons options */
       navOptions: {
         topType: 'share-light',
         backRoute: '/discover'
       },
+
+      loadedContents: false
     };
   },
   computed: {
@@ -133,21 +138,21 @@ export default {
   },
   created() {
     /* change navButtons to dark if no picture in event */
-    if (this.eventProp.mediaLink.cover === "") {
+  },
+  mounted() {
+    /* TODO: get event from API call instead of passing an object as a prop */
+    const fetchedEvent = eventData.default.find(event => {
+      return event.priv.id.toString() === this.$route.params.id;
+    });
+    this.event = fetchedEvent;
+    /* ------------ */
+
+    if (this.event.mediaLink.cover === "") {
       this.navOptions.topType = 'share-dark';
     }
 
-
-    /* TODO: get event from API call instead of passing an object as a prop */
-    // if (this.eventProp != undefined) {
-    //   this.event = this.eventProp;
-    // } else {
-    //   const fetchedEvent = eventData.filter(event => {
-    //     return event.priv.id === this.$route.params.id;
-    //   });
-    //   this.event = fetchedEvent;
-    // }
-    /* ------------ */
+    /* TODO: show skeleton screen before this */
+    this.loadedContents = true;
   },
   methods: {
   }
@@ -171,7 +176,9 @@ export default {
 
 /* MAIN DIV */
 .page-container {
-  @include page-container-middle--scrollable;
+  .loaded-screen {
+    @include page-container-middle--scrollable;
+  }
 
   .nav-btns {
     z-index: 1000;
