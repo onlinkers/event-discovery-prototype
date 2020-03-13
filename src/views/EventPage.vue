@@ -18,7 +18,7 @@
           :key="`tag-${index}`"
           class="image-container"
         >
-          <img :src="img" alt />
+          <img :src="img.baseSrc" alt />
         </div>
         <div v-if="numPhotos > 3" class="image-container">
           <h4>+{{ numPhotos }}</h4>
