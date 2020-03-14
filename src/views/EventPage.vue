@@ -189,6 +189,7 @@ export default {
 /* MAIN DIV */
 .page-container {
   height: auto;
+  overflow-y: scroll;
 
   .loaded-screen {
     @include page-container-middle--scrollable;
