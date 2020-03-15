@@ -155,7 +155,7 @@ export default {
         font-size: 1em;
         text-decoration: none;
         color: $secondary;
-        padding: 0 5%;
+        margin: 0 5%;
       }
 
       .page-link--active {
