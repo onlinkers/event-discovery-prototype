@@ -6,7 +6,7 @@ ONLINKERS' Event Web Application
 Some libraries used in this app:
 - Router via `vue-router`
 - Storage Management via `vuex`
-- Component Styles via `vuetify` and `bootstrap-vue`
+- Component Styles via `vuetify`
 - Maps via `mapbox-gl` and `vue-mapbox`
 - Free Icons via `fortawesome`
 - HTTP Requests via `axios`
