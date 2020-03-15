@@ -7,7 +7,7 @@ const options = {
     error: {
         type : 'error',
         position: 'top-center',
-        duration: 30000,
+        duration: 1500,
         keepOnHover: true,
         theme: 'toasted-primary',
         iconPack: 'fontawesome',

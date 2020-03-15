@@ -16,9 +16,9 @@
       </svg>
       <img
         class="marker__image"
-        :src="imgSrc"
-        :alt="imgKey"
-        @error="imgAltSrc" />
+        :src="imageSrc"
+        :alt="imageKey"
+        @error="imageAltSrc" />
     </div>
     <MglPopup
       ><div>{{ name }}</div></MglPopup
@@ -47,8 +47,13 @@ export default {
     coords: Array,
     imgSrc: String
   },
+  data() {
+    return {
+      imageSrc: this.imgSrc
+    }
+  },
   computed: {
-    imgKey: function() {
+    imageKey: function() {
       return (
         "image-" +
         this.name
@@ -62,8 +67,8 @@ export default {
     emitNavigationEvent() {
       this.$emit("navigate");
     },
-    imgAltSrc() {
-      this.imgSrc = require("@/assets/media/no-image-default.png")
+    imageAltSrc() {
+      this.imageSrc = require("@/assets/media/no-image-default.png")
     }
   }
 };
