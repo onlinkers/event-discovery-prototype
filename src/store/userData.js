@@ -1,4 +1,5 @@
 import userService from '../services/userService'
+import Vue from 'vue'
 
 const userData = {
     namespaced: true,
@@ -16,8 +17,9 @@ const userData = {
                 commit('setUserData', data.data)
             })
             .catch((err) => {
-                //TODO: Need to use error handlers (popups or something) here
-                console.error(err)
+                Vue.toasted.global.errorMessage({
+                    message: err
+                })
             })
         }
     }

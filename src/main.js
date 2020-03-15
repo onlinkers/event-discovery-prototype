@@ -14,6 +14,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import vuetify from "./plugins/vuetify";
 import VueMq from "vue-mq";
 import VueRellax from "vue-rellax";
+import toasted from "./plugins/toasted";
 
 Vue.use(VueMq, {
   breakpoints: {
@@ -33,5 +34,6 @@ new Vue({
   router,
   store,
   vuetify,
+  toasted,
   render: h => h(App)
 }).$mount("#app");

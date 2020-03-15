@@ -1,4 +1,5 @@
 import eventService from '../services/eventService'
+import Vue from 'vue'
 
 const events = {
     namespaced: true,
@@ -22,8 +23,9 @@ const events = {
                 commit('setGeneralEvents', data.data)
             })
             .catch((err) => {
-                //TODO: Need to use error handlers (popups or something) here
-                console.error(err)
+                Vue.toasted.global.errorMessage({
+                    message: err
+                })
             })
         },
         queryLocalEvent({ commit }, id) {
@@ -32,8 +34,9 @@ const events = {
                 commit('setLocalEvent', data.data)
             })
             .catch((err) => {
-                //TODO: Need to use error handlers (popups or something) here
-                console.error(err)
+                Vue.toasted.global.errorMessage({
+                    message: err
+                })
             })
         }
     }

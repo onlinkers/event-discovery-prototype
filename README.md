@@ -10,6 +10,7 @@ Some libraries used in this app:
 - Maps via `mapbox-gl` and `vue-mapbox`
 - Free Icons via `fortawesome`
 - HTTP Requests via `axios`
+- Error Popups vis `vue-toasted`
 
 ## Getting Started
 

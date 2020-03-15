@@ -74,7 +74,7 @@ export default {
       inputPassword: '',
       rules: rules,
     }
-  }
+  },
 }
 </script>
 <style lang="scss">
