@@ -7,22 +7,25 @@ const options = {
     error: {
         type : 'error',
         position: 'top-center',
-        duration: 1500,
+        duration: 30000,
         keepOnHover: true,
         theme: 'toasted-primary',
+        iconPack: 'fontawesome',
+        icon: 'exclamation-triangle',
+        className: 'error-message'
     }
 };
 
-Vue.toasted.register('errorMessage',
+export default Vue.toasted.register('errorMessage',
     (payload) => {
 		
         // if there is no message passed show default message
         if(! payload.message) {
-    	    return "Error: something Went wrong!"
+    	    return "&nbsp;&nbsp;Error: something Went wrong!"
         }
 		
         // if there is a message show it with the message
-        return payload.message
+        return `&nbsp;&nbsp;${payload.message}`
     },
     options.error
 )
