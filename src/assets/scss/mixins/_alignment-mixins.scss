@@ -1,6 +1,6 @@
 @mixin page-container-middle {
-  // position: absolute;
-  overflow-y: scroll;
+  position: absolute;
+  // overflow-y: scroll;
   display: flex;
   flex-direction: column;
   justify-content: center;

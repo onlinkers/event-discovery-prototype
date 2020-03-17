@@ -183,6 +183,7 @@ export default {
     width: 100%;
     background-color: white;
     height: 8vh;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
 
     .main-icon {
       bottom: 8vh;
