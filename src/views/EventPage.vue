@@ -12,7 +12,7 @@
     <!-- <ExploreBar /> -->
 
     <!-- event details -->
-    <div v-rellax="{ speed: 10 }" class="event-container">
+    <div v-rellax="{ speed: 5 }" class="event-container">
       <!-- gallery -->
       <div class="gallery">
         <div v-for="(img, index) in activeImages" :key="`tag-${index}`" class="image-container">
@@ -31,7 +31,9 @@
       </div>
 
       <!-- title -->
-      <h1>{{ event.pub.name }}</h1>
+      <div class="title-container">
+        <h1>{{ event.pub.name }}</h1>
+      </div>
       <!-- TODO: create a copy for dark overlay -->
 
       <!-- details -->
@@ -69,15 +71,15 @@ export default {
   },
   filters: {
     descriptionSnippet(value) {
-      if (value.length > 150) {
-        return value.slice(0, 150) + "...";
+      if (value.length > 300) {
+        return value.slice(0, 300) + "...";
       } else {
         return value;
       }
     },
     descriptionHardSnippet(value) {
-      if (value.length > 300) {
-        return value.slice(0, 300) + "...";
+      if (value.length > 450) {
+        return value.slice(0, 450) + "...";
       } else {
         return value;
       }
@@ -232,9 +234,11 @@ export default {
     .event-tags {
       display: flex;
       justify-content: flex-start;
-      overflow-x: scroll;
-      white-space: nowrap;
-      -ms-overflow-style: none;
+      overflow-x: hidden;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      // white-space: nowrap;
+      // -ms-overflow-style: none;
 
       &::-webkit-scrollbar {
         display: none;
@@ -247,7 +251,7 @@ export default {
         height: 2.5em;
         // width: auto;
         padding: 0 1.5em 0;
-        margin: 0 1em 0 0;
+        margin: 0 1em 1em 0;
 
         h5 {
           @include event-tag;
@@ -257,8 +261,12 @@ export default {
     }
 
     /* TITLE */
-    h1 {
-      @include title-serif-dark;
+    .title-container {
+      h1 {
+        @include title-serif-dark;
+        // display: inline;
+        font-size: clamp(1.5em, 8vw, 3.5em);
+      }
     }
 
     /* DATE & LOCATION */

@@ -8,24 +8,16 @@
         </router-link>
         <div class="page-links">
           <router-link to="/" class="page-link">
-            <h3 :class="{ 'page-link--active': activePage === 'dashboard' }">
-              Dashboard
-            </h3>
+            <h3 :class="{ 'page-link--active': activePage === 'dashboard' }">Dashboard</h3>
           </router-link>
           <router-link to="/discover" class="page-link">
-            <h3 :class="{ 'page-link--active': activePage === 'discover' }">
-              Discover
-            </h3>
+            <h3 :class="{ 'page-link--active': activePage === 'discover' }">Discover</h3>
           </router-link>
           <router-link to="#" class="page-link">
-            <h3 :class="{ 'page-link--active': activePage === 'moments' }">
-              Moments
-            </h3>
+            <h3 :class="{ 'page-link--active': activePage === 'moments' }">Moments</h3>
           </router-link>
           <router-link to="/new" class="page-link">
-            <h3 :class="{ 'page-link--active': activePage === 'create' }">
-              Create
-            </h3>
+            <h3 :class="{ 'page-link--active': activePage === 'create' }">Create</h3>
           </router-link>
         </div>
         <v-btn
@@ -242,119 +234,4 @@ export default {
     }
   }
 }
-
-// .active-page {
-//   color: $primary !important;
-// }
-// .active-page::after {
-//   position: relative;
-//   display: block;
-//   content: "";
-//   height: 2px;
-//   bottom: 30%;
-//   width: 100%;
-//   background: $primary;
-//   transition: opacity 0.5s;
-// }
-// .explore-bar-wrapper {
-//   position: fixed;
-//   font-size: 1.5em;
-//   bottom: 0;
-//   width: 100%;
-//   .navbar {
-//     position: fixed;
-//     top: 0;
-//     min-height: 10vh;
-//     background-color: white;
-//     width: 100%;
-//     display: flex;
-//     flex-grow: 1;
-//     align-items: center;
-//     justify-content: space-between;
-//     .logo {
-//       font-family: "Nunito", sans-serif;
-//       text-decoration: none;
-//       align-items: center;
-//       white-space: nowrap;
-//       margin: 0 2%;
-//       h1 {
-//         color: $primary;
-//         font-size: 1.5em;
-//         font-weight: 900;
-//       }
-//     }
-//     .nav-links {
-//       display: flex;
-//       flex-direction: row;
-//       flex-grow: 1;
-//       justify-content: space-evenly;
-//       max-width: 50em;
-//     }
-//     .page-link {
-//       text-decoration: none;
-//       font-family: "Nunito", sans-serif;
-//       h3 {
-//         color: $secondary;
-//         font-weight: 600;
-//         font-size: 1em;
-//       }
-//     }
-//     .profile-icon {
-//       margin-right: 1em;
-//     }
-//   }
-//   .explore-window__button {
-//     bottom: 8vh;
-//     display: flex;
-//     flex-direction: column;
-//     left: 50%;
-//     align-items: center;
-//     position: absolute;
-//     transform: translate(-50%, 50%);
-//     .explore-window__button-icon {
-//       width: 4em;
-//       height: 4em;
-//       cursor: pointer;
-//       g circle {
-//         fill: blue;
-//         fill-opacity: 0.65;
-//         transition: all 0.3s;
-//       }
-//       &:hover {
-//         g circle {
-//           fill-opacity: 0.85;
-//         }
-//       }
-//     }
-//   }
-//   .explore-bar-icons {
-//     background: white;
-//     flex-grow: 1;
-//     display: flex;
-//     .icon-wrapper {
-//       display: flex;
-//       flex-direction: row;
-//       justify-content: space-around;
-//       align-items: center;
-//       width: 40vw;
-//       height: 100%;
-//       margin-top: 0.5em;
-//       margin-bottom: 0.5em;
-
-//       img {
-//         max-width: 2em;
-//         margin-left: 1em;
-//         margin-right: 1em;
-//       }
-//     }
-
-//     .left-icons {
-//       margin-right: 10vw;
-//     }
-
-//     .right-icons {
-//       margin-left: 10vw;
-//     }
-//   }
-// }
 </style>
