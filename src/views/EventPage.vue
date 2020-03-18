@@ -119,8 +119,8 @@ export default {
       const tagList = this.event.eventTags.host.filter(tag => {
         return tag !== '';
       });
-      if (tagList.length > 3) {
-        return tagList.slice(0, 3);
+      if (tagList.length > 4) {
+        return tagList.slice(0, 4);
       } else {
         return tagList;
       }
