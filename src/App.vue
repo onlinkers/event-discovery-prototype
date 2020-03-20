@@ -4,7 +4,7 @@
       <router-view />
     </transition>
     <mq-layout mq="mobile">
-      <ExploreBar class="explore-bar" />
+      <ExploreBar class="explore-bar" :curr-page="this.$route" />
     </mq-layout>
   </v-app>
 </template>

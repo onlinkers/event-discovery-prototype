@@ -1,6 +1,5 @@
 @mixin page-container-middle {
-  // position: absolute;
-  overflow: scroll;
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,7 +10,6 @@
 
 @mixin page-container-middle--scrollable {
   @include page-container-middle;
-  height: auto;
   min-height: 100vh;
 }
 

@@ -5,6 +5,20 @@
   font-size: 3.5em;
 }
 
+@mixin title-serif-light {
+  font-family: $title-lg;
+  font-weight: 700;
+  color: $light;
+  font-size: 3.5em;
+}
+
+@mixin title-sans-dark {
+  font-family: $title-md;
+  font-weight: 700;
+  color: $dark;
+  font-size: 3.5em;
+}
+
 @mixin event-tag {
   font-family: $title-md;
   color: $primary-alt;

@@ -1,16 +1,18 @@
 <template>
-  <div class="page-container">
+  <div :class="'page-container ' + mood">
+    <NavBtns v-bind="navOptions" class="nav-btns" />
     <!-- background img -->
     <div class="background-img">
-      <div class="gradient-overlay" />
-      <img :src="backgroundImg" alt class="background-img" />
+      <div :class="mood+'-gradient-overlay'" />
+      <img
+        :src="backgroundImg"
+        alt
+        class="background-img"
+        @error="backgroundImageAltSrc" />
     </div>
 
-    <NavBtns v-bind="navOptions" class="nav-btns" />
-    <!-- <ExploreBar /> -->
-
     <!-- event details -->
-    <div v-rellax="{ speed: 10 }" class="event-container">
+    <div v-rellax="{ speed: -2 }" class="event-container">
       <!-- gallery -->
       <div class="gallery">
         <div
@@ -27,17 +29,16 @@
 
       <!-- tags -->
       <div class="event-tags">
-        <div
-          v-for="(tag, index) in activeTags"
-          :key="`tag-${index}`"
-          class="event-tags__tag"
-        >
+        <div v-for="(tag, index) in activeTags" :key="`tag-${index}`" class="event-tags__tag">
           <h5>{{ tag }}</h5>
         </div>
       </div>
 
       <!-- title -->
-      <h1>{{ eventName }}</h1>
+      <div class="title-container">
+        <h1>{{ eventName }}</h1>
+      </div>
+      <!-- TODO: create a copy for dark overlay -->
 
       <!-- details -->
       <div class="event-details">
@@ -54,10 +55,11 @@
       <!-- description -->
       <div class="event-description">
         <h5>OVERVIEW</h5>
-        <p v-if="snipped">{{ description | snippet }}</p>
+        <p v-if="isDescriptionSnipped">{{ description | descriptionSnippet }}</p>
         <p v-else>{{ description }}</p>
-        <h5 v-if="snipped" @click="snipped = false">Read More</h5>
-        <h5 v-else @click="snipped = true">See Less</h5>
+        <h5 v-if="isDescriptionSnipped && isDescriptionOverflow" @click="isDescriptionSnipped = false">Read More</h5>
+        <h5 v-else-if="isDescriptionOverflow" @click="isDescriptionSnipped = true">See Less</h5>
+        <!-- TODO: create copies for dark overlay -->
       </div>
     </div>
   </div>
@@ -66,36 +68,28 @@
 <script lang="js">
 import NavBtns from "../components/navButtons";
 import { mapActions, mapState } from "vuex";
+import {
+  EVENT_PAGE_DESCRIPTION_MAX_LENGTH,
+  EVENT_PAGE_TAGS_MAX_RENDER,
+  EVENT_PAGE_IMAGES_MAX_RENDER
+} from '../constants';
 
 export default {
   components: {
     NavBtns,
   },
   filters: {
-    snippet(value) {
-      if (value.length > 150) {
-        return value.slice(0, 150) + "...";
+    descriptionSnippet(value) {
+      if (value.length > EVENT_PAGE_DESCRIPTION_MAX_LENGTH) {
+        return value.slice(0, EVENT_PAGE_DESCRIPTION_MAX_LENGTH) + "...";
       } else {
         return value;
       }
     },
-    hardSnippet(value) {
-      if (value.length > 300) {
-        return value.slice(0, 300) + "...";
-      } else {
-        return value;
-      }
-    }
   },
   data() {
     return {
-      // navigation component options
-      navOptions: {
-        topType: 'share-light',
-        backRoute: '/discover'
-      },
-      snipped: true,
-
+      // event data
       backgroundImg: null,
       numPhotos: 0,
       imageList: [],
@@ -104,6 +98,13 @@ export default {
       venueName: '',
       startDate: '',
       description: '',
+
+      // description snipping
+      isDescriptionSnipped: true,
+      isDescriptionOverflow: false,
+
+      // mood
+      mood: 'light',
     };
   },
   computed: {
@@ -114,19 +115,25 @@ export default {
       const tagList = this.tags.filter(tag => {
         return tag !== '';
       });
-      if (tagList.length > 3) {
-        return tagList.slice(0, 3);
+      if (tagList.length > EVENT_PAGE_TAGS_MAX_RENDER) {
+        return tagList.slice(0, EVENT_PAGE_TAGS_MAX_RENDER);
       } else {
         return tagList;
       }
     },
     activeImages() {
-      if (this.imageList.length > 3) {
-        return this.imageList.slice(0, 3);
+      if (this.imageList.length > EVENT_PAGE_IMAGES_MAX_RENDER) {
+        return this.imageList.slice(0, EVENT_PAGE_IMAGES_MAX_RENDER);
       } else {
         return this.imageList;
       }
     },
+    navOptions() {
+      return {
+        topType: 'share-' + this.mood,
+        backRoute: '/discover'
+      }
+    }
   },
   created() {
     this.queryLocalEvent(this.$route.params.eventId)
@@ -137,17 +144,23 @@ export default {
       this.startDate = this.event.startDate
       this.venueName = this.event.venue.name
       this.tags = this.event.tags.hostTags
-
-      this.backgroundImg = this.event.media.coverPhoto.baseSrc
+      this.backgroundImg = this.event.media.coverPhoto && this.event.media.coverPhoto.baseSrc
       this.numPhotos = this.event.media.hostPhotos.length + this.event.media.userPhotos.length
       this.imageList = [ ...this.event.media.hostPhotos, ...this.event.media.userPhotos ]
+    })
+    .then(() => {
+      // Evaluate description snipping
+      if(this.description.length > EVENT_PAGE_DESCRIPTION_MAX_LENGTH) this.isDescriptionOverflow = true;
     })
   },
   methods: {
     ...mapActions('events', [
       'queryLocalEvent'
     ]),
-  }
+    backgroundImageAltSrc() {
+      this.mood = 'dark'
+    }
+  },
 };
 </script>
 
@@ -157,18 +170,12 @@ export default {
   .event-container {
     max-width: 30%;
   }
-  html {
-    border-style: none;
-    overflow-x: hidden;
-  }
-  img {
-    border-style: none;
-  }
 }
 
 /* MAIN DIV */
 .page-container {
   @include page-container-middle--scrollable;
+  height: unset !important; // needed to ensure vue-rellax works
 
   .nav-btns {
     z-index: 1000;
@@ -178,20 +185,22 @@ export default {
   .background-img {
     @include background-img;
 
-    .gradient-overlay {
+    .light-gradient-overlay {
       @include background-img-gradient(true);
+    }
+    .dark-gradient-overlay {
+      @include background-img-gradient(false);
     }
   }
 
   /* ALL EVENT DETAILS */
   .event-container {
     position: absolute;
-    top: 30%;
+    top: 35%;
     z-index: 10;
     width: 85%;
     height: auto;
     margin-bottom: 10vh;
-    // max-height: 70vh;
 
     /* IMAGE GALLERY */
     .gallery {
@@ -203,12 +212,13 @@ export default {
       padding-bottom: 5%;
 
       .image-container {
+        @include flex-middle;
+        @include hoverAnims--zoom;
         height: 4em;
         width: 4em;
         margin: 0 0.5em;
         background-color: $primary-alt;
         border-radius: 10px;
-        @include flex-middle;
 
         img {
           object-fit: fill;
@@ -230,29 +240,41 @@ export default {
     .event-tags {
       display: flex;
       justify-content: flex-start;
+      flex-wrap: wrap;
+      align-content: flex-start;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
 
       .event-tags__tag {
         @include flex-middle;
+        @include unselectable;
+        @include hoverAnims--zoom;
         border-radius: 15px 15px 15px 0px;
         background: white;
         height: 2.5em;
-        // width: auto;
         padding: 0 1.5em 0;
-        margin: 0 1em 0 0;
+        margin: 0 1em 1em 0;
 
         h5 {
           @include event-tag;
+          user-select: none;
         }
       }
     }
 
     /* TITLE */
-    h1 {
-      @include title-serif-dark;
+    .title-container {
+      h1 {
+        @include title-serif-dark;
+        font-size: clamp(1.5em, 8vw, 3.5em);
+      }
     }
 
     /* DATE & LOCATION */
     .event-details {
+      @include unselectable;
       .event-details__detail {
         display: flex;
         flex-direction: row;
@@ -271,6 +293,7 @@ export default {
 
       h5 {
         @include event-detail;
+        @include unselectable;
         margin-bottom: 0.5em;
       }
 
@@ -280,11 +303,39 @@ export default {
         margin-bottom: 1em;
       }
       p + h5 {
+        @include hoverStyle--pointer;
+        @include hoverAnims--tinyZoom;
         color: $primary-alt;
       }
+    }
+  }
+}
 
-      h5 + h5 {
+.page-container.dark {
+  background: black;
+
+  .event-container {
+    .title-container {
+      h1 {
+        @include title-serif-light;
+      }
+    }
+    .event-description {
+      h5 {
+        color: $secondary-dark;
+      }
+      p {
+        color: $light;
+      }
+      p + h5 {
+        @include hoverStyle--pointer;
+        @include hoverAnims--tinyZoom;
         color: $primary-alt;
+      }
+    }
+    .event-details {
+      h5 {
+        color: $secondary-dark;
       }
     }
   }

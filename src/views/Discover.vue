@@ -2,6 +2,9 @@
   <div class="map-components-wrapper">
     <Map :events="events" @mapLoad="loadMap"/>
     <SearchBar />
+    <mq-layout mq="desktop">
+      <ExploreBar />
+    </mq-layout>
   </div>
 </template>
 
@@ -9,6 +12,7 @@
 /* MAIN COMPONENTS */
 import Map from "@/components/map/Mapbox";
 import SearchBar from "@/components/searchBar";
+import ExploreBar from "../components/exploreBar";
 
 import { mapActions, mapState } from "vuex";
 
@@ -18,7 +22,8 @@ export default {
   name: "Discover",
   components: {
     Map,
-    SearchBar
+    SearchBar,
+    ExploreBar
   },
   data() {
     return {

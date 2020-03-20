@@ -1,29 +1,23 @@
 <template>
-  <div class="explore-bar-wrapper">
+  <div class="page-container">
     <!-- DESKTOP VIEW -->
     <mq-layout mq="desktop">
-      <div class="navbar">
+      <div class="desktop-navbar">
         <router-link class="logo" to="/">
           <h1>LINK-LINK</h1>
         </router-link>
-        <div class="nav-links">
-          <router-link to="#" class="page-link">
-            <h3 :class="{ 'active-page': activePage === 'Dashboard' }">
-              Dashboard
-            </h3>
+        <div class="page-links">
+          <router-link to="/" class="page-link">
+            <h3 :class="{ 'page-link--active': activePage === 'dashboard' }">Dashboard</h3>
           </router-link>
           <router-link to="/discover" class="page-link">
-            <h3 :class="{ 'active-page': activePage === 'Discover' }">
-              Discover
-            </h3>
+            <h3 :class="{ 'page-link--active': activePage === 'discover' }">Discover</h3>
           </router-link>
           <router-link to="#" class="page-link">
-            <h3 :class="{ 'active-page': activePage === 'Moments' }">
-              Moments
-            </h3>
+            <h3 :class="{ 'page-link--active': activePage === 'moments' }">Moments</h3>
           </router-link>
           <router-link to="/new" class="page-link">
-            <h3 :class="{ 'active-page': activePage === 'Create' }">Create</h3>
+            <h3 :class="{ 'page-link--active': activePage === 'create' }">Create</h3>
           </router-link>
         </div>
         <v-btn
@@ -39,39 +33,48 @@ text>
 
     <!-- MOBILE VIEW -->
     <mq-layout mq="mobile">
-      <div class="explore-window__button">
-        <Eclipse />
-      </div>
-
-      <!-- these icons only show up on mobile -->
-      <div class="explore-bar-icons">
-        <div class="left-icons icon-wrapper">
-          <router-link to="/">
-            <img
-              src="../assets/icons/mobile-explore-bar/home-outline.png"
-              alt
-            />
-          </router-link>
-          <router-link to="/discover">
-            <img
-              src="../assets/icons/mobile-explore-bar/earth-outline.png"
-              alt
-            />
-          </router-link>
+      <div class="mobile-navbar">
+        <div class="main-icon">
+          <Eclipse />
         </div>
-        <div class="right-icons icon-wrapper">
-          <router-link to="/">
-            <img
-              src="../assets/icons/mobile-explore-bar/bulb-outline.png"
-              alt
-            />
-          </router-link>
-          <router-link to="/">
-            <img
-              src="../assets/icons/mobile-explore-bar/person-circle-outline.png"
-              alt
-            />
-          </router-link>
+
+        <div class="navbar-icons">
+          <div class="left-icons icons-wrapper">
+            <router-link to="/">
+              <img
+                src="../assets/icons/mobile-explore-bar/home-outline.png"
+                alt
+                class="icon"
+                :class="{ 'icon--active': activePage === 'dashboard' }"
+              />
+            </router-link>
+            <router-link to="/discover">
+              <img
+                src="../assets/icons/mobile-explore-bar/earth-outline.png"
+                alt
+                class="icon"
+                :class="{ 'icon--active': activePage === 'discover' }"
+              />
+            </router-link>
+          </div>
+          <div class="right-icons icons-wrapper">
+            <router-link to="/">
+              <img
+                src="../assets/icons/mobile-explore-bar/bulb-outline.png"
+                alt
+                class="icon"
+                :class="{ 'icon--active': activePage === 'ideas' }"
+              />
+            </router-link>
+            <router-link to="/">
+              <img
+                src="../assets/icons/mobile-explore-bar/person-circle-outline.png"
+                alt
+                class="icon"
+                :class="{ 'icon--active': activePage === 'profile' }"
+              />
+            </router-link>
+          </div>
         </div>
       </div>
     </mq-layout>
@@ -87,132 +90,147 @@ export default {
   },
   props: {
     currPageProp: {
-      type: String,
-      default: "none"
+      type: Object,
+      required: false
     }
   },
   data() {
     return {
-      activePage: this.currPageProp
+      activePage: ""
     };
+  },
+  created() {
+    // if (this.currPageProp) {
+    //   this.activePage = this.currPageProp.name;
+    // }
+    this.activePage = this.$route.name;
   }
 };
 </script>
 
 <style lang="scss">
-@import "@/assets/scss/variables.scss";
-
-.active-page {
-  color: $primary !important;
-}
-.active-page::after {
-  position: relative;
-  display: block;
-  content: "";
-  height: 2px;
-  bottom: 30%;
-  width: 100%;
-  background: $primary;
-  transition: opacity 0.5s;
-}
-.explore-bar-wrapper {
+.page-container {
   position: fixed;
-  font-size: 1.5em;
   bottom: 0;
   width: 100%;
-  .navbar {
+
+  /* DESKTOP */
+  .desktop-navbar {
     position: fixed;
     top: 0;
-    min-height: 10vh;
-    background-color: white;
     width: 100%;
+    height: 10vh;
+    background-color: white;
     display: flex;
-    flex-grow: 1;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    padding: 0 2%;
+    text-decoration: none;
+
     .logo {
-      font-family: "Nunito", sans-serif;
       text-decoration: none;
-      align-items: center;
-      white-space: nowrap;
-      margin: 0 2%;
-      h1 {
-        color: $primary;
-        font-size: 1.5em;
-        font-weight: 900;
-      }
+      color: $primary-alt;
+      font-family: $text-secondary;
+      font-weight: 700;
     }
-    .nav-links {
+
+    .page-links {
       display: flex;
       flex-direction: row;
-      flex-grow: 1;
-      justify-content: space-evenly;
-      max-width: 50em;
-    }
-    .page-link {
-      text-decoration: none;
-      font-family: "Nunito", sans-serif;
-      h3 {
-        color: $secondary;
-        font-weight: 600;
+      align-items: center;
+      justify-content: space-between;
+
+      .page-link {
+        font-family: $text-secondary;
+        font-weight: 700;
         font-size: 1em;
+        text-decoration: none;
+        color: $secondary;
+        margin: 0 5%;
       }
-    }
-    .profile-icon {
-      margin-right: 1em;
-    }
-  }
-  .explore-window__button {
-    bottom: 8vh;
-    display: flex;
-    flex-direction: column;
-    left: 50%;
-    align-items: center;
-    position: absolute;
-    transform: translate(-50%, 50%);
-    .explore-window__button-icon {
-      width: 4em;
-      height: 4em;
-      cursor: pointer;
-      g circle {
-        fill: blue;
-        fill-opacity: 0.65;
-        transition: all 0.3s;
-      }
-      &:hover {
-        g circle {
-          fill-opacity: 0.85;
+
+      .page-link--active {
+        color: $primary-alt !important;
+        &::after {
+          content: "";
+          position: relative;
+          display: block;
+          height: 2px;
+          bottom: 30%;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 100%;
+          background: $primary;
+          transition: all 0.5s;
         }
       }
     }
   }
-  .explore-bar-icons {
-    background: white;
-    flex-grow: 1;
-    display: flex;
-    .icon-wrapper {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      align-items: center;
-      width: 40vw;
-      height: 100%;
-      margin-top: 0.5em;
-      margin-bottom: 0.5em;
 
-      img {
-        max-width: 2em;
-        margin-left: 1em;
-        margin-right: 1em;
+  /* MOBILE */
+  .mobile-navbar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    height: 8vh;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+
+    .main-icon {
+      bottom: 8vh;
+      display: flex;
+      flex-direction: column;
+      left: 50%;
+      align-items: center;
+      position: absolute;
+      transform: translate(-50%, 50%);
+      .eclipse-icon {
+        width: 12vh;
+        height: 12vh;
+        cursor: pointer;
+        g circle {
+          fill: blue;
+          fill-opacity: 0.65;
+          transition: all 0.3s;
+        }
+        &:hover {
+          g circle {
+            fill-opacity: 0.85;
+          }
+        }
       }
     }
 
-    .left-icons {
-      margin-right: 10vw;
-    }
+    .navbar-icons {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
 
-    .right-icons {
-      margin-left: 10vw;
+      .icons-wrapper {
+        display: flex;
+        width: 25%;
+        justify-content: space-between;
+      }
+
+      .left-icons {
+        margin-right: 10%;
+      }
+
+      .right-icons {
+        margin-left: 10%;
+      }
+
+      .icon {
+        opacity: 0.8;
+      }
+      .icon--active {
+        opacity: 1;
+      }
     }
   }
 }
