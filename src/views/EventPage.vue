@@ -77,27 +77,13 @@ export default {
         return value;
       }
     },
-    descriptionHardSnippet(value) {
-      if (value.length > 450) {
-        return value.slice(0, 450) + "...";
-      } else {
-        return value;
-      }
-    },
-    tagSnippet(value) {
-      if (value.length > 8) {
-        return value.slice(0, 8) + "...";
-      } else {
-        return value;
-      }
-    }
   },
   props: {
     eventProp: Object,
   },
   data() {
     return {
-      event: this.eventProp,
+      event: {},
       snipped: true,
       /* navButtons options */
       navOptions: {
@@ -109,12 +95,6 @@ export default {
     };
   },
   computed: {
-    eventRefresh() {
-      const fetchedEvent = eventData.default.find(event => {
-        return event.priv.id.toString() === this.$route.params.id;
-      });
-      return fetchedEvent;
-    },
     activeTags() {
       const tagList = this.event.eventTags.host.filter(tag => {
         return tag !== '';
@@ -157,8 +137,6 @@ export default {
     }
 
   },
-  methods: {
-  }
 };
 </script>
 
@@ -246,6 +224,7 @@ export default {
 
       .event-tags__tag {
         @include flex-middle;
+        @include unselectable;
         border-radius: 15px 15px 15px 0px;
         background: white;
         height: 2.5em;
@@ -271,6 +250,7 @@ export default {
 
     /* DATE & LOCATION */
     .event-details {
+      @include unselectable;
       .event-details__detail {
         display: flex;
         flex-direction: row;
@@ -298,10 +278,8 @@ export default {
         margin-bottom: 1em;
       }
       p + h5 {
-        color: $primary-alt;
-      }
-
-      h5 + h5 {
+        @include hoverStyle--pointer;
+        @include hoverAnims--tinyZoom;
         color: $primary-alt;
       }
     }
