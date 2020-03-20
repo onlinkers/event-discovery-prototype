@@ -1,65 +1,66 @@
 <template>
-  <div :class="'page-container ' + mood">
-    <NavBtns v-bind="navOptions" class="nav-btns" />
-    <!-- background img -->
-    <div class="background-img">
-      <div :class="mood+'-gradient-overlay'" />
-      <img
-        :src="backgroundImg"
-        alt
-        class="background-img"
-        @error="backgroundImageAltSrc" />
-    </div>
-
-    <!-- event details -->
-    <div v-rellax="{ speed: -2 }" class="event-container">
-      <!-- gallery -->
-      <div class="gallery">
-        <div
-          v-for="(img, index) in activeImages"
-          :key="`tag-${index}`"
-          class="image-container"
-        >
-          <img :src="img.baseSrc" alt />
-        </div>
-        <div v-if="numPhotos > 3" class="image-container">
-          <h4>+{{ numPhotos }}</h4>
-        </div>
+  <div :class="'page-container-background ' + mood"> 
+    <div :class="'page-container ' + mood">
+      <NavBtns v-bind="navOptions" class="nav-btns" />
+      <!-- background img -->
+      <div class="background-img">
+        <div :class="mood+'-gradient-overlay'" />
+        <img
+          :src="backgroundImg"
+          alt
+          class="background-img"
+          @error="backgroundImageAltSrc" />
       </div>
 
-      <!-- tags -->
-      <div class="event-tags">
-        <div v-for="(tag, index) in activeTags" :key="`tag-${index}`" class="event-tags__tag">
-          <h5>{{ tag }}</h5>
+      <!-- event details -->
+      <div v-rellax="{ speed: 5 }" class="event-container">
+        <!-- gallery -->
+        <div class="gallery">
+          <div
+            v-for="(img, index) in activeImages"
+            :key="`tag-${index}`"
+            class="image-container"
+          >
+            <img :src="img.baseSrc" alt />
+          </div>
+          <div v-if="numPhotos > 3" class="image-container">
+            <h4>+{{ numPhotos }}</h4>
+          </div>
         </div>
-      </div>
 
-      <!-- title -->
-      <div class="title-container">
-        <h1>{{ eventName }}</h1>
-      </div>
-      <!-- TODO: create a copy for dark overlay -->
-
-      <!-- details -->
-      <div class="event-details">
-        <div class="event-details__detail event-location">
-          <img src="../assets/icons/event-page/location.svg" alt />
-          <h5>{{ venueName }}</h5>
+        <!-- tags -->
+        <div class="event-tags">
+          <div v-for="(tag, index) in activeTags" :key="`tag-${index}`" class="event-tags__tag">
+            <h5>{{ tag }}</h5>
+          </div>
         </div>
-        <div class="event-details__detail event-date">
-          <img src="../assets/icons/event-page/hourglass.svg" alt="" />
-          <h5>{{ startDate }}</h5>
-        </div>
-      </div>
 
-      <!-- description -->
-      <div class="event-description">
-        <h5>OVERVIEW</h5>
-        <p v-if="isDescriptionSnipped">{{ description | descriptionSnippet }}</p>
-        <p v-else>{{ description }}</p>
-        <h5 v-if="isDescriptionSnipped && isDescriptionOverflow" @click="isDescriptionSnipped = false">Read More</h5>
-        <h5 v-else-if="isDescriptionOverflow" @click="isDescriptionSnipped = true">See Less</h5>
-        <!-- TODO: create copies for dark overlay -->
+        <!-- title -->
+        <div class="title-container">
+          <h1>{{ eventName }}</h1>
+        </div>
+
+        <!-- details -->
+        <div class="event-details">
+          <div class="event-details__detail event-location">
+            <img src="../assets/icons/event-page/location.svg" alt />
+            <h5>{{ venueName }}</h5>
+          </div>
+          <div class="event-details__detail event-date">
+            <img src="../assets/icons/event-page/hourglass.svg" alt="" />
+            <h5>{{ startDate }}</h5>
+          </div>
+        </div>
+
+        <!-- description -->
+        <div class="event-description">
+          <h5>OVERVIEW</h5>
+          <p v-if="isDescriptionSnipped">{{ description | descriptionSnippet }}</p>
+          <p v-else>{{ description }}</p>
+          <h5 v-if="isDescriptionSnipped && isDescriptionOverflow" @click="isDescriptionSnipped = false">Read More</h5>
+          <h5 v-else-if="isDescriptionOverflow" @click="isDescriptionSnipped = true">See Less</h5>
+          <!-- TODO: create copies for dark overlay -->
+        </div>
       </div>
     </div>
   </div>
@@ -170,6 +171,12 @@ export default {
   .event-container {
     max-width: 30%;
   }
+}
+
+.page-container-background.dark {
+  @include page-container-middle;
+  background: black;
+  overflow: auto;
 }
 
 /* MAIN DIV */
