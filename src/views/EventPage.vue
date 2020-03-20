@@ -51,10 +51,10 @@
       <!-- description -->
       <div class="event-description">
         <h5>OVERVIEW</h5>
-        <p v-if="snipped">{{ event.pub.description | descriptionSnippet }}</p>
+        <p v-if="isDescriptionSnipped">{{ event.pub.description | descriptionSnippet }}</p>
         <p v-else>{{ event.pub.description }}</p>
-        <h5 v-if="snipped" @click="snipped = false">Read More</h5>
-        <h5 v-else @click="snipped = true">See Less</h5>
+        <h5 v-if="isDescriptionSnipped" @click="isDescriptionSnipped = false">Read More</h5>
+        <h5 v-else @click="isDescriptionSnipped = true">See Less</h5>
         <!-- TODO: create copies for dark overlay -->
       </div>
     </div>
@@ -84,7 +84,7 @@ export default {
   data() {
     return {
       event: {},
-      snipped: true,
+      isDescriptionSnipped: true,
       /* navButtons options */
       navOptions: {
         topType: 'share-light',
