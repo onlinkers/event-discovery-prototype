@@ -1,23 +1,18 @@
 <template>
   <svg
-    class="explore-window__button-icon"
+    class="eclipse-icon"
     viewBox="0 0 152 156"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
     <circle
-      cx="76"
-      cy="68"
-      r="68"
-      fill="white"
-      fill-opacity="0.6"
-    />
+cx="76"
+cy="68"
+r="68"
+fill="white"
+fill-opacity="0.6" />
     <g filter="url(#filter0_d)">
-      <circle
-        cx="76"
-        cy="68"
-        r="56"
-      />
+      <circle cx="76" cy="68" r="56" />
     </g>
     <path
       fill-rule="evenodd"
@@ -43,7 +38,10 @@
         />
         <feOffset dy="12" />
         <feGaussianBlur stdDeviation="10" />
-        <feColorMatrix type="matrix" values="0 0 0 0 0.135764 0 0 0 0 0.316729 0 0 0 0 0.958333 0 0 0 0.3 0" />
+        <feColorMatrix
+          type="matrix"
+          values="0 0 0 0 0.135764 0 0 0 0 0.316729 0 0 0 0 0.958333 0 0 0 0.3 0"
+        />
         <feBlend
           mode="normal"
           in2="BackgroundImageFix"
@@ -61,7 +59,7 @@
 </template>
 
 <script>
-  export default {
-    name: 'ExploreIcon',
-  };
+export default {
+  name: "ExploreIcon"
+};
 </script>

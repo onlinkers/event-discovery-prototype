@@ -1,0 +1,17 @@
+@mixin unselectable {
+    user-select: none;
+}
+
+@mixin hoverStyle--pointer {
+    cursor: pointer;
+}
+
+@mixin hoverAnims--tinyZoom {
+    transition: transform 0.2s;
+    &:hover {
+        cursor: pointer;
+        transition: transform 0.2s;
+        transform: scale(1.01);
+        transform-origin: 50% 50%;
+    }
+}
