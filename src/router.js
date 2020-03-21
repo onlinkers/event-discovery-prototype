@@ -4,6 +4,8 @@ import Router from "vue-router";
 import Welcome from "./views/Welcome";
 import SignUp from "./views/SignUp";
 import Discover from "./views/Discover";
+import Dashboard from "./views/Dashboard";
+import Moments from "./views/Moments";
 
 /* FOR TESTING */
 // import eventInitiation from "./components/eventInitiation";
@@ -25,6 +27,16 @@ const router = new Router({
       path: "/discover",
       name: "discover",
       component: Discover
+    },
+    {
+      path: "/dashboard",
+      name: "dashboard",
+      component: Dashboard
+    },
+    {
+      path: "/moments",
+      name: "moments",
+      component: Moments
     },
     {
       path: "/signup",

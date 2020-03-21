@@ -7,13 +7,13 @@
           <h1>LINK-LINK</h1>
         </router-link>
         <div class="page-links">
-          <router-link to="/" class="page-link">
+          <router-link to="/dashboard" class="page-link">
             <h3 :class="{ 'page-link--active': activePage === 'dashboard' }">Dashboard</h3>
           </router-link>
           <router-link to="/discover" class="page-link">
             <h3 :class="{ 'page-link--active': activePage === 'discover' }">Discover</h3>
           </router-link>
-          <router-link to="#" class="page-link">
+          <router-link to="/moments" class="page-link">
             <h3 :class="{ 'page-link--active': activePage === 'moments' }">Moments</h3>
           </router-link>
           <router-link to="/new" class="page-link">

@@ -16,8 +16,6 @@ import ExploreBar from "../components/exploreBar";
 
 import { mapActions, mapState } from "vuex";
 
-/* STYLES */
-
 export default {
   name: "Discover",
   components: {
@@ -60,6 +58,7 @@ export default {
   },
 };
 </script>
+
 <style lang="scss" scoped>
 @import "@/assets/scss/variables.scss";
 
