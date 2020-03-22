@@ -1,6 +1,6 @@
 <template>
   <div class="map-components-wrapper">
-    <Map @mapLoad="loadMap" />
+    <Map :events="events" @mapLoad="loadMap"/>
     <SearchBar />
     <mq-layout mq="desktop">
       <ExploreBar />
@@ -14,8 +14,7 @@ import Map from "@/components/map/Mapbox";
 import SearchBar from "@/components/searchBar";
 import ExploreBar from "../components/exploreBar";
 
-/* EVENT DATA */
-import events from "@/assets/js/eventData.js";
+import { mapActions, mapState } from "vuex";
 
 /* STYLES */
 
@@ -30,9 +29,18 @@ export default {
     return {
       windowWidth: 0,
       windowHeight: 0,
-      eventList: events,
       mapLoaded: false
     };
+  },
+  computed: {
+    ...mapState('events', {
+      events: state => state.general
+    })
+  },
+  created() {
+    // QUERY logic should be handled here
+    // it will be easier to handle map re-loads, async calls, loading, etc
+    this.queryAllEvents()
   },
   mounted() {
     window.addEventListener("resize", () => {
@@ -41,12 +49,15 @@ export default {
     });
   },
   methods: {
+    ...mapActions('events', [
+      'queryAllEvents'
+    ]),
     loadMap() {
       setTimeout(() => {
         this.mapLoaded = true;
       }, 2000);
     }
-  }
+  },
 };
 </script>
 <style lang="scss" scoped>

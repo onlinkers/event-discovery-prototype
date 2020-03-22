@@ -15,9 +15,10 @@
         />
       </svg>
       <img
-class="marker__image"
-:src="checkImage"
-:alt="imageKey" />
+        class="marker__image"
+        :src="imageSrc"
+        :alt="imageKey"
+        @error="imageAltSrc" />
     </div>
     <MglPopup
       ><div>{{ name }}</div></MglPopup
@@ -46,6 +47,11 @@ export default {
     coords: Array,
     imgSrc: String
   },
+  data() {
+    return {
+      imageSrc: this.imgSrc
+    }
+  },
   computed: {
     imageKey: function() {
       return (
@@ -56,13 +62,13 @@ export default {
           .substring(0, 15)
       );
     },
-    checkImage: function() {
-      return this.imgSrc || require("@/assets/media/no-image-default.png");
-    }
   },
   methods: {
     emitNavigationEvent() {
       this.$emit("navigate");
+    },
+    imageAltSrc() {
+      this.imageSrc = require("@/assets/media/no-image-default.png")
     }
   }
 };

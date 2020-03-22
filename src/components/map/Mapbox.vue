@@ -11,9 +11,9 @@
     <MapMarker
       v-for="(event, index) in events"
       :key="`marker-${index}`"
-      :name="event.pub.name"
-      :coords="event.priv.coordinates"
-      :img-src="event.mediaLink.cover"
+      :name="event.name"
+      :coords="event.venue.location.coordinates"
+      :img-src="event.media.coverPhoto.baseSrc"
       @navigate="navigateToEvent(event)"
     />
   </MglMap>
@@ -25,9 +25,6 @@ import MapboxStyle from "@/assets/js/mapbox/style.json";
 import MapMarker from "./marker";
 import { MglMap } from "vue-mapbox";
 
-/* EVENT DATA */
-import * as eventData from "@/assets/js/eventData.js";
-
 /* UTILITIES */
 
 export default {
@@ -35,6 +32,11 @@ export default {
   components: {
     MglMap,
     MapMarker
+  },
+  props: {
+    events: {
+      type: Array
+    }
   },
   data() {
     return {
@@ -47,7 +49,6 @@ export default {
         center: [-123.120735, 49.28273],
         zoom: 12
       },
-      events: eventData.default
     };
   },
 
@@ -61,14 +62,8 @@ export default {
       this.map = event.map;
     },
     navigateToEvent(event) {
-      const { id } = event.priv;
-      this.$router.push({
-        name: "event-page",
-        params: {
-          eventProp: event,
-          id: id
-        }
-      });
+      const { _id: id } = event;
+      this.$router.push({ path: `/eventpage/${id}` });
     }
   }
 };

@@ -94,6 +94,7 @@ export default {
   align-content: center;
 
   a {
+    @include hoverAnims--largeZoom;
     z-index: 1000;
     display: flex;
     align-items: center;

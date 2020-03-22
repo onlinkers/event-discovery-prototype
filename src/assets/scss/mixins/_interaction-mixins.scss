@@ -6,12 +6,19 @@
     cursor: pointer;
 }
 
-@mixin hoverAnims--tinyZoom {
+@mixin hoverAnims--zoom {
     transition: transform 0.2s;
     &:hover {
         cursor: pointer;
         transition: transform 0.2s;
-        transform: scale(1.01);
-        transform-origin: 50% 50%;
+        transform: scale(1.1);
     }
+}
+@mixin hoverAnims--tinyZoom {
+    @include hoverAnims--zoom;
+    &:hover { transform: scale(1.01); }
+}
+@mixin hoverAnims--largeZoom {
+    @include hoverAnims--zoom;
+    &:hover { transform: scale(1.5); }
 }

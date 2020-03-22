@@ -1,61 +1,66 @@
 <template>
-  <div class="page-container">
-    <!-- loaded contents || TODO: create skeleton screen -->
-    <NavBtns v-bind="navOptions" class="nav-btns" />
-    <!-- background img -->
-    <div class="background-img">
-      <!-- TODO: create a copy for a dark overlay -->
-      <div class="light-gradient-overlay" />
-      <img :src="event.mediaLink.cover" alt class="background-img" />
-    </div>
-
-    <!-- <ExploreBar /> -->
-
-    <!-- event details -->
-    <div v-rellax="{ speed: 5 }" class="event-container">
-      <!-- gallery -->
-      <div class="gallery">
-        <div v-for="(img, index) in activeImages" :key="`tag-${index}`" class="image-container">
-          <img :src="img" alt />
-        </div>
-        <div v-if="event.mediaLink.host.length > 3" class="image-container">
-          <h4>+{{ event.mediaLink.host.length - 3 }}</h4>
-        </div>
+  <div :class="'page-container-background ' + mood"> 
+    <div :class="'page-container ' + mood">
+      <NavBtns v-bind="navOptions" class="nav-btns" />
+      <!-- background img -->
+      <div class="background-img">
+        <div :class="mood+'-gradient-overlay'" />
+        <img
+          :src="backgroundImg"
+          alt
+          class="background-img"
+          @error="backgroundImageAltSrc" />
       </div>
 
-      <!-- tags -->
-      <div class="event-tags">
-        <div v-for="(tag, index) in activeTags" :key="`tag-${index}`" class="event-tags__tag">
-          <h5>{{ tag }}</h5>
+      <!-- event details -->
+      <div v-rellax="{ speed: 5 }" class="event-container">
+        <!-- gallery -->
+        <div class="gallery">
+          <div
+            v-for="(img, index) in activeImages"
+            :key="`tag-${index}`"
+            class="image-container"
+          >
+            <img :src="img.baseSrc" alt />
+          </div>
+          <div v-if="numPhotos > 3" class="image-container">
+            <h4>+{{ numPhotos }}</h4>
+          </div>
         </div>
-      </div>
 
-      <!-- title -->
-      <div class="title-container">
-        <h1>{{ event.pub.name }}</h1>
-      </div>
-      <!-- TODO: create a copy for dark overlay -->
-
-      <!-- details -->
-      <div class="event-details">
-        <div class="event-details__detail event-location">
-          <img src="../assets/icons/event-page/location.svg" alt />
-          <h5>{{ event.pub.venue }}</h5>
+        <!-- tags -->
+        <div class="event-tags">
+          <div v-for="(tag, index) in activeTags" :key="`tag-${index}`" class="event-tags__tag">
+            <h5>{{ tag }}</h5>
+          </div>
         </div>
-        <div class="event-details__detail event-date">
-          <img src="../assets/icons/event-page/hourglass.svg" alt />
-          <h5>{{ event.pub.date }}</h5>
-        </div>
-      </div>
 
-      <!-- description -->
-      <div class="event-description">
-        <h5>OVERVIEW</h5>
-        <p v-if="isDescriptionSnipped">{{ event.pub.description | descriptionSnippet }}</p>
-        <p v-else>{{ event.pub.description }}</p>
-        <h5 v-if="isDescriptionSnipped" @click="isDescriptionSnipped = false">Read More</h5>
-        <h5 v-else @click="isDescriptionSnipped = true">See Less</h5>
-        <!-- TODO: create copies for dark overlay -->
+        <!-- title -->
+        <div class="title-container">
+          <h1>{{ eventName }}</h1>
+        </div>
+
+        <!-- details -->
+        <div class="event-details">
+          <div class="event-details__detail event-location">
+            <img src="../assets/icons/event-page/location.svg" alt />
+            <h5>{{ venueName }}</h5>
+          </div>
+          <div class="event-details__detail event-date">
+            <img src="../assets/icons/event-page/hourglass.svg" alt="" />
+            <h5>{{ startDate }}</h5>
+          </div>
+        </div>
+
+        <!-- description -->
+        <div class="event-description">
+          <h5>OVERVIEW</h5>
+          <p v-if="isDescriptionSnipped">{{ description | descriptionSnippet }}</p>
+          <p v-else>{{ description }}</p>
+          <h5 v-if="isDescriptionSnipped && isDescriptionOverflow" @click="isDescriptionSnipped = false">Read More</h5>
+          <h5 v-else-if="isDescriptionOverflow" @click="isDescriptionSnipped = true">See Less</h5>
+          <!-- TODO: create copies for dark overlay -->
+        </div>
       </div>
     </div>
   </div>
@@ -63,7 +68,12 @@
 
 <script lang="js">
 import NavBtns from "../components/navButtons";
-import * as eventData from "../assets/js/eventData.js";
+import { mapActions, mapState } from "vuex";
+import {
+  EVENT_PAGE_DESCRIPTION_MAX_LENGTH,
+  EVENT_PAGE_TAGS_MAX_RENDER,
+  EVENT_PAGE_IMAGES_MAX_RENDER
+} from '../constants';
 
 export default {
   components: {
@@ -71,71 +81,86 @@ export default {
   },
   filters: {
     descriptionSnippet(value) {
-      if (value.length > 300) {
-        return value.slice(0, 300) + "...";
+      if (value.length > EVENT_PAGE_DESCRIPTION_MAX_LENGTH) {
+        return value.slice(0, EVENT_PAGE_DESCRIPTION_MAX_LENGTH) + "...";
       } else {
         return value;
       }
     },
   },
-  props: {
-    eventProp: Object,
-  },
   data() {
     return {
-      event: {},
-      isDescriptionSnipped: true,
-      /* navButtons options */
-      navOptions: {
-        topType: 'share-light',
-        backRoute: '/discover'
-      },
+      // event data
+      backgroundImg: null,
+      numPhotos: 0,
+      imageList: [],
+      tags: [],
+      eventName: '',
+      venueName: '',
+      startDate: '',
+      description: '',
 
-      loadedContents: false
+      // description snipping
+      isDescriptionSnipped: true,
+      isDescriptionOverflow: false,
+
+      // mood
+      mood: 'light',
     };
   },
   computed: {
+    ...mapState('events', {
+      event: state => state.local
+    }),
     activeTags() {
-      const tagList = this.event.eventTags.host.filter(tag => {
+      const tagList = this.tags.filter(tag => {
         return tag !== '';
       });
-      if (tagList.length > 4) {
-        return tagList.slice(0, 4);
+      if (tagList.length > EVENT_PAGE_TAGS_MAX_RENDER) {
+        return tagList.slice(0, EVENT_PAGE_TAGS_MAX_RENDER);
       } else {
         return tagList;
       }
     },
     activeImages() {
-      const imageList = this.event.mediaLink.host;
-      if (imageList.length > 3) {
-        return imageList.slice(0, 3);
+      if (this.imageList.length > EVENT_PAGE_IMAGES_MAX_RENDER) {
+        return this.imageList.slice(0, EVENT_PAGE_IMAGES_MAX_RENDER);
       } else {
-        return imageList;
+        return this.imageList;
+      }
+    },
+    navOptions() {
+      return {
+        topType: 'share-' + this.mood,
+        backRoute: '/discover'
       }
     }
   },
   created() {
-    /* change navButtons to dark if no picture in event */
+    this.queryLocalEvent(this.$route.params.eventId)
+    .then(() => {
+      // Import queried events into data
+      this.eventName = this.event.name
+      this.description = this.event.description
+      this.startDate = this.event.startDate
+      this.venueName = this.event.venue.name
+      this.tags = this.event.tags.hostTags
+      this.backgroundImg = this.event.media.coverPhoto && this.event.media.coverPhoto.baseSrc
+      this.numPhotos = this.event.media.hostPhotos.length + this.event.media.userPhotos.length
+      this.imageList = [ ...this.event.media.hostPhotos, ...this.event.media.userPhotos ]
+    })
+    .then(() => {
+      // Evaluate description snipping
+      if(this.description.length > EVENT_PAGE_DESCRIPTION_MAX_LENGTH) this.isDescriptionOverflow = true;
+    })
   },
-  mounted() {
-    /* TODO: get event from API call instead of passing an object as a prop */
-    if (this.eventProp) {
-      this.loadedContents = true;
-    } else {
-      const fetchedEvent = eventData.default.find(event => {
-        return event.priv.id.toString() === this.$route.params.id;
-      });
-      this.event = fetchedEvent;
-      /* ------------ */
-
-      if (this.event.mediaLink.cover === "") {
-        this.navOptions.topType = 'share-dark';
-      }
-
-      /* TODO: show skeleton screen before this */
-      this.loadedContents = true;
+  methods: {
+    ...mapActions('events', [
+      'queryLocalEvent'
+    ]),
+    backgroundImageAltSrc() {
+      this.mood = 'dark'
     }
-
   },
 };
 </script>
@@ -148,9 +173,16 @@ export default {
   }
 }
 
+.page-container-background.dark {
+  @include page-container-middle;
+  background: black;
+  overflow: auto;
+}
+
 /* MAIN DIV */
 .page-container {
   @include page-container-middle--scrollable;
+  height: unset !important; // needed to ensure vue-rellax works
 
   .nav-btns {
     z-index: 1000;
@@ -163,6 +195,9 @@ export default {
     .light-gradient-overlay {
       @include background-img-gradient(true);
     }
+    .dark-gradient-overlay {
+      @include background-img-gradient(false);
+    }
   }
 
   /* ALL EVENT DETAILS */
@@ -173,7 +208,6 @@ export default {
     width: 85%;
     height: auto;
     margin-bottom: 10vh;
-    // max-height: 70vh;
 
     /* IMAGE GALLERY */
     .gallery {
@@ -185,12 +219,13 @@ export default {
       padding-bottom: 5%;
 
       .image-container {
+        @include flex-middle;
+        @include hoverAnims--zoom;
         height: 4em;
         width: 4em;
         margin: 0 0.5em;
         background-color: $primary-alt;
         border-radius: 10px;
-        @include flex-middle;
 
         img {
           object-fit: fill;
@@ -212,11 +247,8 @@ export default {
     .event-tags {
       display: flex;
       justify-content: flex-start;
-      overflow-x: hidden;
       flex-wrap: wrap;
       align-content: flex-start;
-      // white-space: nowrap;
-      // -ms-overflow-style: none;
 
       &::-webkit-scrollbar {
         display: none;
@@ -225,10 +257,10 @@ export default {
       .event-tags__tag {
         @include flex-middle;
         @include unselectable;
+        @include hoverAnims--zoom;
         border-radius: 15px 15px 15px 0px;
         background: white;
         height: 2.5em;
-        // width: auto;
         padding: 0 1.5em 0;
         margin: 0 1em 1em 0;
 
@@ -243,7 +275,6 @@ export default {
     .title-container {
       h1 {
         @include title-serif-dark;
-        // display: inline;
         font-size: clamp(1.5em, 8vw, 3.5em);
       }
     }
@@ -269,6 +300,7 @@ export default {
 
       h5 {
         @include event-detail;
+        @include unselectable;
         margin-bottom: 0.5em;
       }
 
@@ -281,6 +313,36 @@ export default {
         @include hoverStyle--pointer;
         @include hoverAnims--tinyZoom;
         color: $primary-alt;
+      }
+    }
+  }
+}
+
+.page-container.dark {
+  background: black;
+
+  .event-container {
+    .title-container {
+      h1 {
+        @include title-serif-light;
+      }
+    }
+    .event-description {
+      h5 {
+        color: $secondary-dark;
+      }
+      p {
+        color: $light;
+      }
+      p + h5 {
+        @include hoverStyle--pointer;
+        @include hoverAnims--tinyZoom;
+        color: $primary-alt;
+      }
+    }
+    .event-details {
+      h5 {
+        color: $secondary-dark;
       }
     }
   }
