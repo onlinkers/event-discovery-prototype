@@ -16,6 +16,12 @@
       :img-src="event.media.coverPhoto.baseSrc"
       @navigate="navigateToEvent(event)"
     />
+    <MglGeocoderControl
+      v-model="defaultInput"
+      :access-token="accessToken"
+      class="map-search"
+      @results="handleSearch"
+    />
   </MglMap>
 </template>
 
@@ -23,15 +29,18 @@
 /* MAPBOX COMPONENTS */
 import MapboxStyle from "@/assets/js/mapbox/style.json";
 import MapMarker from "./marker";
-import { MglMap } from "vue-mapbox";
+import { MglMap, MglGeolocateControl, MglNavigationControl } from "vue-mapbox";
+import MglGeocoderControl from "vue-mapbox-geocoder";
 
 /* UTILITIES */
+import { EventBus } from "@/event-bus.js";
 
 export default {
   name: "Map",
   components: {
     MglMap,
-    MapMarker
+    MapMarker,
+    MglGeocoderControl
   },
   props: {
     events: {
@@ -49,11 +58,19 @@ export default {
         center: [-123.120735, 49.28273],
         zoom: 12
       },
+
+      defaultInput: "Vancouver"
     };
   },
 
   created() {
     this.map = null;
+  },
+  mounted() {
+    EventBus.$on("results", event => {
+      console.log("payload: ", event);
+      this.defaultInput = event;
+    });
   },
 
   methods: {
@@ -64,6 +81,9 @@ export default {
     navigateToEvent(event) {
       const { _id: id } = event;
       this.$router.push({ path: `/eventpage/${id}` });
+    },
+    handleSearch(event) {
+      console.log(event);
     }
   }
 };

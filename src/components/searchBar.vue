@@ -2,24 +2,33 @@
   <div class="search-wrapper">
     <div class="search-bar">
       <div class="search-icon">
-        <img src="@/assets/icons/search.png" alt="">
+        <img src="@/assets/icons/search.png" alt="" />
       </div>
       <input
         ref="autocomplete"
         v-model="searchQuery"
         placeholder="Search events, locations, dates"
-      >
+        @keyup.enter="handleSearch"
+      />
     </div>
   </div>
 </template>
 <script>
+import { EventBus } from "@/event-bus.js";
+
 export default {
   data() {
     return {
-      searchQuery: '',
-    }
+      searchQuery: ""
+    };
   },
-}
+  methods: {
+    handleSearch() {
+      console.log("emitting results: ", this.searchQuery);
+      EventBus.$emit("results", this.searchQuery);
+    }
+  }
+};
 </script>
 <style lang="scss">
 .search-wrapper {
@@ -27,7 +36,7 @@ export default {
   top: 15%;
   left: 50%;
   transform: translateX(-50%);
-  @media screen and (min-width: 700px){
+  @media screen and (min-width: 700px) {
     top: 13%;
   }
   .search-bar {
@@ -36,7 +45,7 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    font-family: 'Nunito', sans-serif;
+    font-family: "Nunito", sans-serif;
     font-weight: 600;
     font-size: 1.2em;
     height: 3em;
@@ -57,7 +66,9 @@ export default {
       width: 90%;
       text-overflow: ellipsis;
     }
-    input:focus, textarea:focus, select:focus {
+    input:focus,
+    textarea:focus,
+    select:focus {
       outline: none;
     }
     .search-icon {
