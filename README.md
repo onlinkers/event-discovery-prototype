@@ -53,7 +53,7 @@ Further good coding practices can be addressed by reading [this](https://github.
 
 ### Environmental Files
 
-A dotenv (`.env.local`) environmental file needs to be created at `root`
+A dotenv (`.env`) environmental file needs to be created at `root`
 
 > You can do this easily by copying and renaming `.env.default`
 
