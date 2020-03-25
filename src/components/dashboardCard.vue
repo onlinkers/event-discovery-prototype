@@ -1,53 +1,66 @@
 <template>
   <v-card
-    class="mx-auto"
     max-width="400"
+    class="mx-auto"
   >
-    <v-img
-      class="white--text align-end"
-      height="200px"
-      src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
-    >
-      <v-card-title>Top 10 Australian beaches</v-card-title>
-    </v-img>
-
-    <v-card-subtitle class="pb-0">Number 10</v-card-subtitle>
-
-    <v-card-text class="text--primary">
-      <div>Whitehaven Beach</div>
-
-      <div>Whitsunday Island, Whitsunday Islands</div>
-    </v-card-text>
-
-    <v-card-actions>
-      <v-btn
-        color="orange"
-        text
+    <v-container class="pa-1">
+      <v-item-group
+        v-model="selected"
+        multiple
       >
-        Share
-      </v-btn>
-
-      <v-btn
-        color="orange"
-        text
-      >
-        Explore
-      </v-btn>
-    </v-card-actions>
+        <v-row>
+          <v-col
+            v-for="(item, i) in items"
+            :key="i"
+            cols="12"
+            md="6"
+          >
+            <v-item v-slot:default="{ active, toggle }">
+              <v-img
+                :src="`https://cdn.vuetifyjs.com/images/${item.src}`"
+                height="150"
+                class="text-right pa-2"
+                @click="toggle"
+              >
+                <v-btn
+                  icon
+                  dark
+                >
+                  <v-icon>
+                    {{ active ? 'mdi-heart' : 'mdi-heart-outline' }}
+                  </v-icon>
+                </v-btn>
+              </v-img>
+            </v-item>
+          </v-col>
+        </v-row>
+      </v-item-group>
+    </v-container>
   </v-card>
 </template>
 
 <script>
-export default {
-    
-data() {
-    return {};
-},
-method: {
-    
- }
-};
+  export default {
+    data: () => ({
+      items: [
+        {
+          src: 'backgrounds/bg.jpg',
+        },
+        {
+          src: 'backgrounds/md.jpg',
+        },
+        {
+          src: 'backgrounds/bg-2.jpg',
+        },
+        {
+          src: 'backgrounds/md2.jpg',
+        },
+      ],
+      selected: [],
+    }),
+  }
 </script>
+
 
 <style lang="scss" scoped>
 

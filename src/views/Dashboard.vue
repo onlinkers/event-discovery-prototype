@@ -5,8 +5,8 @@
          <ExploreBar />
         </mq-layout>
         <div class="event-list">
-           <h2>Popular Events World, or any date</h2> 
-            <DashboardCard />
+           <h2>Popular Events World, or any date</h2>
+           <DashboardCard />
 
         </div>
     </div>
@@ -17,6 +17,7 @@
 import SearchBar from "../components/searchBar";
 import ExploreBar from "../components/exploreBar";
 import DashboardCard from "../components/dashboardCard";
+import { mapActions, mapState } from "vuex";
 
 export default {
     name: "Dashboard",
@@ -30,9 +31,20 @@ export default {
             
         };
     },
-
+    computed: {
+        ...mapState('events', {
+            events: state => state.general
+        })
+    },
+    created() {
+        // QUERY logic should be handled here
+        // it will be easier to handle map re-loads, async calls, loading, etc
+        this.queryAllEvents()
+    },
     method: {
-
+        ...mapActions('events', [
+        'queryAllEvents'
+        ]),
     }
 }
 </script>
@@ -42,8 +54,8 @@ export default {
 .event-list {
     position: absolute;
     top: 20%;
-    width: 90%;
     left: 5%;
+    width: 90%;
     display: flex;
     flex-direction: row;
 }
