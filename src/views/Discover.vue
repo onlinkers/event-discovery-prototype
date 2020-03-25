@@ -1,7 +1,7 @@
 <template>
   <div class="map-components-wrapper">
-    <Map :events="events" @mapLoad="loadMap"/>
-    <SearchBar />
+    <Map :events="events" @mapLoad="loadMap" />
+    <!-- <SearchBar /> -->
     <mq-layout mq="desktop">
       <ExploreBar />
     </mq-layout>
@@ -22,7 +22,7 @@ export default {
   name: "Discover",
   components: {
     Map,
-    SearchBar,
+    // SearchBar,
     ExploreBar
   },
   data() {
@@ -33,14 +33,14 @@ export default {
     };
   },
   computed: {
-    ...mapState('events', {
+    ...mapState("events", {
       events: state => state.general
     })
   },
   created() {
     // QUERY logic should be handled here
     // it will be easier to handle map re-loads, async calls, loading, etc
-    this.queryAllEvents()
+    this.queryAllEvents();
   },
   mounted() {
     window.addEventListener("resize", () => {
@@ -49,15 +49,13 @@ export default {
     });
   },
   methods: {
-    ...mapActions('events', [
-      'queryAllEvents'
-    ]),
+    ...mapActions("events", ["queryAllEvents"]),
     loadMap() {
       setTimeout(() => {
         this.mapLoaded = true;
       }, 2000);
     }
-  },
+  }
 };
 </script>
 <style lang="scss" scoped>
