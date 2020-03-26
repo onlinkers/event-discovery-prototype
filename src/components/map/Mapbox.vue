@@ -113,12 +113,12 @@ export default {
       this.$router.push({ path: `/eventpage/${id}` });
     },
     updateQuery(payload) {
-      console.log(payload);
+      // console.log(payload);
       const results = this.geocoderControl.query(payload);
-      console.log(results);
+      // console.log(results);
     },
     handleSearch(event) {
-      console.log(event);
+      // console.log(event);
     }
   }
 };
