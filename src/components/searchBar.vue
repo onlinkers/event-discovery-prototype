@@ -33,7 +33,7 @@ export default {
   watch: {},
   mounted() {
     EventBus.$on("sendSuggestions", payload => {
-      console.log(payload);
+      // console.log(payload);
       this.suggestions = payload;
     });
   },
@@ -42,7 +42,7 @@ export default {
       this.$emit("update:query", this.searchQuery);
     },
     updateQuery() {
-      console.log("loading");
+      // console.log("loading");
       EventBus.$emit("loading", this.searchQuery);
     }
   }
