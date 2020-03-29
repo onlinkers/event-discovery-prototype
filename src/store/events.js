@@ -20,8 +20,8 @@ const events = {
     queryAllEvents({ commit }) {
       return eventService
         .getAllEventData()
-        .then(data => {
-          commit("setGeneralEvents", data.data);
+        .then(response => {
+          commit("setGeneralEvents", response.data);
         })
         .catch(err => {
           Vue.toasted.global.errorMessage({
@@ -32,8 +32,8 @@ const events = {
     queryLocalEvent({ commit }, id) {
       return eventService
         .getEventData({ id })
-        .then(data => {
-          commit("setLocalEvent", data.data);
+        .then(response => {
+          commit("setLocalEvent", response.data);
         })
         .catch(err => {
           Vue.toasted.global.errorMessage({

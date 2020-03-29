@@ -11,7 +11,6 @@
 <script>
 /* MAIN COMPONENTS */
 import Map from "@/components/map/Mapbox";
-import SearchBar from "@/components/searchBar";
 import ExploreBar from "../components/exploreBar";
 
 import { mapActions, mapState } from "vuex";
@@ -22,7 +21,6 @@ export default {
   name: "Discover",
   components: {
     Map,
-    // SearchBar,
     ExploreBar
   },
   data() {

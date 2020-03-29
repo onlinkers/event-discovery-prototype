@@ -14,8 +14,8 @@ const userData = {
     queryUserData({ commit }, userId) {
       return userService
         .getUserData({ id: userId })
-        .then(data => {
-          commit("setUserData", data.data);
+        .then(response => {
+          commit("setUserData", response.data);
         })
         .catch(err => {
           Vue.toasted.global.errorMessage({

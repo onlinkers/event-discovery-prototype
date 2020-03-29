@@ -18,7 +18,7 @@
         :img-src="event.media.coverPhoto.baseSrc"
         @navigate="navigateToEvent(event)"
       />
-      <!-- <img src="@/assets/icons/search.png" alt class="search-icon" /> -->
+      <!-- TODO: wrap geocoder in div and add icons -->
       <MglGeocoderControl
         v-model="searchQuery"
         :access-token="accessToken"
@@ -26,7 +26,6 @@
         @results="handleSearch"
       />
     </MglMap>
-    <!-- <SearchBar id="searchbar" @update:query="updateQuery" /> -->
   </div>
 </template>
 
@@ -36,18 +35,14 @@ import MapboxStyle from "@/assets/js/mapbox/style.json";
 import MapMarker from "./marker";
 import { MglMap } from "vue-mapbox";
 import MglGeocoderControl from "vue-mapbox-geocoder";
-import SearchBar from "@/components/searchBar";
-import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 
 /* UTILITIES */
-// import { EventBus } from "@/event-bus.js";
 
 export default {
   name: "Map",
   components: {
     MglMap,
     MapMarker,
-    // SearchBar,
     MglGeocoderControl
   },
   props: {
@@ -75,50 +70,18 @@ export default {
     this.map = null;
     this.geocoderControl = null;
   },
-  mounted() {
-    // EventBus.$on("results", event => {
-    //   console.log("payload: ", event);
-    //   this.defaultInput = event;
-    // });
-    // this.geocoderControl = new MapboxGeocoder({
-    //   accessToken: this.accessToken
-    // });
-    // console.log(this.geocoderControl);
-    // this.geocoderControl.addTo("#map");
-    // this.geocoderControl.on("loading", data => {
-    //   console.log(data);
-    // });
-    // this.geocoderControl.on("results", results => {
-    //   console.log(results.features);
-    //   EventBus.$emit("sendSuggestions", results.features);
-    //   // const input = results.query ? results.query.join("") : "";
-    //   // this.$emit("update:input", input);
-    //   // this.map.flyTo({
-    //   //   center: [
-    //   //     -74.5 + (Math.random() - 0.5) * 10,
-    //   //     40 + (Math.random() - 0.5) * 10
-    //   //   ],
-    //   //   essential: true // this animation is considered essential with respect to prefers-reduced-motion
-    //   // });
-    // });
-  },
+  mounted() {},
 
   methods: {
     onMapLoaded(event) {
-      // console.log("Map loaded!");
       this.map = event.map;
     },
     navigateToEvent(event) {
       const { _id: id } = event;
       this.$router.push({ path: `/eventpage/${id}` });
     },
-    updateQuery(payload) {
-      // console.log(payload);
-      const results = this.geocoderControl.query(payload);
-      // console.log(results);
-    },
     handleSearch(event) {
-      // console.log(event);
+      // TODO: middle marker, and possible backend stuff for 'user suggestions'
     }
   }
 };
