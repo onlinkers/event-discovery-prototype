@@ -22,6 +22,7 @@
       <MglGeocoderControl
         v-model="searchQuery"
         :access-token="accessToken"
+        :local-geocoder="eventGeocoder"
         class="map-search"
         @results="handleSearch"
       />
@@ -37,6 +38,7 @@ import { MglMap } from "vue-mapbox";
 import MglGeocoderControl from "vue-mapbox-geocoder";
 
 /* UTILITIES */
+import { eventFinder } from '../../utils'
 
 export default {
   name: "Map",
@@ -79,8 +81,12 @@ export default {
       const { _id: id } = event;
       this.$router.push({ path: `/eventpage/${id}` });
     },
-    handleSearch(event) {
+    handleSearch() {
       // TODO: middle marker, and possible backend stuff for 'user suggestions'
+    },
+    eventGeocoder(query) {
+      const matchingEvents = eventFinder(this.events, query);
+      return matchingEvents;
     }
   }
 };
