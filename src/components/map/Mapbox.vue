@@ -22,6 +22,7 @@
       <MglGeocoderControl
         v-model="searchQuery"
         :access-token="accessToken"
+        :placeholder="geocoderOptions.placeholder"
         :local-geocoder="eventGeocoder"
         class="map-search"
         @results="handleSearch"
@@ -38,7 +39,7 @@ import { MglMap } from "vue-mapbox";
 import MglGeocoderControl from "vue-mapbox-geocoder";
 
 /* UTILITIES */
-import { eventFinder } from '../../utils'
+import { eventFinder } from "../../utils";
 
 export default {
   name: "Map",
@@ -62,6 +63,10 @@ export default {
         center: [-123.120735, 49.28273],
         zoom: 12
       },
+      geocoderOptions: {
+        placeholder: "Search events and locations"
+      },
+
       searchQuery: "",
       suggestions: []
     };
