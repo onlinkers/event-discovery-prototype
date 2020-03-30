@@ -1,7 +1,13 @@
 <template>
   <div class="map-components-wrapper">
-    <Map :events="events" @mapLoad="loadMap"/>
+    <Map
+      v-if="!eventsLoading"
+      :events="events"
+      :categories="categories"
+      @mapLoad="loadMap"
+    />
     <SearchBar />
+    <CategoryNavigator :categories="categories" />
     <mq-layout mq="desktop">
       <ExploreBar />
     </mq-layout>
@@ -13,6 +19,7 @@
 import Map from "@/components/map/Mapbox";
 import SearchBar from "@/components/searchBar";
 import ExploreBar from "../components/exploreBar";
+import CategoryNavigator from "../components/categoryNavigator";
 
 import { mapActions, mapState } from "vuex";
 
@@ -23,19 +30,27 @@ export default {
   components: {
     Map,
     SearchBar,
-    ExploreBar
+    ExploreBar,
+    CategoryNavigator
   },
   data() {
     return {
       windowWidth: 0,
       windowHeight: 0,
-      mapLoaded: false
+      mapLoaded: false,
+      categories: [],
     };
   },
   computed: {
     ...mapState('events', {
-      events: state => state.general
+      events: state => state.general,
+      eventsLoading: state => state.loading,
     })
+  },
+  watch: {
+    '$route.query'() {
+      this.categories = this.$route.query.categories ? unescape(this.$route.query.categories).split(',') : [];
+    }
   },
   created() {
     // QUERY logic should be handled here
@@ -47,6 +62,7 @@ export default {
       this.windowWidth = window.innerWidth;
       this.windowHeight = window.innerHeight;
     });
+    this.categories = this.$route.query.categories ? unescape(this.$route.query.categories).split(',') : [];
   },
   methods: {
     ...mapActions('events', [
