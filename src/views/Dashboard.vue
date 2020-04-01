@@ -49,6 +49,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.Dashboard {
+  width: 100vw;
+  height: 100%;
+  background: $background;
+}
 .event-list {
   position: absolute;
   top: 30%;

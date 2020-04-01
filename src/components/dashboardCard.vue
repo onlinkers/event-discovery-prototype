@@ -94,7 +94,7 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 1em;
-  background: #f5f5f6;
+  background: white;
   border-radius: 10px;
 
   .like-btn {
