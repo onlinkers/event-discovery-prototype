@@ -1,52 +1,14 @@
-x<template>
-  <!-- <v-card
-    max-width="400"
-    class="mx-auto"
-  >
-    <v-container class="pa-1">
-      <v-item-group
-        v-model="selected"
-        multiple
-      >
-        <v-row>
-          <v-col
-            v-for="(item, i) in items"
-            :key="i"
-            cols="12"
-            md="6"
-          >
-            <v-item v-slot:default="{ active, toggle }">
-              <v-img
-                :src="`https://cdn.vuetifyjs.com/images/${item.src}`"
-                height="150"
-                class="text-right pa-2"
-                @click="toggle"
-              >
-                <v-btn
-                  icon
-                  dark
-                >
-                  <v-icon>
-                    {{ active ? 'mdi-heart' : 'mdi-heart-outline' }}
-                  </v-icon>
-                </v-btn>
-              </v-img>
-            </v-item>
-          </v-col>
-        </v-row>
-      </v-item-group>
-    </v-container>
-  </v-card>-->
+<template>
   <div class="card-container">
     <img src="../assets/icons/like-button.svg" class="like-btn" alt />
     <img src="../assets/media/test-card-img.png" class="card-cover-img" alt />
     <div class="card-details">
-      <h2 class="card-title card-details__detail">Island Cruise</h2>
+      <h2 class="card-title card-details__detail">{{ event.pub.name }}</h2>
       <div class="card-tags card-details__detail">
         <p>
-          <span>Tag1</span>
-          <span>Tag2</span>
-          <span>Tag3</span>
+          <span v-for="(tag, index) in capitalizedTags" :key="`tag-${index}`">
+            {{ tag }}
+          </span>
         </p>
       </div>
       <div class="card-location card-details__detail">
@@ -63,32 +25,30 @@ x<template>
 
 <script>
 export default {
+  props: {
+    event: event,
+  },
   data() {
-    return {
-      items: [
-        {
-          src: "backgrounds/bg.jpg"
-        },
-        {
-          src: "backgrounds/md.jpg"
-        },
-        {
-          src: "backgrounds/bg-2.jpg"
-        },
-        {
-          src: "backgrounds/md2.jpg"
-        }
-      ],
-      selected: []
-    };
-  }
+    return {};
+  },
+  computed: {
+    capitalizedTags() {
+      const tagList = this.event.eventTags.host.map((tag) => {
+        return tag.charAt(0).toUpperCase() + tag.substring(1);
+      });
+      return tagList;
+    },
+  },
 };
 </script>
 
-
 <style lang="scss" scoped>
+::-webkit-scrollbar {
+  width: 0px; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
+}
 .card-container {
-  position: absolute;
+  position: relative;
   width: 290px;
   height: 350px;
   display: flex;
@@ -96,6 +56,7 @@ export default {
   padding: 1em;
   background: white;
   border-radius: 10px;
+  margin: 0 2em 2em 0;
 
   .like-btn {
     position: absolute;
@@ -122,6 +83,9 @@ export default {
       p {
         @include card-tag;
         margin: 0;
+        white-space: nowrap;
+        overflow-x: scroll;
+        user-select: none;
 
         span {
           margin-right: 1em;

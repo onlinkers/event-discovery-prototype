@@ -3,9 +3,9 @@
     <transition name="fade" mode="out-in">
       <router-view />
     </transition>
-    <mq-layout mq="mobile">
-      <ExploreBar class="explore-bar" :curr-page="this.$route" />
-    </mq-layout>
+    <ExploreBar class="explore-bar" :curr-page="this.$route" />
+    <!-- <mq-layout mq="mobile">
+    </mq-layout> -->
   </v-app>
 </template>
 
@@ -16,7 +16,7 @@ import "@/global.scss";
 export default {
   name: "App",
   components: {
-    ExploreBar
+    ExploreBar,
   },
 
   data: () => ({
@@ -25,8 +25,8 @@ export default {
   computed: {
     theme() {
       return this.$vuetify.theme.dark ? "dark" : "light";
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">

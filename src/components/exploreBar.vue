@@ -8,16 +8,24 @@
         </router-link>
         <div class="page-links">
           <router-link to="/dashboard" class="page-link">
-            <h3 :class="{ 'page-link--active': activePage === 'dashboard' }">Dashboard</h3>
+            <h3 :class="{ 'page-link--active': activePage === 'dashboard' }">
+              Dashboard
+            </h3>
           </router-link>
           <router-link to="/discover" class="page-link">
-            <h3 :class="{ 'page-link--active': activePage === 'discover' }">Discover</h3>
+            <h3 :class="{ 'page-link--active': activePage === 'discover' }">
+              Discover
+            </h3>
           </router-link>
           <router-link to="/moments" class="page-link">
-            <h3 :class="{ 'page-link--active': activePage === 'moments' }">Moments</h3>
+            <h3 :class="{ 'page-link--active': activePage === 'moments' }">
+              Moments
+            </h3>
           </router-link>
           <router-link to="/new" class="page-link">
-            <h3 :class="{ 'page-link--active': activePage === 'create' }">Create</h3>
+            <h3 :class="{ 'page-link--active': activePage === 'create' }">
+              Create
+            </h3>
           </router-link>
         </div>
         <v-btn
@@ -86,17 +94,17 @@ import Eclipse from "@/assets/icons/mobile-explore-bar/explore-eclipse";
 
 export default {
   components: {
-    Eclipse
+    Eclipse,
   },
   props: {
     currPageProp: {
       type: Object,
-      required: false
-    }
+      required: false,
+    },
   },
   data() {
     return {
-      activePage: ""
+      activePage: "",
     };
   },
   created() {
@@ -104,7 +112,7 @@ export default {
     //   this.activePage = this.currPageProp.name;
     // }
     this.activePage = this.$route.name;
-  }
+  },
 };
 </script>
 
@@ -136,6 +144,7 @@ export default {
     }
 
     .page-links {
+      margin-left: -10%;
       display: flex;
       flex-direction: row;
       align-items: center;
