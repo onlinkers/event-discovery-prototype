@@ -16,7 +16,7 @@ export default [
       admin: "Killy Bong",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      rating: 4
+      rating: 4,
     },
     priv: {
       id: 0,
@@ -24,7 +24,7 @@ export default [
       coordinates: [-123.129042, 49.278767],
       dateCreated: "07/29/2019",
       lastUpdate: "07/29/2019",
-      type: PUBLIC
+      type: PUBLIC,
     },
     attendance: {
       membersAccess: {
@@ -63,13 +63,13 @@ export default [
           { id: 123, firstName: "Marc", status: "", invited: true },
           { id: 344, firstName: "Lillith", status: INTERESTED, invited: false },
           { id: 4268, firstName: "Kaif", status: "", invited: true },
-          { id: 2178, firstName: "Keely", status: GOING, invited: false }
+          { id: 2178, firstName: "Keely", status: GOING, invited: false },
         ],
         invited: 9,
         going: 14,
-        interested: 14
+        interested: 14,
         // Total: 35
-      }
+      },
     },
     ticketLink: "https://www.eventbrite.ca/",
     mediaLink: {
@@ -78,23 +78,23 @@ export default [
       host: [
         "https://media-cdn.tripadvisor.com/media/photo-m/1280/17/94/42/91/photo2jpg.jpg",
         "https://media-cdn.tripadvisor.com/media/photo-w/17/94/42/8f/photo1jpg.jpg",
-        "https://media-cdn.tripadvisor.com/media/photo-w/17/94/42/8e/photo0jpg.jpg"
+        "https://media-cdn.tripadvisor.com/media/photo-w/17/94/42/8e/photo0jpg.jpg",
       ],
       users: [
         "https://media-cdn.tripadvisor.com/media/photo-o/11/ce/ef/f1/rezz-at-celebrities-nightclub.jpg",
         "https://media-cdn.tripadvisor.com/media/photo-o/11/ce/ef/ca/travis-scott-live-at.jpg",
         "https://media-cdn.tripadvisor.com/media/photo-o/11/ce/ef/61/a-club-called-rhonda.jpg",
-        "https://media-cdn.tripadvisor.com/media/photo-o/11/ce/ee/75/cedric-gervais-at-celebrities.jpg"
-      ]
+        "https://media-cdn.tripadvisor.com/media/photo-o/11/ce/ee/75/cedric-gervais-at-celebrities.jpg",
+      ],
     },
     eventTags: {
       host: ["party", "nightlife", "19+", "birthday", "weekend"],
-      users: ["lit", "fob", "dj", "fuuuun"]
+      users: ["lit", "fob", "dj", "fuuuun"],
     },
     history: {
       previous: "",
-      demograph: "Youth"
-    }
+      demograph: "Youth",
+    },
   },
   {
     pub: {
@@ -106,7 +106,7 @@ export default [
       admin: "Kelvin Muk",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      rating: 4
+      rating: 4,
     },
     priv: {
       id: 1,
@@ -114,7 +114,7 @@ export default [
       coordinates: [-123.255368, 49.26157],
       dateCreated: "07/29/2019",
       lastUpdate: "07/29/2019",
-      type: PRIVATE
+      type: PRIVATE,
     },
     attendance: {
       membersAccess: {
@@ -129,27 +129,27 @@ export default [
           { id: 707, firstName: "Zeus", status: GOING, invited: true },
           { id: 708, firstName: "Nib", status: INTERESTED, invited: true },
           { id: 709, firstName: "Barrack", status: GOING, invited: true },
-          { id: 710, firstName: "Hussain", status: GOING, invited: true }
+          { id: 710, firstName: "Hussain", status: GOING, invited: true },
         ],
         invited: 11,
         going: 5,
-        interested: 3
-      }
+        interested: 3,
+      },
     },
     ticketLink: "",
     mediaLink: {
       cover: "",
       host: [],
-      users: []
+      users: [],
     },
     eventTags: {
       host: [],
-      users: []
+      users: [],
     },
     history: {
       previous: "",
-      demograph: ""
-    }
+      demograph: "",
+    },
   },
   {
     pub: {
@@ -161,7 +161,7 @@ export default [
       admin: "High Bong",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      rating: 4
+      rating: 4,
     },
     priv: {
       id: 2,
@@ -169,7 +169,7 @@ export default [
       coordinates: [-123.221412, 49.258983],
       dateCreated: "07/29/2019",
       lastUpdate: "07/29/2019",
-      type: PUBLIC
+      type: PUBLIC,
     },
     attendance: {
       membersAccess: {
@@ -208,28 +208,28 @@ export default [
           { id: 123, firstName: "Marc", status: "", invited: true },
           { id: 344, firstName: "Lillith", status: INTERESTED, invited: false },
           { id: 4268, firstName: "Kaif", status: "", invited: true },
-          { id: 2178, firstName: "Keely", status: GOING, invited: false }
+          { id: 2178, firstName: "Keely", status: GOING, invited: false },
         ],
         invited: 15,
         going: 19,
-        interested: 9
-      }
+        interested: 9,
+      },
     },
     ticketLink: "",
     mediaLink: {
       cover:
         "https://asset.barrons.com/public/resources/images/ON-CM053_FEAT_0_B1280_20180327155410.jpg",
       host: [],
-      users: []
+      users: [],
     },
     eventTags: {
       host: ["cannabis", "19+", "party"],
-      users: []
+      users: [],
     },
     history: {
       previous: "",
-      demograph: ""
-    }
+      demograph: "",
+    },
   },
   {
     pub: {
@@ -241,7 +241,7 @@ export default [
       admin: "Burning Man Project",
       description:
         "Burning Man is an event held annually in the western United States at Black Rock City, a temporary city erected in the Black Rock Desert of northwest Nevada, approximately 100 miles north-northeast of Reno, and a thriving year-round culture generated by a global community of participants. Burning Man is an event held annually in the western United States at Black Rock City, a temporary city erected in the Black Rock Desert of northwest Nevada, approximately 100 miles north-northeast of Reno, and a thriving year-round culture generated by a global community of participants. Burning Man is an event held annually in the western United States at Black Rock City, a temporary city erected in the Black Rock Desert of northwest Nevada, approximately 100 miles north-northeast of Reno, and a thriving year-round culture generated by a global community of participants. Burning Man is an event held annually in the western United States at Black Rock City, a temporary city erected in the Black Rock Desert of northwest Nevada, approximately 100 miles north-northeast of Reno, and a thriving year-round culture generated by a global community of participants. ",
-      rating: 5
+      rating: 5,
     },
     priv: {
       id: 851,
@@ -249,7 +249,7 @@ export default [
       coordinates: [-123.100761, 49.280659],
       dateCreated: "10/16/2019",
       lastUpdate: "10/16/2019",
-      type: PUBLIC
+      type: PUBLIC,
     },
     attendance: {
       membersAccess: {
@@ -275,12 +275,12 @@ export default [
           { id: 707, firstName: "Zeus", status: GOING, invited: true },
           { id: 708, firstName: "Nib", status: INTERESTED, invited: true },
           { id: 709, firstName: "Barrack", status: GOING, invited: true },
-          { id: 710, firstName: "Hussain", status: GOING, invited: true }
+          { id: 710, firstName: "Hussain", status: GOING, invited: true },
         ],
         invited: 22,
         going: 10,
-        interested: 6
-      }
+        interested: 6,
+      },
     },
     ticketLink: "https://fortunesoundclub.com/sup-fu-saturdays/",
     mediaLink: {
@@ -290,18 +290,90 @@ export default [
         "https://images.unsplash.com/photo-1530841377377-3ff06c0ca713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
         "https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
         "https://images.unsplash.com/photo-1566979186514-bc7431b33ca1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=659&q=80",
-        "https://images.unsplash.com/photo-1517926967795-31943e805dae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
+        "https://images.unsplash.com/photo-1517926967795-31943e805dae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
       ],
-      users: []
+      users: [],
     },
     eventTags: {
       host: ["historical", "festival", "nature"],
-      users: ["drinks", "social"]
+      users: ["drinks", "social"],
     },
     history: {
       previous: "",
-      demograph: ""
-    }
+      demograph: "",
+    },
+  },
+  {
+    pub: {
+      name: "Mykonos-Naxos Cruise (7th Anniversary Edition)",
+      time: "07:00",
+      date: "03/31/2020",
+      venue: "Sokratous Papavasiliou, Naxos 843 00, Greece",
+      price: "$300",
+      admin: "Burning Man Project",
+      description:
+        "Burning Man is an event held annually in the western United States at Black Rock City, a temporary city erected in the Black Rock Desert of northwest Nevada, approximately 100 miles north-northeast of Reno, and a thriving year-round culture generated by a global community of participants. Burning Man is an event held annually in the western United States at Black Rock City, a temporary city erected in the Black Rock Desert of northwest Nevada, approximately 100 miles north-northeast of Reno, and a thriving year-round culture generated by a global community of participants. Burning Man is an event held annually in the western United States at Black Rock City, a temporary city erected in the Black Rock Desert of northwest Nevada, approximately 100 miles north-northeast of Reno, and a thriving year-round culture generated by a global community of participants. Burning Man is an event held annually in the western United States at Black Rock City, a temporary city erected in the Black Rock Desert of northwest Nevada, approximately 100 miles north-northeast of Reno, and a thriving year-round culture generated by a global community of participants. ",
+      rating: 5,
+    },
+    priv: {
+      id: 851,
+      adminId: 8493,
+      coordinates: [-123.100761, 49.280659],
+      dateCreated: "10/16/2019",
+      lastUpdate: "10/16/2019",
+      type: PUBLIC,
+    },
+    attendance: {
+      membersAccess: {
+        list: [
+          { id: 700, firstName: "Anna", status: "", invited: true },
+          { id: 701, firstName: "Chris", status: INTERESTED, invited: true },
+          { id: 702, firstName: "Diego", status: "", invited: true },
+          { id: 703, firstName: "Bush", status: GOING, invited: true },
+          { id: 704, firstName: "Kennedy", status: GOING, invited: true },
+          { id: 705, firstName: "Athena", status: "", invited: true },
+          { id: 706, firstName: "Hades", status: INTERESTED, invited: true },
+          { id: 707, firstName: "Zeus", status: GOING, invited: true },
+          { id: 708, firstName: "Nib", status: INTERESTED, invited: true },
+          { id: 709, firstName: "Barrack", status: GOING, invited: true },
+          { id: 710, firstName: "Hussain", status: GOING, invited: true },
+          { id: 700, firstName: "Anna", status: "", invited: true },
+          { id: 701, firstName: "Chris", status: INTERESTED, invited: true },
+          { id: 702, firstName: "Diego", status: "", invited: true },
+          { id: 703, firstName: "Bush", status: GOING, invited: true },
+          { id: 704, firstName: "Kennedy", status: GOING, invited: true },
+          { id: 705, firstName: "Athena", status: "", invited: true },
+          { id: 706, firstName: "Hades", status: INTERESTED, invited: true },
+          { id: 707, firstName: "Zeus", status: GOING, invited: true },
+          { id: 708, firstName: "Nib", status: INTERESTED, invited: true },
+          { id: 709, firstName: "Barrack", status: GOING, invited: true },
+          { id: 710, firstName: "Hussain", status: GOING, invited: true },
+        ],
+        invited: 22,
+        going: 10,
+        interested: 6,
+      },
+    },
+    ticketLink: "https://fortunesoundclub.com/sup-fu-saturdays/",
+    mediaLink: {
+      cover:
+        "https://images.unsplash.com/photo-1530841377377-3ff06c0ca713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+      host: [
+        "https://images.unsplash.com/photo-1530841377377-3ff06c0ca713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+        "https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+        "https://images.unsplash.com/photo-1566979186514-bc7431b33ca1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=659&q=80",
+        "https://images.unsplash.com/photo-1517926967795-31943e805dae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+      ],
+      users: [],
+    },
+    eventTags: {
+      host: ["historical", "festival", "nature"],
+      users: ["drinks", "social"],
+    },
+    history: {
+      previous: "",
+      demograph: "",
+    },
   },
   {
     pub: {
@@ -313,7 +385,7 @@ export default [
       admin: "High Bong",
       description:
         "The Best Party on Granville Street feat. Resident DJs Grayson Repp, Zwoofer + guests playing an energetic open format style of EDM, Vegas Style Top 40, and Club Anthems in the main room; and DJ J-traxx , Rahsad Rawkus + guests playing a mix of Hip-Hop and R&B in the Darkroom (Upstairs).",
-      rating: 3
+      rating: 3,
     },
     priv: {
       id: 199,
@@ -321,7 +393,7 @@ export default [
       coordinates: [-123.121396, 49.280711],
       dateCreated: "10/16/2019",
       lastUpdate: "10/16/2019",
-      type: PUBLIC
+      type: PUBLIC,
     },
     attendance: {
       membersAccess: {
@@ -360,28 +432,28 @@ export default [
           { id: 123, firstName: "Marc", status: "", invited: true },
           { id: 344, firstName: "Lillith", status: INTERESTED, invited: false },
           { id: 4268, firstName: "Kaif", status: "", invited: true },
-          { id: 2178, firstName: "Keely", status: GOING, invited: false }
+          { id: 2178, firstName: "Keely", status: GOING, invited: false },
         ],
         invited: 15,
         going: 19,
-        interested: 9
-      }
+        interested: 9,
+      },
     },
     ticketLink: "https://www.sevenrooms.com/events/venuevancouver/goog",
     mediaLink: {
       cover:
         "https://www.sevenrooms.com/.h/download/AMIfv96Lc--8wVS9d92bN5NsfQ-fcGnIVBJbqluy4fYcRge8RQhVieQiYcNlrh5WBFPPbXVXe8gXd3Lo0atdsxV5aOuqZkLtY8MBA0KCm9n5QfPYqak1kBfMyDa0aeIDkPuZ2ZC9UBHyxAIZ0eK83GDKQIw8FoiIsIeJC0ctpGRgM2TThBlbLfrKQ3gyJCB6LdWhViwDwnsLs3pzhECD5NFVBJMeg97ZxVaapC_Ryqo6AAcBqudhnFHalvTkgR_Wdolpy3IsgrkTBwc2gHCmwevlO-3vY0tmH8NzYFamML87wc--op2G2EMEdn04WnFUmP-rnivu7KaWRAMNkuCCxbd5V3QklSWo05fEGpzmh0I-r3Pita27OZ8S6NeC2nwXYbaPOR8Lm_7qAQ_t17nnbhUMMZ_mJ6WbrDHbXy0Xr328AgI6Tg1NH7s0tXKQiiMu92uRcTnCm-Q5Pfyf7tQ2t-NkMDnWdcQ9FSDPqMt0HjciWJMtsowPc9RvFFYh3ezbFhes0AXWw4WH5PzUGn3t0Ahl1LizoX9IYcST_cMZyJ9DIKL3Gn7RFv0p4hc0xwnLJ6luNl3kfqRz",
       host: [],
-      users: []
+      users: [],
     },
     eventTags: {
       host: ["social", "19+", "party"],
-      users: ["venue", "DJ", "live"]
+      users: ["venue", "DJ", "live"],
     },
     history: {
       previous: "",
-      demograph: ""
-    }
+      demograph: "",
+    },
   },
   {
     pub: {
@@ -393,7 +465,7 @@ export default [
       admin: "High Bong",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      rating: 4
+      rating: 4,
     },
     priv: {
       id: 1385,
@@ -401,7 +473,7 @@ export default [
       coordinates: [-123.195984, 49.237289],
       dateCreated: "10/10/2019",
       lastUpdate: "10/10/2019",
-      type: PUBLIC
+      type: PUBLIC,
     },
     attendance: {
       membersAccess: {
@@ -440,28 +512,28 @@ export default [
           { id: 123, firstName: "Marc", status: "", invited: true },
           { id: 344, firstName: "Lillith", status: INTERESTED, invited: false },
           { id: 4268, firstName: "Kaif", status: "", invited: true },
-          { id: 2178, firstName: "Keely", status: GOING, invited: false }
+          { id: 2178, firstName: "Keely", status: GOING, invited: false },
         ],
         invited: 15,
         going: 19,
-        interested: 9
-      }
+        interested: 9,
+      },
     },
     ticketLink: "",
     mediaLink: {
       cover:
         "https://newyork.cbslocal.com/wp-content/uploads/sites/14578484/2016/11/familythanksgiving.jpg?w=625&h=352&crop=1",
       host: [],
-      users: []
+      users: [],
     },
     eventTags: {
       host: ["family", "gathering"],
-      users: []
+      users: [],
     },
     history: {
       previous: "",
-      demograph: ""
-    }
+      demograph: "",
+    },
   },
   {
     pub: {
@@ -473,7 +545,7 @@ export default [
       admin: "UBC Events",
       description:
         "A family event for all ages, the UBC Apple Festival celebrates one of BC’s favourite fruits. From learning about the diversity of apples to tasting rare and unusual varieties, the Apple Festival is a great opportunity to discover more about this delicious fruit.",
-      rating: 4
+      rating: 4,
     },
     priv: {
       id: 195,
@@ -481,7 +553,7 @@ export default [
       coordinates: [-123.25, 49.25438],
       dateCreated: "10/12/2019",
       lastUpdate: "10/17/2019",
-      type: PUBLIC
+      type: PUBLIC,
     },
     attendance: {
       membersAccess: {
@@ -508,28 +580,28 @@ export default [
           { id: 836, firstName: "Dollie", status: INTERESTED, invited: false },
           { id: 572, firstName: "Sonny", status: INTERESTED, invited: false },
           { id: 56, firstName: "Ernest", status: GOING, invited: false },
-          { id: 126, firstName: "Dollie", status: "", invited: true }
+          { id: 126, firstName: "Dollie", status: "", invited: true },
         ],
         invited: 9,
         going: 12,
-        interested: 6
-      }
+        interested: 6,
+      },
     },
     ticketLink: "",
     mediaLink: {
       cover:
         "https://assets.simpleviewinc.com/simpleview/image/upload/crm/vancouverbc/AppleFest0_b4681470-5056-b3a8-49392e6e2bdbac95.jpg",
       host: [],
-      users: []
+      users: [],
     },
     eventTags: {
       host: ["seasonal", "fruits", "apple", "BC", "farm"],
-      users: []
+      users: [],
     },
     history: {
       previous: "",
-      demograph: ""
-    }
+      demograph: "",
+    },
   },
   {
     pub: {
@@ -541,7 +613,7 @@ export default [
       admin: "UBC Events",
       description:
         "Join us for the 10th annual BC Beer Awards and Festival Saturday, October 19th, 2019 in Vancouver, BC Tickets are on sale now",
-      rating: 5
+      rating: 5,
     },
     priv: {
       id: 59,
@@ -549,7 +621,7 @@ export default [
       coordinates: [-123.14221, 49.28648],
       dateCreated: "10/12/2019",
       lastUpdate: "10/17/2019",
-      type: PUBLIC
+      type: PUBLIC,
     },
     attendance: {
       membersAccess: {
@@ -576,12 +648,12 @@ export default [
           { id: 836, firstName: "Dollie", status: INTERESTED, invited: false },
           { id: 572, firstName: "Sonny", status: INTERESTED, invited: false },
           { id: 56, firstName: "Ernest", status: GOING, invited: false },
-          { id: 126, firstName: "Dollie", status: "", invited: true }
+          { id: 126, firstName: "Dollie", status: "", invited: true },
         ],
         invited: 9,
         going: 12,
-        interested: 6
-      }
+        interested: 6,
+      },
     },
     ticketLink: "https://www.bcbeerawards.com/event-2019",
     mediaLink: {
@@ -590,18 +662,18 @@ export default [
       host: [
         "https://images.squarespace-cdn.com/content/v1/521128cbe4b0750ce7e72b37/1541011686234-QS6MFNED7H7LCJNACTPW/ke17ZwdGBToddI8pDm48kLkXF2pIyv_F2eUT9F60jBl7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0iyqMbMesKd95J-X4EagrgU9L3Sa3U8cogeb0tjXbfawd0urKshkc5MgdBeJmALQKw/A53I7935.jpg?format=750w",
         "https://www.bcbeerawards.com/gallery-2018/amq8s06rfv2xqej7jarsw2e1aqoirl",
-        "https://images.squarespace-cdn.com/content/v1/521128cbe4b0750ce7e72b37/1541031787856-4YA84DJE7Y6DC9VP8NSX/ke17ZwdGBToddI8pDm48kJk0FR9U5csjyzhAUL7a4XcUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKc5bluxM5wBnp9nrYbmRuqIzQZ1EF5fbTpGgcoMcCsO7snCJsU4oaiEDi4jgPhWMro/BC+Beer+Awards-163.jpg?format=750w"
+        "https://images.squarespace-cdn.com/content/v1/521128cbe4b0750ce7e72b37/1541031787856-4YA84DJE7Y6DC9VP8NSX/ke17ZwdGBToddI8pDm48kJk0FR9U5csjyzhAUL7a4XcUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKc5bluxM5wBnp9nrYbmRuqIzQZ1EF5fbTpGgcoMcCsO7snCJsU4oaiEDi4jgPhWMro/BC+Beer+Awards-163.jpg?format=750w",
       ],
-      users: []
+      users: [],
     },
     eventTags: {
       host: ["beer", "brewery", "BC", "annual"],
-      users: []
+      users: [],
     },
     history: {
       previous: "",
-      demograph: ""
-    }
+      demograph: "",
+    },
   },
   {
     pub: {
@@ -613,7 +685,7 @@ export default [
       admin: "Vancouver Alpen Club",
       description:
         "It’s that time of year again! Unpack your Lederhosen and Dirndl as the Vancouver Alpen Club is proud to present its legendary Oktoberfest #DASORIGINAL! Come and enjoy authentic German food and beer while dancing to traditional music.",
-      rating: 2
+      rating: 2,
     },
     priv: {
       id: 67,
@@ -621,7 +693,7 @@ export default [
       coordinates: [-123.06571, 49.2402],
       dateCreated: "10/2/2019",
       lastUpdate: "10/3/2019",
-      type: PUBLIC
+      type: PUBLIC,
     },
     attendance: {
       membersAccess: {
@@ -648,28 +720,28 @@ export default [
           { id: 836, firstName: "Dollie", status: INTERESTED, invited: false },
           { id: 572, firstName: "Sonny", status: INTERESTED, invited: false },
           { id: 56, firstName: "Ernest", status: GOING, invited: false },
-          { id: 126, firstName: "Dollie", status: "", invited: true }
+          { id: 126, firstName: "Dollie", status: "", invited: true },
         ],
         invited: 9,
         going: 12,
-        interested: 6
-      }
+        interested: 6,
+      },
     },
     ticketLink: "https://www.bcbeerawards.com/event-2019",
     mediaLink: {
       cover:
         "https://images.squarespace-cdn.com/content/v1/521128cbe4b0750ce7e72b37/1572144017469-8IN0CVOPWJEYSBAF6PRI/ke17ZwdGBToddI8pDm48kHH9S2ID7_bpupQnTdrPcoF7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0nQwvinDXPV4EYh2MRzm-RRB5rUELEv7EY2n0AZOrEupxpSyqbqKSgmzcCPWV5WMiQ/BCBeerAwards2019-CroationCulturalCentre-20191019-364+%281%29.jpg?format=2500w",
       host: [],
-      users: []
+      users: [],
     },
     eventTags: {
       host: ["beer", "Vancouver", "BC", "tickets"],
-      users: []
+      users: [],
     },
     history: {
       previous: "",
-      demograph: ""
-    }
+      demograph: "",
+    },
   },
   {
     pub: {
@@ -681,7 +753,7 @@ export default [
       admin: "Scienceworld",
       description:
         "Bring your friends to an after dark adventure at Science World. Once a month, adults aged 19+ explore the building and enjoy drinks, food, music, exhibits and more. Immerse yourself in adult focused programming featuring special guest speakers, OMNIMAX® films, and one-of-a-kind activities. Come and experience the joy of science (and maybe even learn something new).",
-      rating: 5
+      rating: 5,
     },
     priv: {
       id: 677,
@@ -689,7 +761,7 @@ export default [
       coordinates: [-123.10315, 49.27332],
       dateCreated: "10/2/2019",
       lastUpdate: "10/3/2019",
-      type: PUBLIC
+      type: PUBLIC,
     },
     attendance: {
       membersAccess: {
@@ -716,12 +788,12 @@ export default [
           { id: 836, firstName: "Dollie", status: INTERESTED, invited: false },
           { id: 572, firstName: "Sonny", status: INTERESTED, invited: false },
           { id: 56, firstName: "Ernest", status: GOING, invited: false },
-          { id: 126, firstName: "Dollie", status: "", invited: true }
+          { id: 126, firstName: "Dollie", status: "", invited: true },
         ],
         invited: 9,
         going: 12,
-        interested: 6
-      }
+        interested: 6,
+      },
     },
     ticketLink: "https://www.scienceworld.ca/after-dark",
     mediaLink: {
@@ -730,18 +802,18 @@ export default [
       host: [
         "https://d3qvqlc701gzhm.cloudfront.net/full/1b5916ca6a73cf9fb07429317110ffde067d61ea40b9515cadbdb9cb23fc5b71.jpg",
         "https://d3qvqlc701gzhm.cloudfront.net/full/bcc2cec7c8d27f908fc4fc5e1d754a802db1c12da514d74910e30e2f1be9b913.jpg",
-        "https://d3qvqlc701gzhm.cloudfront.net/full/d372067aa0211d047fa74b3eebc4be579cad05656b898ad27e53ee5071612d68.jpg"
+        "https://d3qvqlc701gzhm.cloudfront.net/full/d372067aa0211d047fa74b3eebc4be579cad05656b898ad27e53ee5071612d68.jpg",
       ],
-      users: []
+      users: [],
     },
     eventTags: {
       host: ["science", "Vancouver", "education", "adults", "children"],
-      users: []
+      users: [],
     },
     history: {
       previous: "",
-      demograph: ""
-    }
+      demograph: "",
+    },
   },
   {
     pub: {
@@ -753,7 +825,7 @@ export default [
       admin: "Scienceworld",
       description:
         "Calling all girls ages 11–13! If you love all things science, technology, engineering, art and design, and math (STEAM), then the Girls and STEAM event at TELUS World of Science is for you.Join us on Saturday, November 2, 2019, for a day of unique workshops, amazing keynote speakers and opportunities to connect with inspiring mentors from the STEAM community.",
-      rating: 4
+      rating: 4,
     },
     priv: {
       id: 678,
@@ -761,7 +833,7 @@ export default [
       coordinates: [-123.10315, 49.27332],
       dateCreated: "10/5/2019",
       lastUpdate: "10/5/2019",
-      type: PUBLIC
+      type: PUBLIC,
     },
     attendance: {
       membersAccess: {
@@ -788,12 +860,12 @@ export default [
           { id: 836, firstName: "Dollie", status: INTERESTED, invited: false },
           { id: 572, firstName: "Sonny", status: INTERESTED, invited: false },
           { id: 56, firstName: "Ernest", status: GOING, invited: false },
-          { id: 126, firstName: "Dollie", status: "", invited: true }
+          { id: 126, firstName: "Dollie", status: "", invited: true },
         ],
         invited: 9,
         going: 12,
-        interested: 6
-      }
+        interested: 6,
+      },
     },
     ticketLink: "https://www.scienceworld.ca/girls-steam",
     mediaLink: {
@@ -802,17 +874,17 @@ export default [
       host: [
         "https://d3qvqlc701gzhm.cloudfront.net/full/1b5916ca6a73cf9fb07429317110ffde067d61ea40b9515cadbdb9cb23fc5b71.jpg",
         "https://d3qvqlc701gzhm.cloudfront.net/full/bcc2cec7c8d27f908fc4fc5e1d754a802db1c12da514d74910e30e2f1be9b913.jpg",
-        "https://d3qvqlc701gzhm.cloudfront.net/full/d372067aa0211d047fa74b3eebc4be579cad05656b898ad27e53ee5071612d68.jpg"
+        "https://d3qvqlc701gzhm.cloudfront.net/full/d372067aa0211d047fa74b3eebc4be579cad05656b898ad27e53ee5071612d68.jpg",
       ],
-      users: []
+      users: [],
     },
     eventTags: {
       host: ["science", "Vancouver", "education", "girls", "children"],
-      users: []
+      users: [],
     },
     history: {
       previous: "https://www.scienceworld.ca/after-dark",
-      demograph: ""
-    }
-  }
+      demograph: "",
+    },
+  },
 ];

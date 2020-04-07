@@ -34,23 +34,25 @@
   font-size: 1.375em;
 }
 
+/* EVENT CARD */
+
 @mixin card-title {
-  font-family: $text-secondary;
+  font-family: $title-md;
   font-weight: 800;
   color: $dark;
   font-size: 2em;
 }
 
-@mixin card-tag {
-  font-family: $text-secondary;
-  font-weight: 600;
-  color: $secondary;
-  font-size: 1em;
+@mixin card-date {
+  font-family: $title-md;
+  font-weight: 700;
+  color: $primary-alt;
+  font-size: 1.125em;
 }
 
 @mixin card-detail {
-  font-family: $text-secondary;
+  font-family: $title-md;
   font-weight: 700;
-  color: $dark;
-  font-size: 1.125em;
+  color: $secondary;
+  font-size: 1.25em;
 }

@@ -1,10 +1,10 @@
 <template>
   <div class="Dashboard">
-    <div class="background"/>
+    <div class="background" />
     <SearchBar id="searchbar" />
     <!-- <mq-layout mq="desktop">
       <ExploreBar />
-    </mq-layout> -->
+    </mq-layout>-->
     <!-- <div class="event-list">
            <h2>Popular Events World, or any date</h2>
            <DashboardCard />
@@ -34,17 +34,17 @@ export default {
   name: "Dashboard",
   components: {
     SearchBar,
-    DashboardCard,
+    DashboardCard
   },
   data() {
     return {
-      localEvents: eventData,
+      localEvents: eventData
     };
   },
   computed: {
     ...mapState("events", {
-      events: (state) => state.general,
-    }),
+      events: state => state.general
+    })
   },
   created() {
     // QUERY logic should be handled here
@@ -52,8 +52,8 @@ export default {
     this.queryAllEvents();
   },
   methods: {
-    ...mapActions("events", ["queryAllEvents"]),
-  },
+    ...mapActions("events", ["queryAllEvents"])
+  }
 };
 </script>
 
@@ -68,6 +68,7 @@ export default {
 
   #searchbar {
     position: fixed;
+    z-index: 99;
   }
 }
 .event-list {
