@@ -27,7 +27,7 @@
 
 <script>
 import { EVENT_CATEGORIES, EVENT_CATEGORIES_KEYS } from '../constants';
-import { filterExistingCategoryKeys } from '../utils';
+import { filterArrayByArray } from '../utils';
 
 export default {
   name: "CategoryNavigator",
@@ -47,12 +47,12 @@ export default {
   watch: {
     categories() {
         this.activeCategoryKeys = this.categories;
-        this.inactiveCategoryKeys = filterExistingCategoryKeys(EVENT_CATEGORIES_KEYS, this.categories);
+        this.inactiveCategoryKeys = filterArrayByArray(EVENT_CATEGORIES_KEYS, this.categories);
     }
   },
   mounted() {
     this.activeCategoryKeys = this.categories;
-    this.inactiveCategoryKeys = filterExistingCategoryKeys(EVENT_CATEGORIES_KEYS, this.categories);
+    this.inactiveCategoryKeys = filterArrayByArray(EVENT_CATEGORIES_KEYS, this.categories);
   },
   methods: {
     addCategory(categoryKey) {

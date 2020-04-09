@@ -26,7 +26,7 @@ import MapMarker from "./marker";
 import { MglMap } from "vue-mapbox";
 
 /* UTILITIES */
-import { filterByCategories } from '../../utils';
+import { filterEventByCategories } from '../../utils';
 
 export default {
   name: "Map",
@@ -80,7 +80,7 @@ export default {
     },
     filterEvents(events) {
       if(this.categories.length === 0 ) return events;
-      else return filterByCategories(events, this.categories);
+      else return filterEventByCategories(events, this.categories);
     }
   }
 };
