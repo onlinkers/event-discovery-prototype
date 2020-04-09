@@ -94,6 +94,11 @@ Contributions are only accepted from members of the [team](https://github.com/or
 4. Submit pull requests with a detailed commit message of what additions were made
 --> Pull requests will be accepted after being reviewed and after the appropriate tests are conducted
 
+### Branch Naming
+Branches should be named under the purpose of the addition.
+
+Typically, branches would be named similarly to: `feature/*` or `fix/*`
+
 ### Built With
 
 * [Vue](https://vuejs.org/v2/guide/) - MVVm Javascript Framework
