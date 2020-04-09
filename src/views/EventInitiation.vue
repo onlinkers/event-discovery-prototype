@@ -202,7 +202,7 @@ export default {
       this.$router.push({ path: `/new/${nextStep}` });
     },
     confirm() {
-      this.$router.push({ path: `/discover` });
+      this.$router.push({ path: "/discover" });
     },
     saveDate(eventDate) {
       this.eventDateTimeString = eventDate;

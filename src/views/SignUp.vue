@@ -63,14 +63,14 @@
 </template>
 
 <script>
-import { rules } from '../utils'
+import { rules } from "../utils";
 export default {
   data() {
     return {
       rules: rules
-    }
+    };
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>

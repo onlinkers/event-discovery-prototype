@@ -66,16 +66,16 @@
   </div>
 </template>
 <script>
-import { rules } from '../utils'
+import { rules } from "../utils";
 export default {
   data() {
     return {
-      inputEmail: '',
-      inputPassword: '',
+      inputEmail: "",
+      inputPassword: "",
       rules: rules,
-    }
+    };
   },
-}
+};
 </script>
 <style lang="scss">
 .WelcomePage {

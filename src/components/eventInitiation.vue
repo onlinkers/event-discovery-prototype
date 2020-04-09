@@ -105,7 +105,7 @@
   </transition>
 </template>
 <script>
-import { EventBus } from '@/event-bus.js';
+import { EventBus } from "@/event-bus.js";
 
 export default {
   props: {
@@ -115,22 +115,22 @@ export default {
     return {
       eventDate: null,
       showCalendar: false,
-    }
+    };
   },
   created: {
     handleCreated() {
-      EventBus.$emit('eventModalActivated', 'Discover');
+      EventBus.$emit("eventModalActivated", "Discover");
     }
   },
   methods: {
     dismissModal() {
-      this.$emit('close');
+      this.$emit("close");
     },
     saveDate() {
-      this.$refs
+      this.$refs;
     }
   }
-}
+};
 </script>
 <style lang="scss">
 .fade-enter-active, .fade-leave-active {

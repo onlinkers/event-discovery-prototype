@@ -16,10 +16,10 @@
 export default {
   data() {
     return {
-      searchQuery: '',
-    }
+      searchQuery: "",
+    };
   },
-}
+};
 </script>
 <style lang="scss">
 .search-wrapper {

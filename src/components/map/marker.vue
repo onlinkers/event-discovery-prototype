@@ -50,7 +50,7 @@ export default {
   data() {
     return {
       imageSrc: this.imgSrc
-    }
+    };
   },
   computed: {
     imageKey: function() {
@@ -68,7 +68,7 @@ export default {
       this.$emit("navigate");
     },
     imageAltSrc() {
-      this.imageSrc = require("@/assets/media/no-image-default.png")
+      this.imageSrc = require("@/assets/media/no-image-default.png");
     }
   }
 };

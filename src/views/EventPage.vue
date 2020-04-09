@@ -73,7 +73,7 @@ import {
   EVENT_PAGE_DESCRIPTION_MAX_LENGTH,
   EVENT_PAGE_TAGS_MAX_RENDER,
   EVENT_PAGE_IMAGES_MAX_RENDER
-} from '../constants';
+} from "../constants";
 
 export default {
   components: {
@@ -95,26 +95,26 @@ export default {
       numPhotos: 0,
       imageList: [],
       tags: [],
-      eventName: '',
-      venueName: '',
-      startDate: '',
-      description: '',
+      eventName: "",
+      venueName: "",
+      startDate: "",
+      description: "",
 
       // description snipping
       isDescriptionSnipped: true,
       isDescriptionOverflow: false,
 
       // mood
-      mood: 'light',
+      mood: "light",
     };
   },
   computed: {
-    ...mapState('events', {
+    ...mapState("events", {
       event: state => state.local
     }),
     activeTags() {
       const tagList = this.tags.filter(tag => {
-        return tag !== '';
+        return tag !== "";
       });
       if (tagList.length > EVENT_PAGE_TAGS_MAX_RENDER) {
         return tagList.slice(0, EVENT_PAGE_TAGS_MAX_RENDER);
@@ -131,35 +131,35 @@ export default {
     },
     navOptions() {
       return {
-        topType: 'share-' + this.mood,
-        backRoute: '/discover'
-      }
+        topType: "share-" + this.mood,
+        backRoute: "/discover"
+      };
     }
   },
   created() {
     this.queryLocalEvent(this.$route.params.eventId)
-    .then(() => {
+      .then(() => {
       // Import queried events into data
-      this.eventName = this.event.name
-      this.description = this.event.description
-      this.startDate = this.event.startDate
-      this.venueName = this.event.venue.name
-      this.tags = this.event.tags.hostTags
-      this.backgroundImg = this.event.media.coverPhoto && this.event.media.coverPhoto.baseSrc
-      this.numPhotos = this.event.media.hostPhotos.length + this.event.media.userPhotos.length
-      this.imageList = [ ...this.event.media.hostPhotos, ...this.event.media.userPhotos ]
-    })
-    .then(() => {
+        this.eventName = this.event.name;
+        this.description = this.event.description;
+        this.startDate = this.event.startDate;
+        this.venueName = this.event.venue.name;
+        this.tags = this.event.tags.hostTags;
+        this.backgroundImg = this.event.media.coverPhoto && this.event.media.coverPhoto.baseSrc;
+        this.numPhotos = this.event.media.hostPhotos.length + this.event.media.userPhotos.length;
+        this.imageList = [ ...this.event.media.hostPhotos, ...this.event.media.userPhotos ];
+      })
+      .then(() => {
       // Evaluate description snipping
-      if(this.description.length > EVENT_PAGE_DESCRIPTION_MAX_LENGTH) this.isDescriptionOverflow = true;
-    })
+        if(this.description.length > EVENT_PAGE_DESCRIPTION_MAX_LENGTH) this.isDescriptionOverflow = true;
+      });
   },
   methods: {
-    ...mapActions('events', [
-      'queryLocalEvent'
+    ...mapActions("events", [
+      "queryLocalEvent"
     ]),
     backgroundImageAltSrc() {
-      this.mood = 'dark'
+      this.mood = "dark";
     }
   },
 };

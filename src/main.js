@@ -23,7 +23,7 @@ Vue.use(VueMq, {
   }
 });
 library.add(fas, far, fab);
-dom.watch()
+dom.watch();
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 /**********************/
 

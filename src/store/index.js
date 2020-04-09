@@ -1,14 +1,14 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from "vue";
+import Vuex from "vuex";
 
-import events from './events'
-import userData from './userData'
+import events from "./events";
+import userData from "./userData";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
-    modules: {
-        events,
-        userData
-    }
-})
+  modules: {
+    events,
+    userData
+  }
+});
