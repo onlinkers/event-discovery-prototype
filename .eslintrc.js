@@ -92,9 +92,10 @@ module.exports = {
 
     // Non-vue rules
     "comma-dangle": [1, "only-multiline"],
+    "indent": [1, 2],
+    "object-curly-spacing": [1, "always",  { "arraysInObjects": true, "objectsInObjects": true }],
     "quotes": [1, "double"],
     "semi": [1, "always"],
-    "indent": [1, 2]
   },
   parserOptions: {
     parser: "babel-eslint"
