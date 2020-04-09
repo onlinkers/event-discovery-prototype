@@ -56,6 +56,9 @@ Further good coding practices can be addressed by reading [this](https://github.
 A dotenv (`.env`) environmental file needs to be created at `root`
 
 > You can do this easily by copying and renaming `.env.default`
+ 
+Each dotenv (`.env.*`) file will contain different variables associated with the environment which you would like to run the application on (local, stage, prod). You will need to choose one of them, but be very careful with touching **prod**. Specifically, the environmental files refer to which version of the API that the application will connect to.
+
 
 ### Components and Utilities
 
