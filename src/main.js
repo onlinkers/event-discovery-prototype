@@ -15,21 +15,30 @@ import vuetify from "./plugins/vuetify";
 import VueMq from "vue-mq";
 import VueRellax from "vue-rellax";
 import toasted from "./plugins/toasted";
+import Moment from "vue-moment";
 
+// VueMQ for quick media queries and view rendering
 Vue.use(VueMq, {
   breakpoints: {
     mobile: 600,
     desktop: Infinity
   }
 });
+
+// FontAwesomeIcon Initializations
 library.add(fas, far, fab);
 dom.watch();
 Vue.component("font-awesome-icon", FontAwesomeIcon);
+
+// Vue relax for parallax effects
+Vue.use(VueRellax);
+
+// Vue moment for date and time filter, rendering, and operations
+Vue.use(Moment);
+
 /**********************/
 
 Vue.config.productionTip = false;
-
-Vue.use(VueRellax);
 
 new Vue({
   router,
