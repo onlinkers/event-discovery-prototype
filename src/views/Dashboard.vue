@@ -9,10 +9,19 @@
           <template v-slot:activator="{ on }">
             <span slot="activator" class="browse-location__query" v-on="on">{{ browseLocation }}</span>
           </template>
-          <v-list>
-            <v-list-item v-for="item in items" :key="item.key" @click="callback">
-              <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-            </v-list-item>
+          <v-list min-width="15em">
+            <v-subheader>Recent</v-subheader>
+            <v-list-item-group v-model="selectedItem" color="primary">
+              <v-list-item v-for="(item, i) in items" :key="`item-${i}`">
+                <v-list-item-icon mr-0>
+                  <!-- <v-icon v-text="item.icon"></v-icon> -->
+                  <img src="../assets/icons/event-card/like-btn.svg" alt />
+                </v-list-item-icon>
+                <v-list-item-content>
+                  <v-list-item-title>{{ item.title }}</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-item-group>
           </v-list>
         </v-menu>
       </div>
@@ -45,11 +54,16 @@ export default {
     return {
       localEvents: eventData,
       browseLocation: "Vancouver",
+      selectedItem: {
+        title: "Vancouver"
+      },
       items: [
-        { title: "Click Me" },
-        { title: "Click Me" },
-        { title: "Click Me" },
-        { title: "Click Me 2" }
+        {
+          title: "Vancouver"
+        },
+        {
+          title: "Burnaby"
+        }
       ]
     };
   },
@@ -57,6 +71,11 @@ export default {
     ...mapState("events", {
       events: state => state.general
     })
+  },
+  watch: {
+    selectedItem: function() {
+      this.browseLocation = this.items[this.selectedItem].title;
+    }
   },
   created() {
     // QUERY logic should be handled here
