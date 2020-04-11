@@ -4,7 +4,20 @@
     <div class="card-details">
       <div class="card-date">
         <p class="card-date__date">{{ event.pub.date }}, {{ event.pub.time }}</p>
-        <img class="card-date__like-btn" src="../assets/icons/event-card/like-btn.svg" alt />
+        <img
+          v-if="!liked"
+          class="card-date__like-btn"
+          src="../assets/icons/event-card/like-btn.svg"
+          alt
+          @click="liked = !liked"
+        />
+        <img
+          v-else
+          class="card-date__like-btn"
+          src="../assets/icons/event-card/like-btn--liked.svg"
+          alt
+          @click="liked = !liked"
+        />
       </div>
       <h2 class="card-title card-details__detail">{{ event.pub.name | trimTitle }}</h2>
       <!-- <div class="card-tags card-details__detail">
@@ -46,7 +59,9 @@ export default {
     event: event
   },
   data() {
-    return {};
+    return {
+      liked: false
+    };
   },
   computed: {
     capitalizedTags() {

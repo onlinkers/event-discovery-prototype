@@ -2,15 +2,20 @@
   <div class="Dashboard">
     <div class="background" />
     <SearchBar id="searchbar" />
-    <!-- <mq-layout mq="desktop">
-      <ExploreBar />
-    </mq-layout>-->
-    <!-- <div class="event-list">
-           <h2>Popular Events World, or any date</h2>
-           <DashboardCard />
-
-    </div>-->
     <div class="event-list">
+      <div class="browse-location">
+        Exploring
+        <v-menu offset-y>
+          <template v-slot:activator="{ on }">
+            <span slot="activator" class="browse-location__query" v-on="on">{{ browseLocation }}</span>
+          </template>
+          <v-list>
+            <v-list-item v-for="item in items" :key="item.key" @click="callback">
+              <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </div>
       <div class="list-container">
         <DashboardCard
           v-for="(event, index) in localEvents"
@@ -38,7 +43,14 @@ export default {
   },
   data() {
     return {
-      localEvents: eventData
+      localEvents: eventData,
+      browseLocation: "Vancouver",
+      items: [
+        { title: "Click Me" },
+        { title: "Click Me" },
+        { title: "Click Me" },
+        { title: "Click Me 2" }
+      ]
     };
   },
   computed: {
@@ -73,19 +85,42 @@ export default {
 }
 .event-list {
   position: absolute;
-  top: 30%;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   // overflow: none;
 
+  .browse-location {
+    width: 85%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: $title-md;
+    color: $dark;
+    font-weight: bold;
+    font-size: 2em;
+    margin: 0 0 1em 1em;
+
+    .browse-location__query {
+      color: $primary-alt;
+      margin-left: 0.25em;
+      border-bottom: 2px $primary-alt solid;
+    }
+  }
+
   .list-container {
-    left: 7.5%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
     width: 85%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     // overflow: none;
   }
 }
