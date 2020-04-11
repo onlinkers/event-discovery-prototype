@@ -40,8 +40,7 @@ export default {
   },
   data() {
     return {
-      accessToken:
-        "pk.eyJ1Ijoib25saW5rZXJzIiwiYSI6ImNrMWQyOHV6MDAzcnIzbm9laDdna213MWYifQ.-9uLdEhCUfIYP3ot-u5zeg",
+      accessToken: process.env.VUE_APP_MAPBOX_ACCESS_TOKEN,
       mapStyle: MapboxStyle,
       // https://docs.mapbox.com/help/glossary/style-url/
       // https://studio.mapbox.com/
