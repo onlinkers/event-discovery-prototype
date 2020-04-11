@@ -4,7 +4,7 @@
     <SearchBar id="searchbar" />
     <div class="event-list">
       <div class="browse-location">
-        Exploring
+        Exploring in
         <v-menu offset-y>
           <template v-slot:activator="{ on }">
             <span slot="activator" class="browse-location__query" v-on="on">{{ browseLocation }}</span>
