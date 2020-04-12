@@ -8,22 +8,32 @@
         </router-link>
         <div class="page-links">
           <router-link to="/dashboard" class="page-link">
-            <h3 :class="{ 'page-link--active': activePage === 'dashboard' }">
+            <h3
+              :class="{
+                'page-link--active': this.$route.path === '/dashboard'
+              }"
+            >
               Dashboard
             </h3>
           </router-link>
           <router-link to="/discover" class="page-link">
-            <h3 :class="{ 'page-link--active': activePage === 'discover' }">
+            <h3
+              :class="{ 'page-link--active': this.$route.path === '/discover' }"
+            >
               Discover
             </h3>
           </router-link>
           <router-link to="/moments" class="page-link">
-            <h3 :class="{ 'page-link--active': activePage === 'moments' }">
+            <h3
+              :class="{ 'page-link--active': this.$route.path === '/moments' }"
+            >
               Moments
             </h3>
           </router-link>
           <router-link to="/new" class="page-link">
-            <h3 :class="{ 'page-link--active': activePage === 'create' }">
+            <h3
+              :class="{ 'page-link--active': this.$route.path === '/create' }"
+            >
               Create
             </h3>
           </router-link>
@@ -94,17 +104,17 @@ import Eclipse from "@/assets/icons/mobile-explore-bar/explore-eclipse";
 
 export default {
   components: {
-    Eclipse,
+    Eclipse
   },
   props: {
     currPageProp: {
       type: Object,
-      required: false,
-    },
+      required: false
+    }
   },
   data() {
     return {
-      activePage: "",
+      activePage: ""
     };
   },
   created() {
@@ -112,7 +122,7 @@ export default {
     //   this.activePage = this.currPageProp.name;
     // }
     this.activePage = this.$route.name;
-  },
+  }
 };
 </script>
 
@@ -161,18 +171,19 @@ export default {
 
       .page-link--active {
         color: $primary-alt !important;
-        &::after {
-          content: "";
-          position: relative;
-          display: block;
-          height: 2px;
-          bottom: 30%;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 100%;
-          background: $primary;
-          transition: all 0.5s;
-        }
+        border-bottom: 2px $primary-alt solid;
+        // &::after {
+        //   content: "";
+        //   position: relative;
+        //   display: block;
+        //   height: 2px;
+        //   bottom: 30%;
+        //   left: 50%;
+        //   transform: translateX(-50%);
+        //   width: 100%;
+        //   background: $primary;
+        //   transition: all 0.5s;
+        // }
       }
     }
   }
