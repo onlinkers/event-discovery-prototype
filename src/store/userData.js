@@ -11,11 +11,11 @@ const userData = {
   },
   actions: {
     // "QUERY" - makes some form of request to get data from the DB
-    queryUserData({ commit }, userId) {
+    queryUserData({ commit }, userIds) {
       return userService
-        .getUserData({ id: userId })
-        .then(response => {
-          commit("setUserData", response.data);
+        .getUserData({ ids: userIds })
+        .then(data => {
+          commit("setUserData", data.data);
         })
         .catch(err => {
           Vue.toasted.global.errorMessage({

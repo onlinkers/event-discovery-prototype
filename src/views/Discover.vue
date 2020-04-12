@@ -1,7 +1,7 @@
 <template>
   <div class="map-components-wrapper">
-    <Map :events="events" @mapLoad="loadMap" />
-    <!-- <SearchBar /> -->
+    <Map :events="Object.values(events)" @mapLoad="loadMap" />
+    <SearchBar />
     <mq-layout mq="desktop">
       <ExploreBar />
     </mq-layout>

@@ -4,12 +4,12 @@ import Vue from "vue";
 const events = {
   namespaced: true,
   state: {
-    general: [],
+    general: {},
     local: {}
   },
   mutations: {
     setGeneralEvents(state, events) {
-      state.general = [...state.general, ...events];
+      state.general = { ...state.general, ...events };
     },
     setLocalEvent(state, event) {
       state.local = event;
@@ -20,8 +20,8 @@ const events = {
     queryAllEvents({ commit }) {
       return eventService
         .getAllEventData()
-        .then(response => {
-          commit("setGeneralEvents", response.data);
+        .then(data => {
+          commit("setGeneralEvents", data.data);
         })
         .catch(err => {
           Vue.toasted.global.errorMessage({
@@ -32,8 +32,8 @@ const events = {
     queryLocalEvent({ commit }, id) {
       return eventService
         .getEventData({ id })
-        .then(response => {
-          commit("setLocalEvent", response.data);
+        .then(data => {
+          commit("setLocalEvent", Object.values(data).data);
         })
         .catch(err => {
           Vue.toasted.global.errorMessage({
