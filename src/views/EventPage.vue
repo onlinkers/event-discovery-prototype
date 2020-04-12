@@ -139,7 +139,6 @@ export default {
   created() {
     this.queryLocalEvent(this.$route.params.eventId)
       .then((event) => {
-        console.log({event})
       // Import queried events into data
         this.eventName = event.name;
         this.description = event.description;
