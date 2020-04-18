@@ -5,8 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "lint-no-fix": "vue-cli-service lint --no-fix",
+    "lint": "vue-cli-service lint --no-fix",
+    "lint-fix": "vue-cli-service lint",
     "precommit-msg": "echo 'Running pre-commit checks...' && exit 0",
     "precommit-lint": "lint-staged"
   },

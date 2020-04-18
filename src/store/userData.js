@@ -11,8 +11,8 @@ const userData = {
   },
   actions: {
     // "QUERY" - makes some form of request to get data from the DB
-    queryUserData({ commit }, userId) {
-      return userService.getUserData({ id: userId })
+    queryUserData({ commit }, userIds) {
+      return userService.getUserData({ ids: userIds })
         .then((data) => {
           commit("setUserData", data.data);
         })

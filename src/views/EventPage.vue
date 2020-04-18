@@ -138,16 +138,16 @@ export default {
   },
   created() {
     this.queryLocalEvent(this.$route.params.eventId)
-      .then(() => {
+      .then((event) => {
       // Import queried events into data
-        this.eventName = this.event.name;
-        this.description = this.event.description;
-        this.startDate = this.event.startDate;
-        this.venueName = this.event.venue.name;
-        this.tags = this.event.tags.hostTags;
-        this.backgroundImg = this.event.media.coverPhoto && this.event.media.coverPhoto.baseSrc;
-        this.numPhotos = this.event.media.hostPhotos.length + this.event.media.userPhotos.length;
-        this.imageList = [ ...this.event.media.hostPhotos, ...this.event.media.userPhotos ];
+        this.eventName = event.name;
+        this.description = event.description;
+        this.startDate = event.startDate;
+        this.venueName = event.venue.name;
+        this.tags = event.tags.hostTags;
+        this.backgroundImg = event.media.coverPhoto && event.media.coverPhoto.baseSrc;
+        this.numPhotos = event.media.hostPhotos.length + event.media.userPhotos.length;
+        this.imageList = [ ...event.media.hostPhotos, ...event.media.userPhotos ];
       })
       .then(() => {
       // Evaluate description snipping
