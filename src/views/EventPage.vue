@@ -48,7 +48,7 @@
           </div>
           <div class="event-details__detail event-date">
             <img src="../assets/icons/event-page/hourglass.svg" alt="" />
-            <h5>{{ startDate | moment("h:mm a, MMMM Do YYYY") }}</h5>
+            <h5>{{ startDate  }}</h5>
           </div>
         </div>
 

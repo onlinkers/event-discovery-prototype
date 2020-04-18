@@ -3,7 +3,7 @@
         <v-chip
             v-for="categoryKey in activeCategoryKeys"
             :key="categoryKey"
-            class="active-chip"
+            class="category-chip active-chip"
             color="#2351f4"
             ripple
             small
@@ -14,7 +14,7 @@
         <v-chip
             v-for="categoryKey in inactiveCategoryKeys"
             :key="categoryKey"
-            class="inactive-chip"
+            class="category-chip inactive-chip"
             color="transparent"
             ripple
             small
@@ -106,6 +106,10 @@ export default {
       overflow: visible;
       cursor: pointer;
       margin-right: 0.1em;
+    }
+
+    .category-chip {
+      text-transform: capitalize;
     }
 
     .active-chip {
