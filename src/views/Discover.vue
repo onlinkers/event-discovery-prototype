@@ -5,6 +5,8 @@
       :events="Object.values(events)"
       :categories="eventCategories"
       :selected-categories="selectedCategories"
+      :selected-rating="ratingFilter"
+      :selected-date-span="dateFilters"
     />
     <SearchBar />
     <FilterPanel
@@ -45,7 +47,7 @@ export default {
       selectedCategories: [],
       selectedTimeSpan: [],
       dateFilters: [],
-      ratingFilter: ''
+      ratingFilter: 0,
     };
   },
   computed: {
@@ -60,7 +62,7 @@ export default {
     '$route.query'() {
       // listener for category filtering
       this.selectedCategories = this.$route.query.categories ? unescape(this.$route.query.categories).split(',') : [];
-    },
+    }
   },
   async created() {
     // QUERY logic should be handled here

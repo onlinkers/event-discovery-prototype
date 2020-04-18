@@ -26,7 +26,11 @@ import MapMarker from "./marker";
 import { MglMap } from "vue-mapbox";
 
 /* UTILITIES */
-import { filterEventsByCategoryKeys } from '@/utils';
+import {
+  filterEventsByDates,
+  filterEventsByCategoryKeys,
+  filterEventsByRating
+} from '@/utils';
 
 export default {
   name: "Map",
@@ -44,6 +48,12 @@ export default {
     selectedCategories: {
       type: Array
     },
+    selectedDateSpan: {
+      type: Array
+    },
+    selectedRating: {
+      type: Number
+    }
   },
   data() {
     return {
@@ -59,14 +69,20 @@ export default {
     };
   },
   watch: {
-    // watchers and initializers: eventlist (filtered)
+    // watchers and initializers: (event filters)
     selectedCategories() {
       this.filteredEvents = this.filterEvents(this.events)
-    }
+    },
+    selectedDateSpan() {
+      this.filteredEvents = this.filterEvents(this.events)
+    },
+    selectedRating() {
+      this.filteredEvents = this.filterEvents(this.events)
+    },
   },
 
   mounted() {
-    // watchers and initializers: eventlist (filtered)
+    // watchers and initializers: (event filters)
     this.filteredEvents = this.filterEvents(this.events)
   },
 
@@ -80,8 +96,11 @@ export default {
       this.$router.push({ path: `/eventpage/${id}` });
     },
     filterEvents(events) {
-      if(this.selectedCategories.length === 0 ) return events;
-      else return filterEventsByCategoryKeys(events, this.selectedCategories);
+      // filter (TODO: BETTER FILTERING - AFTER FINAL SCHEMA CHANGES MADE)
+      const filteredByCategories = filterEventsByCategoryKeys(events, this.selectedCategories)
+      const filteredByDates = filterEventsByDates(filteredByCategories, this.selectedDateSpan)
+      const filteredByRating = filterEventsByRating(filteredByDates, this.selectedRating)
+      return filteredByRating
     }
   }
 };
