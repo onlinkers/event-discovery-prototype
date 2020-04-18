@@ -9,7 +9,7 @@
     >
         <template v-slot:activator="{ on }">
             <v-btn
-                class="DateFilter--button"
+                class="DateFilter--button filter-button"
                 color="primary"
                 small
                 v-on="on"
@@ -25,6 +25,7 @@
             range
             @change="updateDateFilters"
         />
+        <v-btn class="DateFilter--resetbutton" small @click="resetDateFilters">RESET</v-btn>
     </v-menu>
 </template>
 
@@ -52,6 +53,10 @@ export default {
       if(!this.pickerDates[0] || !this.pickerDates[1]) return null
       this.$emit('updateData', this.pickerDates)
     },
+    resetDateFilters() {
+      this.pickerDates = []
+      this.$emit('updateData', [])
+    }
   }
 }
 </script>
@@ -79,6 +84,13 @@ export default {
     @media screen and (min-width: 700px){
         width: 40vw;
     }
+  }
+  .DateFilter--resetbutton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 1.5em;
+    margin-top: 1.5em;
   }
 </style>
 

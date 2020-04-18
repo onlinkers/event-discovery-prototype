@@ -9,7 +9,7 @@
     >
         <template v-slot:activator="{ on }">
             <v-btn
-                class="RatingFilter--button"
+                class="RatingFilter--button filter-button"
                 color="white"
                 small
                 v-on="on"

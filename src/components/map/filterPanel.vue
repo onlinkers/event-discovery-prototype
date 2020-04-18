@@ -9,7 +9,7 @@
           @updateState="updateFilterState"
           @updateData="updateRatingFilter"/>
         <v-btn
-          class="CategoryFilter--button"
+          class="CategoryFilter--button filter-button"
           color="primary"
           small
           @click="filterState === 'NONE' ? updateFilterState('CATEGORY') : updateFilterState('NONE')"
@@ -28,9 +28,9 @@
 </template>
 
 <script>
-import DateFilter from "@/components/dateFilter";
-import RatingFilter from "@/components/ratingFilter";
-import CategoryFilter from "@/components/categoryFilter";
+import DateFilter from "./filters/dateFilter";
+import RatingFilter from "./filters/ratingFilter";
+import CategoryFilter from "./filters/categoryFilter";
 
 // import { filterArrayByArray } from '@/utils';
 export default {
@@ -95,8 +95,7 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    overflow-x: scroll;
-    overflow: visible;
+    max-width: 80vw;
   }
 
   .CategoryFilter--button {
@@ -107,3 +106,8 @@ export default {
   }
 </style>
 
+<style>
+  .filter-button {
+    margin-bottom: 0.5em;
+  }
+</style>

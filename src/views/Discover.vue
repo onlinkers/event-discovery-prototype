@@ -28,7 +28,7 @@ import Map from "@/components/map/Mapbox";
 import SearchBar from "@/components/searchBar";
 import ExploreBar from "@/components/exploreBar";
 
-import FilterPanel from "@/components/filterPanel";
+import FilterPanel from "@/components/map/filterPanel";
 
 import { mapActions, mapState, mapMutations } from "vuex";
 
