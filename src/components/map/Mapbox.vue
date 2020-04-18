@@ -26,7 +26,7 @@ import MapMarker from "./marker";
 import { MglMap } from "vue-mapbox";
 
 /* UTILITIES */
-import { filterEventByCategories } from '../../utils';
+import { filterEventsByCategoryKeys } from '@/utils';
 
 export default {
   name: "Map",
@@ -39,6 +39,9 @@ export default {
       type: Array
     },
     categories: {
+      type: Object
+    },
+    selectedCategories: {
       type: Array
     },
   },
@@ -56,22 +59,20 @@ export default {
     };
   },
   watch: {
-    categories() {
+    // watchers and initializers: eventlist (filtered)
+    selectedCategories() {
       this.filteredEvents = this.filterEvents(this.events)
     }
   },
 
-  created() {
-    this.map = null;
-  },
-
   mounted() {
+    // watchers and initializers: eventlist (filtered)
     this.filteredEvents = this.filterEvents(this.events)
   },
 
   methods: {
     onMapLoaded(event) {
-      // console.log("Map loaded!");
+      console.log('map loaded!') // eslint-disable-line
       this.map = event.map;
     },
     navigateToEvent(event) {
@@ -79,8 +80,8 @@ export default {
       this.$router.push({ path: `/eventpage/${id}` });
     },
     filterEvents(events) {
-      if(this.categories.length === 0 ) return events;
-      else return filterEventByCategories(events, this.categories);
+      if(this.selectedCategories.length === 0 ) return events;
+      else return filterEventsByCategoryKeys(events, this.selectedCategories);
     }
   }
 };

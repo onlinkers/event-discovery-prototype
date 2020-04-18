@@ -6,7 +6,8 @@ const events = {
   state: {
     general: {},
     local: {},
-    loading: false,
+    categories: {},
+    loaded: false,
   },
   mutations: {
     setGeneralEvents(state, events) {
@@ -15,18 +16,19 @@ const events = {
     setLocalEvent(state, event) {
         state.local = event
     },
-    setLoading(state, status) {
-        state.loading = status
+    setCategories(state, categories) {
+      state.categories = categories
+    },
+    setLoaded(state, status) {
+      state.loaded = status
     }
   },
   actions: {
     // "QUERY" - makes some form of request to get data from the DB
     queryAllEvents({ commit }) {
-      commit('setLoading', true);
       return eventService.getAllEventData()
       .then((data) => {
           commit('setGeneralEvents', data.data);
-          commit('setLoading', false);
       })
       .catch((err) => {
           Vue.toasted.global.errorMessage({
@@ -40,6 +42,17 @@ const events = {
         const event = Object.values(data.data)[0]
           commit('setLocalEvent', event)
           return event;
+      })
+      .catch((err) => {
+          Vue.toasted.global.errorMessage({
+              message: err
+          })
+      })
+    },
+    queryEventCategories({ commit }) {
+      return eventService.getEventCategories()
+      .then((data) => {
+          commit('setCategories', data.data)
       })
       .catch((err) => {
           Vue.toasted.global.errorMessage({

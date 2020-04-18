@@ -9,7 +9,7 @@
             small
             @click="removeCategory(categoryKey)"
         >
-        {{ EVENT_CATEGORIES[categoryKey] }}
+        {{ eventCategories[categoryKey] }}
         </v-chip>
         <v-chip
             v-for="categoryKey in inactiveCategoryKeys"
@@ -20,53 +20,58 @@
             small
             @click="addCategory(categoryKey)"
         >
-        {{ EVENT_CATEGORIES[categoryKey] }}
+        {{ eventCategories[categoryKey] }}
         </v-chip>
     </div>
 </template>
 
 <script>
-import { EVENT_CATEGORIES, EVENT_CATEGORIES_KEYS } from '../constants';
-import { filterArrayByArray } from '../utils';
+import { filterArrayByArray } from '@/utils';
 
 export default {
   name: "CategoryNavigator",
   props: {
-    categories: {
+    eventCategories: {
+      type: Object
+    },
+    eventCategoriesKeys: {
+      type: Array
+    },
+    selectedCategories: {
       type: Array
     }
   },
   data() {
     return {
-      EVENT_CATEGORIES,
-      EVENT_CATEGORIES_KEYS,
       activeCategoryKeys: [],
-      inactiveCategoryKeys: EVENT_CATEGORIES_KEYS,
+      inactiveCategoryKeys: this.eventCategoriesKeys || [],
     };
   },
   watch: {
-    categories() {
-        this.activeCategoryKeys = this.categories;
-        this.inactiveCategoryKeys = filterArrayByArray(EVENT_CATEGORIES_KEYS, this.categories);
+    // watchers and initializers: selected categories
+    selectedCategories() {
+        this.activeCategoryKeys = this.selectedCategories;
+        this.inactiveCategoryKeys = filterArrayByArray(this.eventCategoriesKeys, this.selectedCategories);
     }
   },
   mounted() {
-    this.activeCategoryKeys = this.categories;
-    this.inactiveCategoryKeys = filterArrayByArray(EVENT_CATEGORIES_KEYS, this.categories);
+    // watchers and initializers: selected categories
+    this.activeCategoryKeys = this.selectedCategories;
+    this.inactiveCategoryKeys = filterArrayByArray(this.eventCategoriesKeys, this.selectedCategories);
   },
   methods: {
-    addCategory(categoryKey) {
+    addCategory(categoryKeyToAdd) {
       // Hack to overcome the vue 'duplicate' route problem
       const queries = Object.assign({}, this.$route.query);
-      const newCategories = this.categories;
-      newCategories.push(categoryKey);
+      const newCategories = this.selectedCategories;
+      newCategories.push(categoryKeyToAdd);
       queries.categories = newCategories.join(',');
       this.$router.push({ name: 'discover', query: { ...queries } })
     },
-    removeCategory(categoryKey) {
+    removeCategory(categoryKeyToRemove) {
       // Hack to overcome the vue 'duplicate' route problem
       const queries = Object.assign({}, this.$route.query);
-      const newCategories = this.categories.filter((category) => category !== categoryKey);
+      const newCategories = this.selectedCategories.filter((category) => category !== categoryKeyToRemove);
       queries.categories = newCategories.join(',');
       this.$router.push({ name: 'discover', query: { ...queries } })
     }
