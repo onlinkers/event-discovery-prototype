@@ -2,7 +2,7 @@
   <div class="map-components-wrapper">
     <Map
       v-if="!eventsLoading"
-      :events="events"
+      :events="Object.values(events)"
       :categories="categories"
       @mapLoad="loadMap"
     />
