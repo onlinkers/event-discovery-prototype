@@ -1,35 +1,35 @@
 <template>
-    <div class="CategoryScroller">
-        <v-chip
-            v-for="categoryKey in activeCategoryKeys"
-            :key="categoryKey"
-            class="category-chip active-chip"
-            color="#2351f4"
-            ripple
-            small
-            @click="removeCategory(categoryKey)"
-        >
-        {{ eventCategories[categoryKey] }}
-        </v-chip>
-        <v-chip
-            v-for="categoryKey in inactiveCategoryKeys"
-            :key="categoryKey"
-            class="category-chip inactive-chip"
-            color="transparent"
-            ripple
-            small
-            @click="addCategory(categoryKey)"
-        >
-        {{ eventCategories[categoryKey] }}
-        </v-chip>
-    </div>
+  <div class="CategoryScroller">
+      <v-chip
+          v-for="categoryKey in activeCategoryKeys"
+          :key="categoryKey"
+          class="category-chip active-chip"
+          color="#2351f4"
+          ripple
+          small
+          @click="removeCategory(categoryKey)"
+      >
+      {{ eventCategories[categoryKey] }}
+      </v-chip>
+      <v-chip
+          v-for="categoryKey in inactiveCategoryKeys"
+          :key="categoryKey"
+          class="category-chip inactive-chip"
+          color="transparent"
+          ripple
+          small
+          @click="addCategory(categoryKey)"
+      >
+      {{ eventCategories[categoryKey] }}
+      </v-chip>
+  </div>
 </template>
 
 <script>
 import { filterArrayByArray } from '@/utils';
 
 export default {
-  name: "CategoryNavigator",
+  name: "CategoryFilter",
   props: {
     eventCategories: {
       type: Object
@@ -80,23 +80,13 @@ export default {
 </script>
 <style lang="scss" scoped>
   .CategoryScroller {
+    margin-top: 0.5em;
     display: flex;
     flex-direction: row;
-    position: absolute;
-    top: 21%;
-    left: 50%;
-    margin-left: 15vw;
-    transform: translateX(-50%);
     overflow-x: scroll;
-    width: 100vw;
+    width: 100%;
 
     @media screen and (min-width: 700px){
-      left: 50%;
-      transform: translateX(-50%);
-      width: 40vw;
-      top: 20%;
-      margin-left: 0;
-
       .v-chip {
         margin-right: 0.3em;
       }

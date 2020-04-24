@@ -5,13 +5,16 @@
       :events="Object.values(events)"
       :categories="eventCategories"
       :selected-categories="selectedCategories"
+      :selected-rating="ratingFilter"
+      :selected-date-span="dateFilters"
     />
     <SearchBar />
-    <CategoryNavigator
-      v-if="eventsLoaded"
+    <FilterPanel
+      :selected-categories="selectedCategories"
       :event-categories="eventCategories"
       :event-categories-keys="Object.keys(eventCategories)"
-      :selected-categories="selectedCategories"
+      @updateDateFilters="updateDateFilters"
+      @updateRatingFilter="updateRatingFilter"
     />
     <mq-layout mq="desktop">
       <ExploreBar />
@@ -24,7 +27,8 @@
 import Map from "@/components/map/Mapbox";
 import SearchBar from "@/components/searchBar";
 import ExploreBar from "@/components/exploreBar";
-import CategoryNavigator from "@/components/categoryNavigator";
+
+import FilterPanel from "@/components/map/filterPanel";
 
 import { mapActions, mapState, mapMutations } from "vuex";
 
@@ -36,11 +40,14 @@ export default {
     Map,
     SearchBar,
     ExploreBar,
-    CategoryNavigator
+    FilterPanel,
   },
   data() {
     return {
       selectedCategories: [],
+      selectedTimeSpan: [],
+      dateFilters: [],
+      ratingFilter: 0,
     };
   },
   computed: {
@@ -78,7 +85,13 @@ export default {
     ]),
     ...mapMutations('events', {
       setEventsLoaded: 'setLoaded'
-    })
+    }),
+    updateDateFilters(value) {
+      this.dateFilters = value
+    },
+    updateRatingFilter(value) {
+      this.ratingFilter = value
+    }
   },
 };
 </script>
