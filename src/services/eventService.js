@@ -2,7 +2,7 @@ import api from '../api'
 
 export default {
   getAllEventData: () => {
-    return api().get("/events");
+    return api().get('/events');
   },
   getEventData: ({ ids }) => {
     return api().get(`/events/${ids}`);
@@ -15,5 +15,8 @@ export default {
   },
   deleteEvent: ({ id }) => {
     return api().delete(`/events/${id}`);
+  },
+  getEventCategories: () => {
+    return api().get('/events/categories')
   }
 };

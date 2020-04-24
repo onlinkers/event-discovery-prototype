@@ -1,7 +1,18 @@
 <template>
   <div class="map-components-wrapper">
-    <Map :events="Object.values(events)" @mapLoad="loadMap"/>
+    <Map
+      v-if="eventsLoaded"
+      :events="Object.values(events)"
+      :categories="eventCategories"
+      :selected-categories="selectedCategories"
+    />
     <SearchBar />
+    <CategoryNavigator
+      v-if="eventsLoaded"
+      :event-categories="eventCategories"
+      :event-categories-keys="Object.keys(eventCategories)"
+      :selected-categories="selectedCategories"
+    />
     <mq-layout mq="desktop">
       <ExploreBar />
     </mq-layout>
@@ -12,9 +23,10 @@
 /* MAIN COMPONENTS */
 import Map from "@/components/map/Mapbox";
 import SearchBar from "@/components/searchBar";
-import ExploreBar from "../components/exploreBar";
+import ExploreBar from "@/components/exploreBar";
+import CategoryNavigator from "@/components/categoryNavigator";
 
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapState, mapMutations } from "vuex";
 
 /* STYLES */
 
@@ -23,40 +35,50 @@ export default {
   components: {
     Map,
     SearchBar,
-    ExploreBar
+    ExploreBar,
+    CategoryNavigator
   },
   data() {
     return {
-      windowWidth: 0,
-      windowHeight: 0,
-      mapLoaded: false
+      selectedCategories: [],
     };
   },
   computed: {
     ...mapState('events', {
-      events: state => state.general
-    })
+      events: state => state.general,
+      eventCategories: state => state.categories,
+      eventsLoaded: state => state.loaded,
+    }),
   },
-  created() {
+  watch: {
+    // listener to reload states on route changes (params, queries)
+    '$route.query'() {
+      // listener for category filtering
+      this.selectedCategories = this.$route.query.categories ? unescape(this.$route.query.categories).split(',') : [];
+    }
+  },
+  async created() {
     // QUERY logic should be handled here
-    // it will be easier to handle map re-loads, async calls, loading, etc
-    this.queryAllEvents()
+    // it will be easier to handle map re-loads, async calls, loading, etc, all in once place
+    this.setEventsLoaded(false)
+    await Promise.all([
+      this.queryAllEvents(),
+      this.queryEventCategories()
+    ])
+    this.setEventsLoaded(true)
   },
   mounted() {
-    window.addEventListener("resize", () => {
-      this.windowWidth = window.innerWidth;
-      this.windowHeight = window.innerHeight;
-    });
+    // In addition to the watcher, functions need to be run on mounted for the initial load
+    this.selectedCategories = this.$route.query.categories ? unescape(this.$route.query.categories).split(',') : [];
   },
   methods: {
     ...mapActions('events', [
-      'queryAllEvents'
+      'queryAllEvents',
+      'queryEventCategories'
     ]),
-    loadMap() {
-      setTimeout(() => {
-        this.mapLoaded = true;
-      }, 2000);
-    }
+    ...mapMutations('events', {
+      setEventsLoaded: 'setLoaded'
+    })
   },
 };
 </script>

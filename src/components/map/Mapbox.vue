@@ -9,7 +9,7 @@
     @load="onMapLoaded"
   >
     <MapMarker
-      v-for="(event, index) in events"
+      v-for="(event, index) in filteredEvents"
       :key="`marker-${index}`"
       :name="event.name"
       :coords="event.venue.location.coordinates"
@@ -26,6 +26,7 @@ import MapMarker from "./marker";
 import { MglMap } from "vue-mapbox";
 
 /* UTILITIES */
+import { filterEventsByCategoryKeys } from '@/utils';
 
 export default {
   name: "Map",
@@ -36,7 +37,13 @@ export default {
   props: {
     events: {
       type: Array
-    }
+    },
+    categories: {
+      type: Object
+    },
+    selectedCategories: {
+      type: Array
+    },
   },
   data() {
     return {
@@ -48,21 +55,33 @@ export default {
         center: [-123.120735, 49.28273],
         zoom: 12
       },
+      filteredEvents: [],
     };
   },
+  watch: {
+    // watchers and initializers: eventlist (filtered)
+    selectedCategories() {
+      this.filteredEvents = this.filterEvents(this.events)
+    }
+  },
 
-  created() {
-    this.map = null;
+  mounted() {
+    // watchers and initializers: eventlist (filtered)
+    this.filteredEvents = this.filterEvents(this.events)
   },
 
   methods: {
     onMapLoaded(event) {
-      // console.log("Map loaded!");
+      console.log('map loaded!') // eslint-disable-line
       this.map = event.map;
     },
     navigateToEvent(event) {
       const { _id: id } = event;
       this.$router.push({ path: `/eventpage/${id}` });
+    },
+    filterEvents(events) {
+      if(this.selectedCategories.length === 0 ) return events;
+      else return filterEventsByCategoryKeys(events, this.selectedCategories);
     }
   }
 };

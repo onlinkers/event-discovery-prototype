@@ -5,41 +5,60 @@ const events = {
   namespaced: true,
   state: {
     general: {},
-    local: {}
+    local: {},
+    categories: {},
+    loaded: false,
   },
   mutations: {
     setGeneralEvents(state, events) {
-      state.general = { ...state.general, ...events };
+        state.general = { ...state.general, ...events }
     },
     setLocalEvent(state, event) {
-      state.local = event
+        state.local = event
+    },
+    setCategories(state, categories) {
+      state.categories = categories
+    },
+    setLoaded(state, status) {
+      state.loaded = status
     }
   },
   actions: {
     // "QUERY" - makes some form of request to get data from the DB
     queryAllEvents({ commit }) {
       return eventService.getAllEventData()
-        .then((data) => {
-          commit('setGeneralEvents', data.data)
-        })
-        .catch((err) => {
+      .then((data) => {
+          commit('setGeneralEvents', data.data);
+      })
+      .catch((err) => {
           Vue.toasted.global.errorMessage({
               message: err
           })
-        })
+      })
     },
     queryLocalEvent({ commit }, id) {
       return eventService.getEventData({ ids: id })
-        .then((data) => {
-          const event = Object.values(data.data)[0]
-          commit("setLocalEvent", event);
+      .then((data) => {
+        const event = Object.values(data.data)[0]
+          commit('setLocalEvent', event)
           return event;
-        })
-        .catch((err) => {
+      })
+      .catch((err) => {
           Vue.toasted.global.errorMessage({
-            message: err
-          });
-        });
+              message: err
+          })
+      })
+    },
+    queryEventCategories({ commit }) {
+      return eventService.getEventCategories()
+      .then((data) => {
+          commit('setCategories', data.data)
+      })
+      .catch((err) => {
+          Vue.toasted.global.errorMessage({
+              message: err
+          })
+      })
     }
   }
 }
