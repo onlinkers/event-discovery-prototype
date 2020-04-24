@@ -164,11 +164,22 @@
         <img src="../assets/vectors/media-vector.svg" class="step-vector" />
       </div>
     </div>
+    <v-dialog v-model="warning.visible" content-class="warning-dialog" persistent>
+      <v-card>
+        <v-card-title class="headline">Oops! We couldn't create that event for you!</v-card-title>
+        <v-card-text>{{ warning.message }}</v-card-text>
+        <v-card-actions>
+          <v-spacer/>
+          <v-btn color="primary" @click="redirectToStep(warning.step); warning.visible = false">Close</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
 <script>
-import NavBtns from "../components/navButtons";
+import NavBtns from "@/components/navButtons";
+import eventService from "@/services/eventService"
 
 export default {
   components: {
@@ -187,22 +198,79 @@ export default {
       eventTitle: null,
       eventLocation: null,
       eventDescription: null,
-      coverImage: null
+      coverImage: null,
+      warning: {
+        visible: false,
+      },
     };
   },
   methods: {
+    redirectToStep(step) {
+      this.$router.push({ path: `/new/${step}` });
+    },
     nextStep() {
       if (+this.$route.params.step === 4) return;
       const nextStep = +this.$route.params.step + 1;
-      this.$router.push({ path: `/new/${nextStep}` });
+      this.redirectToStep(nextStep)
     },
     prevStep() {
       if (+this.$route.params.step === 0) return;
       const nextStep = +this.$route.params.step - 1;
-      this.$router.push({ path: `/new/${nextStep}` });
+      this.redirectToStep(nextStep)
     },
-    confirm() {
-      this.$router.push({ path: `/discover` });
+    async confirm() {
+      // This page needs to be refactored to include (AT LEAST) the following fields:
+      // name (title), startDate, endDate, venue
+
+      // On making a 'create' request, a 'userId' is also required to be sent to the API.
+      // This is to ensure that in the future the particular event has an assigned 'host',
+      // and isn't just able to be edited by anyone.
+
+      const emptyFields = [];
+      let redirectToStep = null;
+      // needs to be done 'in reverse' to get the FIRST unfilled field
+      if(!this.eventLocation) {
+        emptyFields.push('location')
+        redirectToStep = 2;
+      }
+      if(!this.eventTitle) {
+        emptyFields.push('title')
+        redirectToStep = 1
+      }
+      if(!this.eventDateTimeString) {
+        emptyFields.push('date/time')
+        redirectToStep = 0;
+      }
+
+      const hasRequiredFieldsBeenFilled = !emptyFields[0]
+
+      if(!hasRequiredFieldsBeenFilled) {
+        this.warning = {
+          message: `Sorry! Could not create the event because the following fields have not been filled: ${emptyFields.join(', ')}.
+            Please fill in all the required fields before re-submitting.`,
+          visible: true,
+          step: redirectToStep
+        }
+      }
+      else {
+
+        const payload = {
+          name: this.eventTitle,
+          venue: this.eventLocation, // needs to be in the form required
+          startDate: this.eventDateTimeString,
+          endDate: this.eventDate,
+          description: this.eventDescription,
+          coverPhoto: {
+            baseSrc: this.coverImage,
+            size: { width: 100, height: 100 } // needs to set a default somehow
+          }
+        }
+
+        await eventService.createEvent(payload)
+        this.$router.push({ path: `/discover` });
+      }
+      
+
     },
     saveDate(eventDate) {
       this.eventDateTimeString = eventDate;
@@ -216,6 +284,11 @@ export default {
         this.showDatePicker = true;
       }, 200);
     }
+  },
+  // Hook to redirect to start if entering from a path that is not /new/*'
+  beforeRouteEnter (to, from, next) {
+    if(to.query.first !== true) next({ path: '/new/0', query: { first: true } })
+    else next()
   }
 };
 </script>
@@ -263,12 +336,19 @@ export default {
     }
   }
 }
+</style>
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
+<style lang="scss">
+// Doesn't work with scoped styles
+.warning-dialog {
+  max-width: 80vw;
+
+  .headline {
+    word-break: break-word;
+  }
+
+  @media only screen and (min-width: 700px){
+    max-width: 50vw;
+  }
 }
 </style>
